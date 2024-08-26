@@ -27,7 +27,7 @@
             </div>
             <div class="work-links">
               <a class="link" @click="openModal(work.modalId)">Read More</a>
-              <a href="#testimonials" class="link">Testimonials</a>
+              <!-- <a href="#testimonials" class="link">Testimonials</a> -->
             </div>
           </div>
           <picture class="work-img" ref="workImgs">

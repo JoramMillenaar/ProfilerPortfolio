@@ -70,35 +70,6 @@ export default {
 </script>
 
 <style scoped>
-.contact {
-  background-color: var(--bg-color-secondary);
-  padding: var(--gutter-large);
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gutter-small);
-}
-
-.form-field input,
-.form-field textarea {
-  border: 1px solid var(--border-dark);
-  padding: var(--gutter-nano);
-}
-
-.btn-cta {
-  background-color: var(--important);
-  color: var(--bg-color-primary);
-  border: none;
-  padding: var(--gutter-micro) var(--gutter-medium);
-  cursor: pointer;
-}
-
-.btn-cta:hover {
-  background-color: darken(var(--important), 10%);
-}
-
 .contact-content {
   display: grid;
   grid-template-columns: minmax(245px, 35%) 1fr;
@@ -229,4 +200,37 @@ body .signatures {
   border: none;
 }
 
+.btn {
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  padding: 18px 60px;
+  border-radius: var(--gutter-nano);
+  transition: 0.3s all ease-in-out;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .btn {
+    padding: 16px 48px;
+  }
+}
+
+@media (max-width: 485px) {
+  .btn {
+    font-size: 1.2rem;
+    padding: 14px 38px;
+  }
+}
+
+.btn-cta {
+  color: var(--bg-color-primary);
+  background-color: var(--important);
+}
+
+body .btn-cta:hover,
+body .btn-cta:focus {
+  box-shadow: #07070733 0 0 0 var(--gutter-nano);
+}
 </style>

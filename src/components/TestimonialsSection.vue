@@ -40,7 +40,7 @@ export default {
           author: 'Mario de Sousa',
           position: 'Lead Software Engineer at Therapieland',
           quote:
-            'While at Therapieland, Joram was a valuable and indispensable member of our development team...',
+            "Joram's ability to acquire new skills, and effectively apply them to his work, is outstanding. He is intelligent, naturally curious, hard-working, and constantly striving to improve himself as a developer [...]. He has an infectious personality and a sharp wit, and always added his positive energy to the team.",
           image: require('../assets/images/testimonials/mario.jpg'),
         },
         {
@@ -48,7 +48,7 @@ export default {
           author: 'Marike de Haan',
           position: 'CFO and Creative Director at Therapieland',
           quote:
-            'He has been of great value, always contributing to technical and functional discussions...',
+            'We immediately saw how dedicated and eager to learn he was. We saw him growing almost every day. He has been of great value, always contributing to technical and functional discussions.',
           image: require('../assets/images/testimonials/marike.jpg'),
         },
         {
@@ -56,7 +56,7 @@ export default {
           author: 'Jose Martinez',
           position: 'Senior Software Engineer at Therapieland',
           quote:
-            '...his superpower [is] turning messy, vague ideas into something concrete and organized.',
+            "The go-to guy for bouncing around ideas – he's always up for a chat and has this knack for pushing us towards the best solutions. One of the cool things about him is his superpower of turning messy, vague ideas into something concrete and organized.",
           image: require('../assets/images/testimonials/jose.jpg'),
         },
       ],
