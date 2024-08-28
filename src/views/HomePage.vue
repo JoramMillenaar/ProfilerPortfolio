@@ -2,7 +2,7 @@
   <div class="home-page">
     <site-header></site-header>
     <main>
-      <work-experience></work-experience>
+      <experience-section></experience-section>
       <hobby-project></hobby-project>
       <testimonials-section></testimonials-section>
       <contact-form></contact-form>
@@ -13,7 +13,7 @@
 
 <script>
 import SiteHeader from '../components/SiteHeader.vue';
-import WorkExperience from '../components/WorkExperience.vue';
+import ExperienceSection from '@/components/experience/ExperienceSection.vue';
 import TestimonialsSection from '../components/TestimonialsSection.vue';
 import HobbyProject from '../components/HobbyProject.vue';
 import ContactForm from '../components/ContactForm.vue';
@@ -22,7 +22,7 @@ import SiteFooter from '../components/SiteFooter.vue';
 export default {
   components: {
     SiteHeader,
-    WorkExperience,
+    ExperienceSection,
     TestimonialsSection,
     HobbyProject,
     ContactForm,

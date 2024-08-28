@@ -1,0 +1,64 @@
+<template>
+  <div>
+    <h3 class="h3">{{ title }}</h3>
+    <h5 class="h5">{{ subtitle }}</h5>
+    <h6 class="h6">{{ location }}</h6>
+    <p class="work-text">{{ description }}</p>
+    <div class="skills-imgs">
+      <skill-emblem
+        v-for="skill in skills"
+        :key="skill"
+        :name="skill"
+      ></skill-emblem>
+    </div>
+    <div class="work-links">
+      <!-- <router-link :to="{ name: 'detail', params: { id: entryId } }"
+        >Read More</router-link
+      > -->
+    </div>
+  </div>
+</template>
+
+<script>
+import SkillEmblem from './SkillEmblem.vue';
+
+export default {
+  components: { SkillEmblem },
+  props: [
+    'id',
+    'title',
+    'subtitle',
+    'location',
+    'description',
+    'skills',
+    'modalId',
+  ],
+};
+</script>
+
+<style scoped>
+.work-text {
+  margin-block: var(--gutter-micro);
+}
+
+.skills-imgs {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  gap: var(--gutter-small);
+  padding-block: var(--gutter-small);
+}
+
+@media (max-width: 675px) {
+  .skills-imgs {
+    gap: var(--gutter-large);
+  }
+}
+
+.work-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gutter-x-small);
+}
+</style>

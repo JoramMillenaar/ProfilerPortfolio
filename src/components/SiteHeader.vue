@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import TextSlider from './TextSlider.vue';
+import TextSlider from './common/TextSlider.vue';
 
 export default {
   components: {

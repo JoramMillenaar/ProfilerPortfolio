@@ -123,6 +123,7 @@ html {
 /* Improve media defaults */
 
 picture,
+video,
 svg,
 img {
   display: block;
