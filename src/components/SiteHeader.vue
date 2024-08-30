@@ -11,7 +11,7 @@
         <a href="#contact" class="btn btn-secondary">Contact Me</a>
       </div>
     </div>
-    <img src="../assets/images/full-subject.png" class="main-img">
+    <img src="../assets/images/full-subject.webp" class="main-img">
   </header>
 </template>
 
