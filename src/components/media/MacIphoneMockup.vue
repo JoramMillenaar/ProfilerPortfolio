@@ -1,7 +1,7 @@
 <template>
     <div class="device-mockup">
       <img
-        src="@/assets/images/apple-mockup.png"
+        src="@/assets/images/apple-mockup.webp"
         alt="MacBook Mockup"
         class="device-image"
       />

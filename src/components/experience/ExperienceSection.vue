@@ -100,7 +100,7 @@ export default {
           'Kubernetes',
           'Google Cloud',
         ],
-        image: require('@/assets/images/work/therapieland.png'),
+        image: require('@/assets/images/work/therapieland.webp'),
         video: require('@/assets/videos/therapieland.mp4'),
         modalId: 'therapieland-modal',
       },
@@ -114,8 +114,8 @@ export default {
         skills: ['WordPress', 'JavaScript', 'HTML/CSS'],
         modalId: 'enviu-modal',
         macMP4: require('@/assets/videos/mac-enviu.mp4'),
-        phoneOverlayImg: require('@/assets/images/iphone-enviu-main.png'),
-        phoneScrollableImg: require('@/assets/images/long-enviu.jpg'),
+        phoneOverlayImg: require('@/assets/images/iphone-enviu-main.webp'),
+        phoneScrollableImg: require('@/assets/images/long-enviu.webp'),
       },
       thrustExperience: {
         id: 'maritime-emissions',
@@ -125,7 +125,7 @@ export default {
         description:
           'Led the development of an interactive web application for visualizing maritime emissions.',
         skills: ['Python', 'Django', 'HTML/CSS', 'JavaScript', 'Git', 'Shell'],
-        image: require('@/assets/images/work/emission-thumbnail.png'),
+        image: require('@/assets/images/work/emission-thumbnail.webp'),
         video: require('@/assets/videos/thrust-website.mp4'),
         modalId: 'maritime-emissions-modal',
       },

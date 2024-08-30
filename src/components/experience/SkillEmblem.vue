@@ -7,8 +7,8 @@
 <script>
 const skillImages = {
   Python: require('@/assets/images/skills/python.svg'),
-  Django: require('@/assets/images/skills/django.png'),
-  SQL: require('@/assets/images/skills/sql.png'),
+  Django: require('@/assets/images/skills/django.webp'),
+  SQL: require('@/assets/images/skills/sql.webp'),
   pytest: require('@/assets/images/skills/pytest.svg'),
   Git: require('@/assets/images/skills/git.webp'),
   JavaScript: require('@/assets/images/skills/js.webp'),
@@ -16,7 +16,7 @@ const skillImages = {
   'HTML/CSS': require('@/assets/images/skills/css.webp'),
   Kubernetes: require('@/assets/images/skills/kubernetes.svg'),
   'Google Cloud': require('@/assets/images/skills/googlecloud.svg'),
-  WordPress: require('@/assets/images/skills/wordpress.png'),
+  WordPress: require('@/assets/images/skills/wordpress.webp'),
 };
 
 export default {
