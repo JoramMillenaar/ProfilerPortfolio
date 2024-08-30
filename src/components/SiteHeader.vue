@@ -5,7 +5,7 @@
       <h1 class="h1 tech">I'm Joram Millenaar</h1>
       <h1 class="h1 tech">A Full-Stack Web Developer</h1>
       <p class="header-text">
-        A full-stack software engineer specialized in scalable web applications using Python.
+        Specialized in scalable web applications using Python.
       </p>
       <div class="header-btns">
         <a href="#contact" class="btn btn-secondary">Contact Me</a>

@@ -1,16 +1,14 @@
 <template>
-  <div>
-    <img class="box" v-if="image" :src="image" loading="lazy" />
-    <video
-      class="box"
-      v-if="video"
-      :src="video"
-      @loadeddata="handleVideoLoad($event)"
-      muted
-      loop
-      playsinline
-    ></video>
-  </div>
+  <img class="box" v-if="image" :src="image" loading="lazy" />
+  <video
+    class="box"
+    v-if="video"
+    :src="video"
+    @loadeddata="handleVideoLoad($event)"
+    muted
+    loop
+    playsinline
+  ></video>
 </template>
 
 <script>

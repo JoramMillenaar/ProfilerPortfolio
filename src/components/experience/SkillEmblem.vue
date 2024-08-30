@@ -39,7 +39,7 @@ export default {
 }
 
 .skills-img {
-  filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(1px 2px 2px rgba(255, 255, 255, 0.04));
   block-size: 50px;
   inline-size: 50px;
   background: transparent;
@@ -50,7 +50,7 @@ export default {
 
 .skills-img:hover {
   transform: translate3d(0px, -6px, 0px) rotateX(0deg) rotateZ(0deg);
-  filter: drop-shadow(5px 8px 3px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(5px 8px 3px rgba(255, 255, 255, 0.1));
 }
 
 @media (max-width: 1100px) {

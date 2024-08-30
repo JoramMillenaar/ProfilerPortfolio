@@ -6,26 +6,25 @@
 
 <script>
 export default {
-  name: 'App'
-}
+  name: 'App',
+};
 </script>
 
 <style>
-
 @font-face {
-  font-family: "Mona Sans";
-  src: url("assets/fonts/Mona-Sans.woff2") format("woff2 supports variations"),
-    url("assets/fonts/Mona-Sans.woff2") format("woff2-variations");
+  font-family: 'Mona Sans';
+  src: url('assets/fonts/Mona-Sans.woff2') format('woff2 supports variations'),
+    url('assets/fonts/Mona-Sans.woff2') format('woff2-variations');
   font-display: swap;
   font-weight: 200 900;
   font-stretch: 75% 125%;
 }
 
 @font-face {
-    font-family: 'Tech';
-    src: url('assets/fonts/tech.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Tech';
+  src: url('assets/fonts/tech.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
 :root {
@@ -61,15 +60,15 @@ export default {
   --gutter-huge: 12rem;
 
   --scroll-padding: 4.375rem;
-  --radius: 85px;
+  --radius: 45px;
 }
 
 body {
-  --bg-color-primary: #fbfbfb;
-  --bg-color-secondary: #ffffff;
-  --important: #191919;
-  --sub: #111;
-  --body: #43454C;
+  --bg-color-primary: #1b1b1b;
+  --bg-color-secondary: #202020;
+  --important: #f0f5ff;
+  --sub: #f0f5ff;
+  --body: #cbcbcb;
   --border: #62626234;
   --border-dark: #5e5e5e1f;
   --gradient-border: linear-gradient(to left bottom, #000000c6, #0e0d0d00);
@@ -83,15 +82,15 @@ body {
 }
 
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 *,
@@ -103,7 +102,7 @@ body {
 }
 
 html {
-  font-family: "Montserrat", "Mona Sans", sans-serif;
+  font-family: 'Montserrat', 'Mona Sans', sans-serif;
   box-sizing: border-box;
   scroll-padding-top: var(--scroll-padding);
 }
@@ -163,8 +162,17 @@ h3,
 }
 
 .h2 {
+  border-image: linear-gradient(
+      to right,
+      transparent 10%,
+      gray 50%,
+      transparent 90%
+    )
+    1;
+  border-bottom: 1px solid;
   font-size: var(--h2);
   text-align: center;
+  padding-bottom: 1rem;
 }
 
 .h3 {
@@ -253,8 +261,6 @@ h3,
   color: lightgrey;
 }
 
-
-
 .link {
   display: inline-block;
   cursor: pointer;
@@ -268,7 +274,7 @@ h3,
 
 .link::after,
 .link::before {
-  content: "";
+  content: '';
   width: 100%;
   height: 1px;
   margin-block-start: var(--gutter-nano);

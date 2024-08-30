@@ -55,7 +55,10 @@
             />
           </div>
           <div class="work-media">
-            <content-display :image="thrustExperience.image"></content-display>
+            <simple-mac-mockup
+              :image="thrustExperience.image"
+              :video="thrustExperience.video"
+            ></simple-mac-mockup>
           </div>
         </div>
       </div>
@@ -67,12 +70,14 @@
 import ExperienceHeader from './ExperienceHeader.vue';
 import MacIphoneMockup from '../media/MacIphoneMockup.vue';
 import ContentDisplay from '../media/ContentDisplay.vue';
+import SimpleMacMockup from '../media/SimpleMacMockup.vue';
 
 export default {
   components: {
     ExperienceHeader,
     MacIphoneMockup,
     ContentDisplay,
+    SimpleMacMockup,
   },
   data() {
     return {
@@ -121,6 +126,7 @@ export default {
           'Led the development of an interactive web application for visualizing maritime emissions.',
         skills: ['Python', 'Django', 'HTML/CSS', 'JavaScript', 'Git', 'Shell'],
         image: require('@/assets/images/work/emission-thumbnail.png'),
+        video: require('@/assets/videos/thrust-website.mp4'),
         modalId: 'maritime-emissions-modal',
       },
     };
@@ -199,6 +205,7 @@ export default {
 }
 
 .work-media {
+  filter: drop-shadow(0px 0px 172px rgba(255, 255, 255, 0.1));
   max-inline-size: 785px;
   transition: 0.6s all;
 }
