@@ -6,9 +6,9 @@
         class="device-image"
       />
       <div class="screen-content">
-        <video autoplay loop muted playsinline class="screen-image">
-          <source :src="macMP4" type="video/mp4" />
-        </video>
+        <object class="screen-image">
+          <video-content :video="video"></video-content>
+        </object>
         <div ref="mockup" class="phone-image">
           <picture class="phone-video">
             <img
@@ -27,8 +27,11 @@
   </template>
   
   <script>
+import VideoContent from './VideoContent.vue';
+
   export default {
-    props: ['macMP4', 'phoneOverlayImg', 'phoneScrollableImg'],
+  components: { VideoContent },
+    props: ['video', 'phoneOverlayImg', 'phoneScrollableImg'],
     data() {
       return {
         scrollPercentage: 0,
@@ -47,7 +50,6 @@
           const elementTop = element.getBoundingClientRect().top;
           const elementBottom = element.getBoundingClientRect().bottom;
           const viewportHeight = window.innerHeight;
-          // console.log(elementTop, elementBottom, viewportHeight)
   
           if (elementTop < viewportHeight && elementBottom >= 0) {
             const totalHeight = elementBottom - elementTop;
@@ -59,7 +61,7 @@
     },
     computed: {
       transformStyle() {
-        const translateY = -91.8 + (91.8 * this.scrollPercentage) / 100;
+        const translateY = -82 + (82 * this.scrollPercentage) / 100;
         return {
           transform: `translateY(${translateY}%)`,
         };

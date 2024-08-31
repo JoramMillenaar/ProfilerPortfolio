@@ -11,7 +11,7 @@
         <a href="#contact" class="btn btn-secondary">Contact Me</a>
       </div>
     </div>
-    <img src="../assets/images/full-subject.webp" class="main-img">
+    <img src="../assets/images/profile-picture.webp" class="main-img">
   </header>
 </template>
 
@@ -20,19 +20,18 @@ import TextSlider from './common/TextSlider.vue';
 
 export default {
   components: {
-    TextSlider
-  }
-}
+    TextSlider,
+  },
+};
 </script>
 
 <style scoped>
-
 .tech {
-    font-family: 'Tech', "Mona Sans", sans-serif;
+  font-family: 'Tech', 'Mona Sans', sans-serif;
 }
 
 .header {
-  background: linear-gradient(-45deg, #e68c3a, #E5A876, #94b6ef, #213e60);
+  background: linear-gradient(-45deg, #e68c3a, #e5a876, #94b6ef, #213e60);
   background-size: 400% 400%;
   animation: gradient 20s ease infinite;
   height: 100vh;
@@ -49,7 +48,7 @@ export default {
 }
 
 .header-textbox {
-  --important: #F4F2EF;
+  --important: #f4f2ef;
   color: var(--important);
   align-self: center;
   z-index: 2;
@@ -84,8 +83,8 @@ export default {
 
 .main-img {
   position: absolute;
-  right: -60px;
-  height: 120vh;
+  right: 0px;
+  height: 100vh;
   top: 0;
 }
 

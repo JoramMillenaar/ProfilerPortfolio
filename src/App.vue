@@ -12,6 +12,54 @@ export default {
 
 <style>
 @font-face {
+  font-display: swap;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  src: url('assets/fonts/montserrat-v26-latin-200.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  src: url('assets/fonts/montserrat-v26-latin-300.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('assets/fonts/montserrat-v26-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  src: url('assets/fonts/montserrat-v26-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  src: url('assets/fonts/montserrat-v26-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url('assets/fonts/montserrat-v26-latin-700.woff2') format('woff2');
+}
+
+@font-face {
   font-family: 'Mona Sans';
   src: url('assets/fonts/Mona-Sans.woff2') format('woff2 supports variations'),
     url('assets/fonts/Mona-Sans.woff2') format('woff2-variations');
@@ -118,8 +166,6 @@ html {
     font-size: 80%;
   }
 }
-
-/* Improve media defaults */
 
 picture,
 video,

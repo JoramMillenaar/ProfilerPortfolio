@@ -101,7 +101,7 @@ export default {
           "Graph publicly traded company's financials to see trends and correlations!",
         link: 'https://github.com/JoramMillenaar/StockAnalysis',
         image:
-          'https://raw.githubusercontent.com/JoramMillenaar/StockAnalysis/main/example.png',
+          'https://raw.githubusercontent.com/JoramMillenaar/StockAnalysis/main/example.webp',
       },
       projects: [
         {

@@ -16,20 +16,12 @@
             />
           </div>
           <div class="work-media">
-            <content-display
-              :image="therapielandExperience.image"
+            <video-content
               :video="therapielandExperience.video"
-            ></content-display>
+            ></video-content>
           </div>
         </div>
-        <div class="work-box">
-          <div class="work-media">
-            <mac-iphone-mockup
-              :macMP4="enviuExperience.macMP4"
-              :phoneOverlayImg="enviuExperience.phoneOverlayImg"
-              :phoneScrollableImg="enviuExperience.phoneScrollableImg"
-            ></mac-iphone-mockup>
-          </div>
+        <div class="work-box left">
           <div class="work-textbox">
             <experience-header
               :id="enviuExperience.id"
@@ -40,6 +32,13 @@
               :skills="enviuExperience.skills"
               :modalId="enviuExperience.modalId"
             />
+          </div>
+          <div class="work-media">
+            <mac-iphone-mockup
+              :video="enviuExperience.video"
+              :phoneOverlayImg="enviuExperience.phoneOverlayImg"
+              :phoneScrollableImg="enviuExperience.phoneScrollableImg"
+            ></mac-iphone-mockup>
           </div>
         </div>
         <div class="work-box">
@@ -69,14 +68,14 @@
 <script>
 import ExperienceHeader from './ExperienceHeader.vue';
 import MacIphoneMockup from '../media/MacIphoneMockup.vue';
-import ContentDisplay from '../media/ContentDisplay.vue';
+import VideoContent from '../media/VideoContent.vue';
 import SimpleMacMockup from '../media/SimpleMacMockup.vue';
 
 export default {
   components: {
     ExperienceHeader,
     MacIphoneMockup,
-    ContentDisplay,
+    VideoContent,
     SimpleMacMockup,
   },
   data() {
@@ -100,8 +99,7 @@ export default {
           'Kubernetes',
           'Google Cloud',
         ],
-        image: require('@/assets/images/work/therapieland.webp'),
-        video: require('@/assets/videos/therapieland.mp4'),
+        video: require('@/assets/videos/therapieland-comp.mp4'),
         modalId: 'therapieland-modal',
       },
       enviuExperience: {
@@ -113,9 +111,9 @@ export default {
           'Developed a responsive website showcasing eco-friendly maritime initiatives, featuring an interactive map and dynamic content management using WordPress.',
         skills: ['WordPress', 'JavaScript', 'HTML/CSS'],
         modalId: 'enviu-modal',
-        macMP4: require('@/assets/videos/mac-enviu.mp4'),
+        video: require('@/assets/videos/mac-enviu-comp.mp4'),
         phoneOverlayImg: require('@/assets/images/iphone-enviu-main.webp'),
-        phoneScrollableImg: require('@/assets/images/long-enviu.webp'),
+        phoneScrollableImg: require('@/assets/images/maritime-scroll-250w.webp'),
       },
       thrustExperience: {
         id: 'maritime-emissions',
@@ -125,8 +123,7 @@ export default {
         description:
           'Led the development of an interactive web application for visualizing maritime emissions.',
         skills: ['Python', 'Django', 'HTML/CSS', 'JavaScript', 'Git', 'Shell'],
-        image: require('@/assets/images/work/emission-thumbnail.webp'),
-        video: require('@/assets/videos/thrust-website.mp4'),
+        video: require('@/assets/videos/thrust-website-comp.mp4'),
         modalId: 'maritime-emissions-modal',
       },
     };
@@ -152,7 +149,7 @@ export default {
   }
 
   .work-box {
-    flex-direction: column-reverse;
+    flex-direction: column-reverse!important;
     align-items: flex-start;
   }
 
@@ -208,5 +205,9 @@ export default {
   filter: drop-shadow(0px 0px 172px rgba(255, 255, 255, 0.1));
   max-inline-size: 785px;
   transition: 0.6s all;
+}
+
+.left {
+  flex-direction: row-reverse;
 }
 </style>
