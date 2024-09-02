@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build && echo 'jorammillenaar.com' > dist/CNAME",
     "lint": "vue-cli-service lint",
     "deploy": "gh-pages -d dist -b main -r https://github.com/jorammillenaar/jorammillenaar.github.io.git"
   },
