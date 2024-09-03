@@ -23,7 +23,7 @@
         "@type": "WebPage",
         "image": {
           "@type": "ImageObject",
-          "url": "https://jorammillenaar.com/thumbnail.webp",
+          "url": "<%= BASE_URL %>thumbnail.webp",
           "height": 628,
           "width": 1200
         }
@@ -31,7 +31,7 @@
       </script>
 
     <!-- Reference screenshot of updated site's header in place of content -->
-    <meta itemprop="image" content="https://jorammillenaar.com/thumbnail.webp" />
+    <meta itemprop="image" content="<%= BASE_URL %>thumbnail.webp" />
 
     <!-- Facebook Meta Tags -->
     <meta property="og:type" content="website" />
@@ -42,7 +42,7 @@
     />
 
     <!-- Reference screenshot of updated site's header in content -->
-    <meta property="og:image" content="https://jorammillenaar.com/thumbnail.webp" />
+    <meta property="og:image" content="<%= BASE_URL %>thumbnail.webp" />
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -53,10 +53,11 @@
     />
 
     <!-- Reference screenshot of updated site's header in content -->
-    <meta name="twitter:image" content="https://jorammillenaar.com/thumbnail.webp" />
+    <meta name="twitter:image" content="<%= BASE_URL %>thumbnail.webp" />
 
     <!-- Update favicon href attribute with image of yourself -->
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <link rel="icon" href="<%= BASE_URL %>favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="<%= BASE_URL %>favicon.ico">
 
     <title>Joram Millenaar's Portfolio</title>
   </head>
