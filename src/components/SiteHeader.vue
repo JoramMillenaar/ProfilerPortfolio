@@ -2,10 +2,9 @@
   <header class="header">
     <div class="header-textbox">
       <text-slider></text-slider>
-      <h1 class="h1 tech">I'm Joram Millenaar</h1>
-      <h1 class="h1 tech">A Full-Stack Web Developer</h1>
-      <p class="header-text">
-        Specialized in scalable web applications using Python.
+      <h1 class="h1 tech slide-up">{{ title.split('\n')[0] }}<br>{{ title.split('\n')[1] }}</h1>
+      <p class="header-text slide-up">
+        {{ subheader }}
       </p>
       <div class="header-btns">
         <a href="#contact" class="btn btn-secondary">Contact Me</a>
@@ -22,6 +21,12 @@ export default {
   components: {
     TextSlider,
   },
+  data() {
+    return {
+      title: "I'm Joram Millenaar\nA Full-Stack Web Developer",
+      subheader: "Tailored web solutions: realizing your vision through excellence"
+    }
+  }
 };
 </script>
 
@@ -173,5 +178,20 @@ body .btn-cta:focus {
 .btn-secondary:hover,
 .btn-secondary:focus {
   border-color: var(--important);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.6s ease-out forwards;
 }
 </style>

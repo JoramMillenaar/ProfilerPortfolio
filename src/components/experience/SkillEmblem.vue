@@ -39,12 +39,9 @@ export default {
 }
 
 .skills-img {
-  filter: drop-shadow(1px 2px 2px rgba(255, 255, 255, 0.04));
   block-size: 50px;
   inline-size: 50px;
   background: transparent;
-  transform: rotateX(20deg) rotateZ(2deg);
-  transform-style: preserve-3d;
   transition: 0.2s ease-in-out transform, 0.2s ease-in-out filter;
 }
 
@@ -100,7 +97,7 @@ export default {
 
 .tooltip:after {
   border-right: 6px solid transparent;
-  border-bottom: 6px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 6px solid rgba(255, 255, 255, 0.2);;
   border-left: 6px solid transparent;
   content: '';
   height: 0;
@@ -109,7 +106,7 @@ export default {
   width: 0;
 }
 .tooltip:before {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 2px;
   color: #fff;
   content: attr(data-title);

@@ -53,7 +53,7 @@
   }
   
   .footer-link img {
-    width: 24px; /* Adjust size as needed */
+    width: 24px;
   }
   </style>
   

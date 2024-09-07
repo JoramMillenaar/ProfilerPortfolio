@@ -5,7 +5,7 @@
       <div class="work-boxes">
         <div class="work-box">
           <div class="work-textbox">
-            <experience-header
+            <experience-detail
               :id="therapielandExperience.id"
               :title="therapielandExperience.title"
               :subtitle="therapielandExperience.subtitle"
@@ -23,7 +23,7 @@
         </div>
         <div class="work-box left">
           <div class="work-textbox">
-            <experience-header
+            <experience-detail
               :id="enviuExperience.id"
               :title="enviuExperience.title"
               :subtitle="enviuExperience.subtitle"
@@ -43,7 +43,7 @@
         </div>
         <div class="work-box">
           <div class="work-textbox">
-            <experience-header
+            <experience-detail
               :id="thrustExperience.id"
               :title="thrustExperience.title"
               :subtitle="thrustExperience.subtitle"
@@ -66,14 +66,14 @@
 </template>
 
 <script>
-import ExperienceHeader from './ExperienceHeader.vue';
+import ExperienceDetail from './ExperienceDetail.vue';
 import MacIphoneMockup from '../media/MacIphoneMockup.vue';
 import VideoContent from '../media/VideoContent.vue';
 import SimpleMacMockup from '../media/SimpleMacMockup.vue';
 
 export default {
   components: {
-    ExperienceHeader,
+    ExperienceDetail,
     MacIphoneMockup,
     VideoContent,
     SimpleMacMockup,
@@ -187,18 +187,6 @@ export default {
 
 .work-textbox {
   max-inline-size: 550px;
-}
-
-.work-textbox h3,
-.work-textbox h6,
-.work-textbox h5,
-.work-textbox,
-.work-text,
-.work-technologies,
-.work-links {
-  --delay: 0.2s;
-  animation: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-  /* animation-play-state: paused; */
 }
 
 .work-media {

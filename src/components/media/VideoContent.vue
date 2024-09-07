@@ -17,7 +17,4 @@ export default {
 </script>
 
 <style scoped>
-.box {
-  box-shadow: var(--shadow);
-}
 </style>
