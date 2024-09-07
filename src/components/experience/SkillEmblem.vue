@@ -17,6 +17,7 @@ const skillImages = {
   Kubernetes: require('@/assets/images/skills/kubernetes.svg'),
   'Google Cloud': require('@/assets/images/skills/googlecloud.svg'),
   WordPress: require('@/assets/images/skills/wordpress.webp'),
+  VueJS: require('@/assets/images/skills/vuejs.svg'),
 };
 
 export default {
@@ -39,8 +40,8 @@ export default {
 }
 
 .skills-img {
-  block-size: 50px;
-  inline-size: 50px;
+  block-size: 45px;
+  inline-size: 45px;
   background: transparent;
   transition: 0.2s ease-in-out transform, 0.2s ease-in-out filter;
 }

@@ -17,19 +17,7 @@
                 rel="noopener"
                 >Source Code</a
               >
-              <a
-                v-if="featured.stars"
-                :href="featured.starsLink"
-                class="star-box"
-              >
-                <img
-                  class="star-icon"
-                  loading="lazy"
-                  alt="star"
-                  src="../assets/svgs/star.svg"
-                />
-                {{ featured.stars }}
-              </a>
+              <skill-emblem :name="featured.skill"></skill-emblem>
             </div>
           </div>
           <picture class="article-illustration">
@@ -68,19 +56,7 @@
                 rel="noopener"
                 >Source Code</a
               >
-              <a
-                v-if="project.stars"
-                :href="project.starsLink"
-                class="star-box"
-              >
-                <img
-                  class="star-icon"
-                  loading="lazy"
-                  alt="star"
-                  src="../assets/svgs/star.svg"
-                />
-                {{ project.stars }}
-              </a>
+              <skill-emblem :name="project.skill"></skill-emblem>
             </div>
           </div>
         </article>
@@ -90,18 +66,22 @@
 </template>
 
 <script>
+import SkillEmblem from './experience/SkillEmblem.vue';
 export default {
   name: 'HobbyProject',
+  components: {
+    SkillEmblem,
+  },
   data() {
     return {
       featured: {
-        id: 'business-financials',
-        title: "Business' Financials Visualizer",
+        id: 'portfolio',
+        title: 'Dynamic Vue.js Developer Portfolio',
         description:
-          "Graph publicly traded company's financials to see trends and correlations!",
-        link: 'https://github.com/JoramMillenaar/StockAnalysis',
-        image:
-          'https://raw.githubusercontent.com/JoramMillenaar/StockAnalysis/main/example.webp',
+          "This project showcases my expertise in Vue.js through the development of a dynamic, responsive portfolio website designed to feature my software projects and professional accomplishments. It's a hint at my dedication to continuous learning and my passion for combining aesthetic design with functional technology.",
+        link: 'https://github.com/JoramMillenaar/ProfilerPortfolio',
+        image: require('@/assets/images/mock-up.webp'),
+        skill: 'VueJS',
       },
       projects: [
         {
@@ -112,6 +92,7 @@ export default {
           link: 'https://github.com/JoramMillenaar/VocalMagic',
           image:
             'https://raw.githubusercontent.com/JoramMillenaar/VocalMagic/master/logo.png',
+          skill: 'Python',
         },
         {
           id: 'audioflex',
@@ -123,6 +104,7 @@ export default {
             'https://github.com/JoramMillenaar/AudioFlex/blob/master/logo.png?raw=true',
           stars: 5,
           starsLink: '/JoramMillenaar/AudioFlex/stargazers',
+          skill: 'Python',
         },
         {
           id: 'synthon',
@@ -132,6 +114,7 @@ export default {
           link: 'https://github.com/JoramMillenaar/Synthon/blob/master/synthon.py',
           image:
             'https://raw.githubusercontent.com/JoramMillenaar/Synthon/master/logo.png',
+          skill: 'Python',
         },
       ],
     };
@@ -278,10 +261,5 @@ export default {
 
 .featured-article .article-text {
   font-size: var(--text-medium);
-}
-
-.featured-article .article-info {
-  justify-content: flex-start;
-  gap: var(--gutter-medium);
 }
 </style>
