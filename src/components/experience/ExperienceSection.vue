@@ -99,7 +99,7 @@ export default {
           'Kubernetes',
           'Google Cloud',
         ],
-        video: require('@/assets/videos/therapieland-comp.mp4'),
+        video: require('@/assets/videos/therapieland.mp4'),
         modalId: 'therapieland-modal',
       },
       enviuExperience: {
@@ -111,7 +111,7 @@ export default {
           'Developed a responsive website showcasing eco-friendly maritime initiatives, featuring an interactive map and dynamic content management using WordPress.',
         skills: ['WordPress', 'JavaScript', 'HTML/CSS'],
         modalId: 'enviu-modal',
-        video: require('@/assets/videos/mac-enviu-comp.mp4'),
+        video: require('@/assets/videos/mac-enviu.mp4'),
         phoneOverlayImg: require('@/assets/images/iphone-enviu-main.webp'),
         phoneScrollableImg: require('@/assets/images/maritime-scroll-250w.webp'),
       },

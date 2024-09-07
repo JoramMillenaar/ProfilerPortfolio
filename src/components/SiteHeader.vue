@@ -41,10 +41,6 @@ export default {
   animation: gradient 20s ease infinite;
   height: 100vh;
   min-block-size: calc(100vh + var(--radius));
-  overflow: hidden;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
   position: relative;
   display: flex;
   padding: 0;
