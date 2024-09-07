@@ -11,12 +11,13 @@
       </object>
       <div ref="mockup" class="phone-image">
         <picture class="phone-video">
-          <img class="phone-main" :src="phoneOverlayImg" />
+          <img class="phone-main" :src="phoneOverlayImg" loading="lazy" />
           <img
             :style="transformStyle"
             class="phone-second"
             :src="phoneScrollableImg"
             ref="scrollable"
+            loading="lazy"
           />
         </picture>
       </div>
@@ -26,6 +27,7 @@
 
 <script>
 import VideoContent from './VideoContent.vue';
+import { throttle } from 'lodash';
 
 export default {
   components: { VideoContent },
@@ -33,48 +35,44 @@ export default {
   data() {
     return {
       scrollPercentage: 0,
-      animation: null,
+      transformStyle: null,
+      viewportHeight: null,
     };
   },
   mounted() {
-    this.initAnimation();
-    window.addEventListener('scroll', this.handleScroll);
+    this.viewportHeight = window.innerHeight;
+    window.addEventListener('scroll', throttle(this.handleScroll, 100));
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
-    initAnimation() {
-      const element = this.$refs.scrollable;
-      this.animation = element.animate([
-        { transform: 'translateY(-82%)' },
-        { transform: 'translateY(0%)' }
-      ], {
-        duration: 100,
-        fill: 'forwards'
-      });
-      this.animation.pause();
-    },
     handleScroll() {
-      const element = this.$refs.scrollable;
-      if (element) {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementBottom = element.getBoundingClientRect().bottom;
-        const viewportHeight = window.innerHeight;
+      if (!this.animationFrame) {
+        this.animationFrame = requestAnimationFrame(() => {
+          const rec = this.$refs.scrollable.getBoundingClientRect();
+          this.elementTop = rec.top;
+          this.elementBottom = rec.bottom;
+          if (this.elementTop < this.viewportHeight && this.elementBottom >= 0) {
+            const totalHeight = this.elementBottom - this.elementTop;
+            const curPosition =
+              this.elementBottom / (this.viewportHeight + totalHeight);
+            this.scrollPercentage = (curPosition * 80 - 82).toFixed(1);
+            this.applyTransform();
+          }
 
-        if (elementTop < viewportHeight && elementBottom >= 0) {
-          const totalHeight = elementBottom - elementTop;
-          const curPosition = elementBottom / (viewportHeight + totalHeight);
-          this.scrollPercentage = curPosition;
-          const time = this.scrollPercentage * this.animation.effect.getTiming().duration;
-          this.animation.currentTime = time;
-        }
+          this.animationFrame = null;
+        });
       }
+    },
+    applyTransform() {
+      this.transformStyle = {
+        transform: `translateY(${this.scrollPercentage}%)`,
+      };
     },
   },
 };
 </script>
-
 
 
 <style>
@@ -153,10 +151,7 @@ export default {
   height: auto;
   top: 26%;
   z-index: -1;
-  transform: translateY(-91.8%);
-}
-
-.phone-image {
+  transition: transform 0.3s ease-out; /* Smoother transitions managed by CSS */
   will-change: transform; /* Optimization hint to the browser */
 }
 </style>
