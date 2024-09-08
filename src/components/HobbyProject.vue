@@ -49,13 +49,7 @@
               <p class="article-text">{{ project.description }}</p>
             </div>
             <div class="article-info">
-              <a
-                :href="project.link"
-                class="link"
-                target="_blank"
-                rel="noopener"
-                >Source Code</a
-              >
+              <external-link contents="Source Code" :link="project.link" />
               <skill-emblem :name="project.skill"></skill-emblem>
             </div>
           </div>
@@ -68,24 +62,26 @@
 <script>
 import SkillEmblem from './experience/SkillEmblem.vue';
 import projectData from '@/data/projects.json';
+import ExternalLink from './common/ExternalLink.vue';
 
 export default {
   name: 'HobbyProject',
   components: {
     SkillEmblem,
+    ExternalLink,
   },
   data() {
     return {
       featured: projectData.featured,
-      projects: projectData.projects
+      projects: projectData.projects,
     };
   },
   mounted() {
     this.featured.image = require(`@/assets/images/${this.featured.image}`);
-    this.projects.forEach(project => {
+    this.projects.forEach((project) => {
       project.image = require(`@/assets/images/${project.image}`);
     });
-  }
+  },
 };
 </script>
 
