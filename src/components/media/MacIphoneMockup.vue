@@ -151,7 +151,7 @@ export default {
   height: auto;
   top: 26%;
   z-index: -1;
-  transition: transform 0.3s ease-out; /* Smoother transitions managed by CSS */
-  will-change: transform; /* Optimization hint to the browser */
+  transition: transform 0.3s ease-out;
+  will-change: transform;
 }
 </style>

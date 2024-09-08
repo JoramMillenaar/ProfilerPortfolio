@@ -67,6 +67,8 @@
 
 <script>
 import SkillEmblem from './experience/SkillEmblem.vue';
+import projectData from '@/data/projects.json';
+
 export default {
   name: 'HobbyProject',
   components: {
@@ -74,51 +76,16 @@ export default {
   },
   data() {
     return {
-      featured: {
-        id: 'portfolio',
-        title: 'Dynamic Vue.js Developer Portfolio',
-        description:
-          "This project showcases my expertise in Vue.js through the development of a dynamic, responsive portfolio website designed to feature my software projects and professional accomplishments. It's a hint at my dedication to continuous learning and my passion for combining aesthetic design with functional technology.",
-        link: 'https://github.com/JoramMillenaar/ProfilerPortfolio',
-        image: require('@/assets/images/mock-up.webp'),
-        skill: 'VueJS',
-      },
-      projects: [
-        {
-          id: 'vocal-magic',
-          title: 'Vocal Magic',
-          description:
-            'An audio processing toolkit designed to transform and enhance vocal performances in real-time.',
-          link: 'https://github.com/JoramMillenaar/VocalMagic',
-          image:
-            'https://raw.githubusercontent.com/JoramMillenaar/VocalMagic/master/logo.png',
-          skill: 'Python',
-        },
-        {
-          id: 'audioflex',
-          title: 'AudioFlex',
-          description:
-            'A Pure Python Suite of Algorithms to Stretch Audio Duration and/or Pitch',
-          link: 'https://github.com/JoramMillenaar/AudioFlex',
-          image:
-            'https://github.com/JoramMillenaar/AudioFlex/blob/master/logo.png?raw=true',
-          stars: 5,
-          starsLink: '/JoramMillenaar/AudioFlex/stargazers',
-          skill: 'Python',
-        },
-        {
-          id: 'synthon',
-          title: 'Synthon',
-          description:
-            'Transform your MIDI inputs into a symphony of synthesized sounds, all powered by Python.',
-          link: 'https://github.com/JoramMillenaar/Synthon/blob/master/synthon.py',
-          image:
-            'https://raw.githubusercontent.com/JoramMillenaar/Synthon/master/logo.png',
-          skill: 'Python',
-        },
-      ],
+      featured: projectData.featured,
+      projects: projectData.projects
     };
   },
+  mounted() {
+    this.featured.image = require(`@/assets/images/${this.featured.image}`);
+    this.projects.forEach(project => {
+      project.image = require(`@/assets/images/${project.image}`);
+    });
+  }
 };
 </script>
 
