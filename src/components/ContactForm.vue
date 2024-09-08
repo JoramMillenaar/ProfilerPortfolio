@@ -4,16 +4,9 @@
       <h2 class="h2" id="contact">Reach Out</h2>
       <div class="contact-content">
         <div class="contact-textbox">
-          <strong href="#" class="hire-alert">
-            <span class="indicator"></span>
-            Available
-          </strong>
+          <alert-badge :contents="contact.availability" />
           <p class="contact-text">
-            As a full-stack software engineer, I specialize in developing
-            scalable web applications with a strong emphasis on Python and
-            Django. I take pride in crafting software that not only meets but
-            anticipates user needs, ensuring reliability and high performance
-            across all platforms.
+            {{ contact.description }}
           </p>
         </div>
         <form @submit.prevent="sendEmail" class="contact-form">
@@ -22,20 +15,10 @@
             <input type="text" name="name" id="name" required="" />
           </div>
           <div class="form-field">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              required=""
-              inputmode="email"
-            />
-          </div>
-          <div class="form-field">
             <label for="message">How can I help you?</label>
             <textarea name="message" id="message" required=""></textarea>
           </div>
-          <button type="submit" class="btn btn-cta">Send</button>
+          <button-full class="btn" contents="Send" />
         </form>
       </div>
     </div>
@@ -43,27 +26,28 @@
 </template>
 
 <script>
+import contactInfo from '@/data/contactInfo.json';
+import AlertBadge from './common/AlertBadge.vue';
+import ButtonFull from './common/ButtonFull.vue';
+
 export default {
+  components: { AlertBadge, ButtonFull },
   name: 'ContactForm',
+  data() {
+    return {
+      contact: contactInfo,
+    };
+  },
   methods: {
     sendEmail() {
       var name = document.getElementById('name').value;
-      //   var email = document.getElementById('email').value;
       var message = document.getElementById('message').value;
-
       var subject = encodeURIComponent(name + ' Reaching Out');
       var emailBody = message;
 
-      window.location.href =
-        'mailto:' +
-        'lockups-entity.0a' +
-        '+jorammillenaar' +
-        '@' +
-        'icloud.com' +
-        '?subject=' +
-        subject +
-        '&body=' +
-        encodeURIComponent(emailBody);
+      window.location.href = `mailto:${
+        this.contact.email
+      }?subject=${subject}&body=${encodeURIComponent(emailBody)}`;
     },
   },
 };
@@ -92,69 +76,16 @@ export default {
   padding: var(--gutter-large) var(--gutter-small);
 }
 
-.hire-alert {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--gutter-nano);
-  font-size: initial;
-  padding: var(--gutter-nano) var(--gutter-micro);
-  border-radius: var(--gutter-small);
-  position: relative;
-  z-index: 1;
-  margin-block-end: var(--gutter-small);
-  color: var(--important);
-}
-
-.hire-alert::before,
-.hire-alert::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-}
-
-.hire-alert::after {
-  background-image: var(--gradient-border);
-  z-index: -2;
-}
-
-.hire-alert::before {
-  background-color: var(--bg-color-primary);
-  inset: 1px;
-  z-index: -1;
-}
-
-.indicator {
-  display: inline-block;
-  block-size: var(--gutter-nano);
-  inline-size: var(--gutter-nano);
-  border-radius: 50%;
-  background-color: red;
-  animation: blink 550ms alternate infinite var(--easing);
-}
-
-@keyframes blink {
-  100% {
-    opacity: 0;
-  }
-}
-
 .contact-text {
   margin-block-end: var(--gutter-small);
-}
-
-.signatures {
-  inline-size: 150px;
-}
-
-body .signatures {
-  filter: invert(1);
 }
 
 .contact-form {
   background-color: var(--bg-color-secondary);
   border-top-right-radius: var(--gutter-nano);
   border-bottom-right-radius: var(--gutter-nano);
+  display: flex;
+  flex-direction: column;
 }
 
 .form-field label,
@@ -196,41 +127,8 @@ body .signatures {
   margin-inline-start: var(--gutter-nano);
 }
 
-.contact-form button[type='submit'] {
-  border: none;
-}
-
 .btn {
-  font-size: 1.35rem;
-  font-weight: 700;
-  text-decoration: none;
-  text-align: center;
-  padding: 18px 60px;
-  border-radius: var(--gutter-nano);
-  transition: 0.3s all ease-in-out;
-  cursor: pointer;
-}
-
-@media (max-width: 700px) {
-  .btn {
-    padding: 16px 48px;
-  }
-}
-
-@media (max-width: 485px) {
-  .btn {
-    font-size: 1.2rem;
-    padding: 14px 38px;
-  }
-}
-
-.btn-cta {
-  color: var(--bg-color-primary);
-  background-color: var(--important);
-}
-
-body .btn-cta:hover,
-body .btn-cta:focus {
-  box-shadow: #07070733 0 0 0 var(--gutter-nano);
+  margin-top: auto;
+  width: 200px;
 }
 </style>
