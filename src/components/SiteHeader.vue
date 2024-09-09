@@ -2,30 +2,36 @@
   <header class="header">
     <div class="header-textbox">
       <text-slider></text-slider>
-      <h1 class="h1 tech slide-up">{{ title.split('\n')[0] }}<br>{{ title.split('\n')[1] }}</h1>
+      <h1 class="h1 tech slide-up">{{ header.titleLineOne }}<br>{{ header.titleLineTwo }}</h1>
       <p class="header-text slide-up">
-        {{ subheader }}
+        {{ header.subheader }}
       </p>
       <div class="header-btns">
-        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        <button-secondary :actionCallLink="header.actionCallLink" :actionCallText="header.actionCallText" />
       </div>
     </div>
-    <img src="../assets/images/profile-picture.webp" class="main-img">
+    <img :src="header.image" class="main-img">
   </header>
 </template>
 
 <script>
+import headerData from '@/data/headerFooter.json';
+import ButtonSecondary from './common/ButtonSecondary.vue';
 import TextSlider from './common/TextSlider.vue';
 
 export default {
   components: {
     TextSlider,
+    ButtonSecondary,
   },
   data() {
     return {
-      title: "I'm Joram Millenaar\nA Full-Stack Web Developer",
-      subheader: "Tailored web solutions: realizing your vision through excellence"
+      header: headerData
     }
+  },
+  mounted() {
+    this.header.image = require(`@/assets/images/${this.header.image}`);
+    
   }
 };
 </script>
@@ -77,11 +83,6 @@ export default {
     display: none;
   }
 }
-
-.h1 span {
-  display: block;
-}
-
 .main-img {
   position: absolute;
   right: 0px;
@@ -128,52 +129,6 @@ export default {
     margin: auto;
     width: fit-content;
   }
-}
-
-/* Button */
-
-.btn {
-  font-size: 1.35rem;
-  font-weight: 700;
-  text-decoration: none;
-  text-align: center;
-  padding: 18px 60px;
-  border-radius: var(--gutter-nano);
-  transition: 0.3s all ease-in-out;
-  cursor: pointer;
-}
-
-@media (max-width: 700px) {
-  .btn {
-    padding: 16px 48px;
-  }
-}
-
-@media (max-width: 485px) {
-  .btn {
-    font-size: 1.2rem;
-    padding: 14px 38px;
-  }
-}
-
-.btn-cta {
-  color: var(--bg-color-primary);
-  background-color: var(--important);
-}
-
-body .btn-cta:hover,
-body .btn-cta:focus {
-  box-shadow: #07070733 0 0 0 var(--gutter-nano);
-}
-
-.btn-secondary {
-  border: 1px solid var(--border-dark);
-  color: var(--important);
-}
-
-.btn-secondary:hover,
-.btn-secondary:focus {
-  border-color: var(--important);
 }
 
 @keyframes slideUp {

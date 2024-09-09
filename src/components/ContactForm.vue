@@ -18,7 +18,7 @@
             <label for="message">How can I help you?</label>
             <textarea name="message" id="message" required=""></textarea>
           </div>
-          <button-full class="btn" contents="Send" />
+          <button-primary class="btn" contents="Send" />
         </form>
       </div>
     </div>
@@ -28,10 +28,10 @@
 <script>
 import contactInfo from '@/data/contactInfo.json';
 import AlertBadge from './common/AlertBadge.vue';
-import ButtonFull from './common/ButtonFull.vue';
+import ButtonPrimary from './common/ButtonPrimary.vue';
 
 export default {
-  components: { AlertBadge, ButtonFull },
+  components: { AlertBadge, ButtonPrimary },
   name: 'ContactForm',
   data() {
     return {
