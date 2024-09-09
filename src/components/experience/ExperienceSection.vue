@@ -6,57 +6,57 @@
         <div class="work-box">
           <div class="work-textbox">
             <experience-detail
-              :id="therapielandExperience.id"
-              :title="therapielandExperience.title"
-              :subtitle="therapielandExperience.subtitle"
-              :location="therapielandExperience.location"
-              :description="therapielandExperience.description"
-              :skills="therapielandExperience.skills"
-              :modalId="therapielandExperience.modalId"
+              :id="experiences[0].id"
+              :title="experiences[0].title"
+              :subtitle="experiences[0].subtitle"
+              :location="experiences[0].location"
+              :description="experiences[0].description"
+              :skills="experiences[0].skills"
+              :modalId="experiences[0].modalId"
             />
           </div>
           <div class="work-media">
             <video-content
-              :video="therapielandExperience.video"
+              :video="experiences[0].video"
             ></video-content>
           </div>
         </div>
         <div class="work-box left">
           <div class="work-textbox">
             <experience-detail
-              :id="enviuExperience.id"
-              :title="enviuExperience.title"
-              :subtitle="enviuExperience.subtitle"
-              :location="enviuExperience.location"
-              :description="enviuExperience.description"
-              :skills="enviuExperience.skills"
-              :modalId="enviuExperience.modalId"
+              :id="experiences[1].id"
+              :title="experiences[1].title"
+              :subtitle="experiences[1].subtitle"
+              :location="experiences[1].location"
+              :description="experiences[1].description"
+              :skills="experiences[1].skills"
+              :modalId="experiences[1].modalId"
             />
           </div>
           <div class="work-media">
             <mac-iphone-mockup
-              :video="enviuExperience.video"
-              :phoneOverlayImg="enviuExperience.phoneOverlayImg"
-              :phoneScrollableImg="enviuExperience.phoneScrollableImg"
+              :video="experiences[1].video"
+              :phoneOverlayImg="experiences[1].phoneOverlayImg"
+              :phoneScrollableImg="experiences[1].phoneScrollableImg"
             ></mac-iphone-mockup>
           </div>
         </div>
         <div class="work-box">
           <div class="work-textbox">
             <experience-detail
-              :id="thrustExperience.id"
-              :title="thrustExperience.title"
-              :subtitle="thrustExperience.subtitle"
-              :location="thrustExperience.location"
-              :description="thrustExperience.description"
-              :skills="thrustExperience.skills"
-              :modalId="thrustExperience.modalId"
+              :id="experiences[2].id"
+              :title="experiences[2].title"
+              :subtitle="experiences[2].subtitle"
+              :location="experiences[2].location"
+              :description="experiences[2].description"
+              :skills="experiences[2].skills"
+              :modalId="experiences[2].modalId"
             />
           </div>
           <div class="work-media">
             <simple-mac-mockup
-              :image="thrustExperience.image"
-              :video="thrustExperience.video"
+              :image="experiences[2].image"
+              :video="experiences[2].video"
             ></simple-mac-mockup>
           </div>
         </div>
@@ -66,6 +66,7 @@
 </template>
 
 <script>
+import experienceData from '@/data/experience.json';
 import ExperienceDetail from './ExperienceDetail.vue';
 import MacIphoneMockup from '../media/MacIphoneMockup.vue';
 import VideoContent from '../media/VideoContent.vue';
@@ -80,53 +81,16 @@ export default {
   },
   data() {
     return {
-      therapielandExperience: {
-        id: 'therapieland',
-        title: 'Back-end Developer',
-        subtitle: 'at Therapieland B.V.',
-        location: '📍 Amsterdam, The Netherlands',
-        description:
-          'Advanced the e-health platform as a Backend Developer, improving mental health service delivery in the Netherlands for over 3 years.',
-        skills: [
-          'Python',
-          'Django',
-          'SQL',
-          'pytest',
-          'Git',
-          'JavaScript',
-          'Shell',
-          'HTML/CSS',
-          'Kubernetes',
-          'Google Cloud',
-        ],
-        video: require('@/assets/videos/therapieland.mp4'),
-        modalId: 'therapieland-modal',
-      },
-      enviuExperience: {
-        id: 'enviu',
-        title: 'Front-end Developer',
-        subtitle: 'for ENVIU B.V.',
-        location: '📍 Rotterdam, The Netherlands',
-        description:
-          'Developed a responsive website showcasing eco-friendly maritime initiatives, featuring an interactive map and dynamic content management using WordPress.',
-        skills: ['WordPress', 'JavaScript', 'HTML/CSS'],
-        modalId: 'enviu-modal',
-        video: require('@/assets/videos/mac-enviu.mp4'),
-        phoneOverlayImg: require('@/assets/images/iphone-enviu-main.webp'),
-        phoneScrollableImg: require('@/assets/images/maritime-scroll-250w.webp'),
-      },
-      thrustExperience: {
-        id: 'maritime-emissions',
-        title: 'Lead Developer',
-        subtitle: 'for ENVIU B.V.',
-        location: '📍 Rotterdam, The Netherlands',
-        description:
-          'Led the development of an interactive web application for visualizing maritime emissions.',
-        skills: ['Python', 'Django', 'HTML/CSS', 'JavaScript', 'Git', 'Shell'],
-        video: require('@/assets/videos/thrust-website-comp.mp4'),
-        modalId: 'maritime-emissions-modal',
-      },
-    };
+      experiences: experienceData,
+    }
+  },
+  mounted() {
+    this.experiences.forEach((experience) => {
+      experience.video = require(`@/assets/videos/${experience.video}`);
+    });
+    this.experiences[1].phoneOverlayImg = require(`@/assets/images/${this.experiences[1].phoneOverlayImg}`);
+    this.experiences[1].phoneScrollableImg = require(`@/assets/images/${this.experiences[1].phoneScrollableImg}`);
+    
   },
 };
 </script>

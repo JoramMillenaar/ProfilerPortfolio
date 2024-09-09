@@ -1,0 +1,45 @@
+[
+  {
+    "id": "therapieland",
+    "title": "Back-end Developer",
+    "subtitle": "at Therapieland B.V.",
+    "location": "📍 Amsterdam, The Netherlands",
+    "description": "Advanced the e-health platform as a Backend Developer, improving mental health service delivery in the Netherlands for over 3 years.",
+    "skills": [
+      "Python",
+      "Django",
+      "SQL",
+      "pytest",
+      "Git",
+      "JavaScript",
+      "Shell",
+      "HTML/CSS",
+      "Kubernetes",
+      "Google Cloud"
+    ],
+    "video": "therapieland.mp4",
+    "modalId": "therapieland-modal"
+  },
+  {
+    "id": "enviu",
+    "title": "Front-end Developer",
+    "subtitle": "for ENVIU B.V.",
+    "location": "📍 Rotterdam, The Netherlands",
+    "description": "Developed a responsive website showcasing eco-friendly maritime initiatives, featuring an interactive map and dynamic content management using WordPress.",
+    "skills": ["WordPress", "JavaScript", "HTML/CSS"],
+    "modalId": "enviu-modal",
+    "video": "mac-enviu.mp4",
+    "phoneOverlayImg": "iphone-enviu-main.webp",
+    "phoneScrollableImg": "maritime-scroll-250w.webp"
+  },
+  {
+    "id": "maritime-emissions",
+    "title": "Lead Developer",
+    "subtitle": "for ENVIU B.V.",
+    "location": "📍 Rotterdam, The Netherlands",
+    "description": "Led the development of an interactive web application for visualizing maritime emissions.",
+    "skills": ["Python", "Django", "HTML/CSS", "JavaScript", "Git", "Shell"],
+    "video": "thrust-website-comp.mp4",
+    "modalId": "maritime-emissions-modal"
+  }
+]
