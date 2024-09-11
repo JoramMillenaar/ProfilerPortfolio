@@ -12,7 +12,7 @@
         <div class="modal-box">
           <div class="modal-article">
             <figure class="testimonial-author">
-              <img :src="image" :alt="author" loading="lazy" />
+              <img v-lazy="image" :alt="author" loading="lazy" />
               <figcaption>
                 <h3 class="h3">{{ author }}</h3>
                 <p class="testimonial-author-job">{{ position }}</p>

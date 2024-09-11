@@ -123,7 +123,7 @@ export default {
 }
 
 .work-box:not(:last-child) {
-  margin-block-end: var(--gutter-huge);
+  margin-block-end: var(--gutter-x-huge);
 }
 
 @media (max-width: 1285px) {

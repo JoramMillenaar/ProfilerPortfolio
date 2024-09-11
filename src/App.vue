@@ -70,7 +70,7 @@ export default {
 
 @font-face {
   font-family: 'Tech';
-  src: url('assets/fonts/tech.woff2') format('woff2');
+  src: url('assets/fonts/tech-min.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -106,6 +106,7 @@ export default {
   --gutter-large: 3rem;
   --gutter-x-large: 6rem;
   --gutter-huge: 12rem;
+  --gutter-x-huge: 16rem;
 
   --scroll-padding: 4.375rem;
   --radius: 45px;

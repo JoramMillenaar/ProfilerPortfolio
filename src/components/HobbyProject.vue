@@ -23,7 +23,7 @@
           <picture class="article-illustration">
             <img
               v-if="!featured.featured"
-              :src="featured.image"
+              v-lazy="require(`@/assets/images/${featured.image}`)"
               :alt="featured.title + ' image'"
               loading="lazy"
             />
@@ -41,7 +41,7 @@
                 <img
                   v-if="!project.featured"
                   class="article-icon"
-                  :src="project.image"
+                  v-lazy="require(`@/assets/images/${project.image}`)"
                   :alt="project.title + ' image'"
                   loading="lazy"
                 />
@@ -75,13 +75,7 @@ export default {
       featured: projectData.featured,
       projects: projectData.projects,
     };
-  },
-  mounted() {
-    this.featured.image = require(`@/assets/images/${this.featured.image}`);
-    this.projects.forEach((project) => {
-      project.image = require(`@/assets/images/${project.image}`);
-    });
-  },
+  }
 };
 </script>
 

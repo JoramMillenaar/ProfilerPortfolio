@@ -1,9 +1,10 @@
 <template>
   <div class="device-mockup">
     <img
-      src="@/assets/images/apple-mockup.webp"
+      v-lazy="require('@/assets/images/apple-mockup.webp')"
       alt="MacBook Mockup"
       class="device-image"
+      loading="lazy"
     />
     <div class="screen-content">
       <object class="screen-image">
@@ -11,11 +12,11 @@
       </object>
       <div ref="mockup" class="phone-image">
         <picture class="phone-video">
-          <img class="phone-main" :src="phoneOverlayImg" loading="lazy" />
+          <img class="phone-main" v-lazy="phoneOverlayImg" loading="lazy" />
           <img
             :style="transformStyle"
             class="phone-second"
-            :src="phoneScrollableImg"
+            v-lazy="phoneScrollableImg"
             ref="scrollable"
             loading="lazy"
           />
@@ -27,7 +28,6 @@
 
 <script>
 import VideoContent from './VideoContent.vue';
-import { throttle } from 'lodash';
 
 export default {
   components: { VideoContent },
@@ -37,32 +37,35 @@ export default {
       scrollPercentage: 0,
       transformStyle: null,
       viewportHeight: null,
+      timer: null,
     };
   },
   mounted() {
     this.viewportHeight = window.innerHeight;
-    window.addEventListener('scroll', throttle(this.handleScroll, 100));
+    window.addEventListener('scroll', this.handleScroll);
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
     handleScroll() {
-      if (!this.animationFrame) {
-        this.animationFrame = requestAnimationFrame(() => {
+      if (!this.timer) {
+        this.timer = setTimeout(() => {
+          this.timer = null;
           const rec = this.$refs.scrollable.getBoundingClientRect();
           this.elementTop = rec.top;
           this.elementBottom = rec.bottom;
-          if (this.elementTop < this.viewportHeight && this.elementBottom >= 0) {
+          if (
+            this.elementTop < this.viewportHeight &&
+            this.elementBottom >= 0
+          ) {
             const totalHeight = this.elementBottom - this.elementTop;
             const curPosition =
               this.elementBottom / (this.viewportHeight + totalHeight);
             this.scrollPercentage = (curPosition * 80 - 82).toFixed(1);
             this.applyTransform();
           }
-
-          this.animationFrame = null;
-        });
+        }, 70);
       }
     },
     applyTransform() {
@@ -73,7 +76,6 @@ export default {
   },
 };
 </script>
-
 
 <style>
 .device-mockup {

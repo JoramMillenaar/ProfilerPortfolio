@@ -10,7 +10,7 @@
         <button-secondary :actionCallLink="header.actionCallLink" :actionCallText="header.actionCallText" />
       </div>
     </div>
-    <img :src="header.image" class="main-img">
+    <img :src="require(`@/assets/images/${this.header.image}`)" class="main-img" fetchpriority="high" loading="eager">
   </header>
 </template>
 
@@ -28,10 +28,6 @@ export default {
     return {
       header: headerData
     }
-  },
-  mounted() {
-    this.header.image = require(`@/assets/images/${this.header.image}`);
-    
   }
 };
 </script>

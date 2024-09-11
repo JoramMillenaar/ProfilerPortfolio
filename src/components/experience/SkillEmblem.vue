@@ -1,30 +1,32 @@
 <template>
   <span class="tooltip" :data-title="name">
-    <img :src="skillImage" :alt="name" class="skills-img" loading="lazy" />
+    <img v-lazy="skillImage" :alt="name" class="skills-img" />
   </span>
 </template>
 
 <script>
+const imageContext = require.context('@/assets/images/skills', false, /\.(svg|webp)$/);
+
 const skillImages = {
-  Python: require('@/assets/images/skills/python.svg'),
-  Django: require('@/assets/images/skills/django.webp'),
-  SQL: require('@/assets/images/skills/sql.webp'),
-  pytest: require('@/assets/images/skills/pytest.svg'),
-  Git: require('@/assets/images/skills/git.webp'),
-  JavaScript: require('@/assets/images/skills/js.webp'),
-  Shell: require('@/assets/images/skills/shell.webp'),
-  'HTML/CSS': require('@/assets/images/skills/css.webp'),
-  Kubernetes: require('@/assets/images/skills/kubernetes.svg'),
-  'Google Cloud': require('@/assets/images/skills/googlecloud.svg'),
-  WordPress: require('@/assets/images/skills/wordpress.webp'),
-  VueJS: require('@/assets/images/skills/vuejs.svg'),
+  Python: 'python.svg',
+  Django: 'django.webp',
+  SQL: 'sql.webp',
+  pytest: 'pytest.svg',
+  Git: 'git.webp',
+  JavaScript: 'js.webp',
+  Shell: 'shell.webp',
+  'HTML/CSS': 'css.webp',
+  Kubernetes: 'kubernetes.svg',
+  'Google Cloud': 'googlecloud.svg',
+  WordPress: 'wordpress.webp',
+  VueJS: 'vuejs.svg',
 };
 
 export default {
   props: ['name'],
   computed: {
     skillImage() {
-      return skillImages[this.name] || '';
+      return imageContext('./' + skillImages[this.name]);
     },
   },
 };

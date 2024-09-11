@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "lodash-es": "^4.17.21",
     "vue": "^3.2.13",
+    "vue-lazyload": "^3.0.0",
     "vue-router": "^4.4.3"
   },
   "devDependencies": {
