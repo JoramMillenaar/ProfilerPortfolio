@@ -13,11 +13,7 @@ export default {
     video: {
       type: String,
       required: true,
-    },
-    thumbnail: {
-      type: String,
-      required: true,
-    },
+    }
   },
   data() {
     return {

@@ -1,16 +1,28 @@
 <template>
   <header class="header">
     <div class="header-textbox">
-      <text-slider></text-slider>
-      <h1 class="h1 tech slide-up">{{ header.titleLineOne }}<br>{{ header.titleLineTwo }}</h1>
-      <p class="header-text slide-up">
+      <div data-aos="fade" data-aos-duration="500">
+        <text-slider></text-slider>
+      </div>
+      <h1 class="h1 tech" data-aos="fade-up">
+        {{ header.titleLineOne }}<br />{{ header.titleLineTwo }}
+      </h1>
+      <p class="header-text" data-aos="fade-up" data-aos-delay="200">
         {{ header.subheader }}
       </p>
-      <div class="header-btns">
-        <button-secondary :actionCallLink="header.actionCallLink" :actionCallText="header.actionCallText" />
+      <div class="header-btns" data-aos="fade-up" data-aos-delay="400">
+        <button-secondary
+          :actionCallLink="header.actionCallLink"
+          :actionCallText="header.actionCallText"
+        />
       </div>
     </div>
-    <img :src="require(`@/assets/images/${this.header.image}`)" class="main-img" fetchpriority="high" loading="eager">
+    <img
+      :src="require(`@/assets/images/${this.header.image}`)"
+      class="main-img"
+      fetchpriority="high"
+      loading="eager"
+    />
   </header>
 </template>
 
@@ -26,9 +38,9 @@ export default {
   },
   data() {
     return {
-      header: headerData
-    }
-  }
+      header: headerData,
+    };
+  },
 };
 </script>
 
@@ -125,20 +137,5 @@ export default {
     margin: auto;
     width: fit-content;
   }
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(30px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.slide-up {
-    animation: slideUp 0.6s ease-out forwards;
 }
 </style>

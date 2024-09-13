@@ -4,7 +4,7 @@
       <h2 class="h2" id="work">My Experience</h2>
       <div class="work-boxes">
         <div class="work-box">
-          <div class="work-textbox">
+          <div class="work-textbox" data-aos="fade-right">
             <experience-detail
               :id="experiences[0].id"
               :title="experiences[0].title"
@@ -15,14 +15,14 @@
               :modalId="experiences[0].modalId"
             />
           </div>
-          <div class="work-media">
+          <div class="work-media" data-aos="zoom-in-up">
             <video-content
               :video="experiences[0].video"
             ></video-content>
           </div>
         </div>
         <div class="work-box left">
-          <div class="work-textbox">
+          <div class="work-textbox" data-aos="fade-left">
             <experience-detail
               :id="experiences[1].id"
               :title="experiences[1].title"
@@ -33,7 +33,7 @@
               :modalId="experiences[1].modalId"
             />
           </div>
-          <div class="work-media">
+          <div class="work-media" data-aos="zoom-in-up">
             <mac-iphone-mockup
               :video="experiences[1].video"
               :phoneOverlayImg="experiences[1].phoneOverlayImg"
@@ -42,7 +42,7 @@
           </div>
         </div>
         <div class="work-box">
-          <div class="work-textbox">
+          <div class="work-textbox" data-aos="fade-right">
             <experience-detail
               :id="experiences[2].id"
               :title="experiences[2].title"
@@ -53,7 +53,7 @@
               :modalId="experiences[2].modalId"
             />
           </div>
-          <div class="work-media">
+          <div class="work-media" data-aos="zoom-in-up">
             <simple-mac-mockup
               :image="experiences[2].image"
               :video="experiences[2].video"

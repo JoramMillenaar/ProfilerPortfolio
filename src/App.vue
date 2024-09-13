@@ -5,8 +5,21 @@
 </template>
 
 <script>
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 export default {
   name: 'App',
+  mounted() {
+    AOS.init({
+      offset: 120,
+      delay: 100,
+      duration: 400,
+      easing: 'ease',
+      once: false,
+      anchorPlacement: 'top-bottom',
+    });
+  },
 };
 </script>
 
@@ -106,7 +119,7 @@ export default {
   --gutter-large: 3rem;
   --gutter-x-large: 6rem;
   --gutter-huge: 12rem;
-  --gutter-x-huge: 16rem;
+  --gutter-x-huge: 18rem;
 
   --scroll-padding: 4.375rem;
   --radius: 45px;
