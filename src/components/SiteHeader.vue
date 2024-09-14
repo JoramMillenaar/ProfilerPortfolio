@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header-textbox">
       <div data-aos="fade" data-aos-duration="500">
-        <text-slider></text-slider>
+        <text-slider />
       </div>
       <h1 class="h1 tech" data-aos="fade-up">
         {{ header.titleLineOne }}<br />{{ header.titleLineTwo }}
@@ -18,6 +18,7 @@
       </div>
     </div>
     <img
+      v-if="viewportWidth >= 600"
       :src="require(`@/assets/images/${header.image}`)"
       class="main-img"
       fetchpriority="high"
@@ -31,6 +32,7 @@
 import headerData from '@/data/headerFooter.json';
 import ButtonSecondary from './common/ButtonSecondary.vue';
 import TextSlider from './common/TextSlider.vue';
+import { ref } from 'vue';
 
 export default {
   components: {
@@ -40,14 +42,26 @@ export default {
   data() {
     return {
       header: headerData,
+      viewportWidth: ref(window.innerWidth)
     };
+  },
+  methods: {
+    updateWidth() {
+      this.viewportWidth.value = window.innerWidth;
+    },
+  },
+  onMounted() {
+    window.addEventListener('resize', this.updateWidth);
+  },
+  onUnmounted() {
+    window.removeEventListener('resize', this.updateWidth);
   },
 };
 </script>
 
 <style scoped>
 .tech {
-  font-family: 'Tech', 'Mona Sans', sans-serif;
+  font-family: 'Tech', 'Montserrat', sans-serif;
 }
 
 .header {

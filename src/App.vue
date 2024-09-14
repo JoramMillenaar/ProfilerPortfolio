@@ -73,15 +73,6 @@ export default {
 }
 
 @font-face {
-  font-family: 'Mona Sans';
-  src: url('assets/fonts/Mona-Sans.woff2') format('woff2 supports variations'),
-    url('assets/fonts/Mona-Sans.woff2') format('woff2-variations');
-  font-display: swap;
-  font-weight: 200 900;
-  font-stretch: 75% 125%;
-}
-
-@font-face {
   font-family: 'Tech';
   src: url('assets/fonts/tech-min.woff2') format('woff2');
   font-weight: normal;
@@ -164,7 +155,7 @@ body {
 }
 
 html {
-  font-family: 'Montserrat', 'Mona Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
   scroll-padding-top: var(--scroll-padding);
 }

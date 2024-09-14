@@ -39,7 +39,7 @@ export default {
 
 <style scoped>
 .slider {
-  font-family: 'Tech', 'Mona Sans', sans-serif;
+  font-family: 'Tech', 'Montserrat', sans-serif;
   margin-bottom: 0.7rem;
 }
 
