@@ -58,11 +58,13 @@ export default {
   methods: {
     openModal(modalId) {
       this.testimonials.forEach((testimonial) => {
+        document.body.style.overflow = 'hidden';
         testimonial.isVisible = testimonial.id === modalId ? true : false;
       });
     },
     closeModal() {
       this.testimonials.forEach((testimonial) => {
+        document.body.style.overflow = '';
         testimonial.isVisible = false;
       });
     },

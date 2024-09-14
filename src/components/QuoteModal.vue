@@ -1,14 +1,14 @@
 <template>
   <teleport to="body">
     <section
-      class="modal"
+      class="background"
       :id="modalId"
       @click.self="closeModal"
       v-if="isVisible"
       data-aos="fade-in"
     >
-      <div class="modal-content">
-        <article class="modal-article" data-aos="zoom-in" @click.stop>
+      <div class="modal">
+        <article class="content" data-aos="zoom-in" @click.stop>
           <header>
             <figure>
               <img
@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style scoped>
-.modal {
+.background {
   position: fixed;
   padding-top: 0;
   top: 0;
@@ -75,20 +75,21 @@ export default {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.modal-content {
-  padding: 5%;
+.modal {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  height: 100%;
-}
-
-.modal-article {
+  width: 80%;
+  max-height: 90vh;
+  overflow-y: auto;
   background: var(--bg-color-secondary);
   padding: var(--gutter-small);
   border-radius: 10px;
   box-shadow: 0 0 10px gray;
-  width: fit-content;
+}
+
+.content {
   pointer-events: auto;
 }
 
