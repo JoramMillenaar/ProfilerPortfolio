@@ -3,7 +3,12 @@
     <div class="container">
       <h2 class="h2" id="projects">My Hobby Projects</h2>
       <div class="article-boxes">
-        <article class="article-box featured-article">
+        <article
+          class="article-box featured-article"
+          data-aos="zoom-out-up"
+          data-aos-offset="100"
+          data-aos-duration="500"
+        >
           <div class="article-textbox">
             <div>
               <h3 class="h3">{{ featured.title }}</h3>
@@ -31,8 +36,11 @@
         </article>
         <article
           class="article-box"
-          v-for="project in projects"
+          v-for="(project, index) in projects"
           :key="project.id"
+          data-aos="zoom-out-up"
+          data-aos-offset="200"
+          :data-aos-delay="200 * index"
         >
           <div class="article-textbox">
             <div>
@@ -50,7 +58,7 @@
             </div>
             <div class="article-info">
               <external-link contents="Source Code" :link="project.link" />
-              <skill-emblem :name="project.skill"/>
+              <skill-emblem :name="project.skill" />
             </div>
           </div>
         </article>
@@ -213,7 +221,6 @@ export default {
 
 .article-illustration img {
   border-radius: var(--gutter-nano);
-  height: 500px;
 }
 
 .featured-article .article-text {
