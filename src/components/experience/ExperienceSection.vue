@@ -15,8 +15,9 @@
               :modalId="experiences[0].modalId"
             />
           </div>
-          <div class="work-media" data-aos="zoom-in-up">
+          <div class="work-media rounded" data-aos="zoom-in-up">
             <video-content
+              :thumbnail="experiences[0].thumbnail"
               :video="experiences[0].video"
             ></video-content>
           </div>
@@ -36,6 +37,7 @@
           <div class="work-media" data-aos="zoom-in-up">
             <mac-iphone-mockup
               :video="experiences[1].video"
+              :thumbnail="experiences[1].thumbnail"
               :phoneOverlayImg="experiences[1].phoneOverlayImg"
               :phoneScrollableImg="experiences[1].phoneScrollableImg"
             ></mac-iphone-mockup>
@@ -56,6 +58,7 @@
           <div class="work-media" data-aos="zoom-in-up">
             <simple-mac-mockup
               :image="experiences[2].image"
+              :thumbnail="experiences[2].thumbnail"
               :video="experiences[2].video"
             ></simple-mac-mockup>
           </div>
@@ -87,10 +90,8 @@ export default {
   mounted() {
     this.experiences.forEach((experience) => {
       experience.video = require(`@/assets/videos/${experience.video}`);
+      experience.thumbnail = require(`@/assets/images/${experience.thumbnail}`);
     });
-    this.experiences[1].phoneOverlayImg = require(`@/assets/images/${this.experiences[1].phoneOverlayImg}`);
-    this.experiences[1].phoneScrollableImg = require(`@/assets/images/${this.experiences[1].phoneScrollableImg}`);
-    
   },
 };
 </script>
@@ -161,5 +162,9 @@ export default {
 
 .left {
   flex-direction: row-reverse;
+}
+
+.rounded video {
+  border-radius: 5px;
 }
 </style>

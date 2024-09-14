@@ -11,11 +11,14 @@
           <blockquote class="testimonial-text">
             {{ testimonial.quote }}
           </blockquote>
-          <external-link contents="Read More" @click="openModal(testimonial.id)"/>
+          <external-link
+            contents="Read More"
+            @click="openModal(testimonial.id)"
+          />
           <figure class="testimonial-author">
             <img
-              :src="testimonial.image"
-              :alt="testimonial.author"
+              v-lazy="require(`@/assets/images/testimonials/${testimonial.image}`)"
+              :alt="`Picture of ${testimonial.author}'s face`"
               loading="lazy"
             />
             <figcaption>
@@ -66,11 +69,6 @@ export default {
     return {
       testimonials: testimonialData.testimonials,
     };
-  },
-  mounted() {
-    this.testimonials.forEach((testimony) => {
-      testimony.image = require(`@/assets/images/testimonials/${testimony.image}`);
-    });
   },
 };
 </script>

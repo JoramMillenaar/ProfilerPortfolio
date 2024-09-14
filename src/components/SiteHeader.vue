@@ -18,10 +18,11 @@
       </div>
     </div>
     <img
-      :src="require(`@/assets/images/${this.header.image}`)"
+      :src="require(`@/assets/images/${header.image}`)"
       class="main-img"
       fetchpriority="high"
       loading="eager"
+      :alt="header.imageAlt"
     />
   </header>
 </template>

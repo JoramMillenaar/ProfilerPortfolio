@@ -1,6 +1,7 @@
 <template>
   <div class="video-container" ref="videoContainer">
-    <video v-if="videoLoaded" class="box" muted loop playsinline autoplay>
+    <img v-if="!videoLoaded" :src="thumbnail">
+    <video v-if="videoLoaded" muted loop playsinline autoplay>
       <source :src="video" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
@@ -13,7 +14,11 @@ export default {
     video: {
       type: String,
       required: true,
-    }
+    },
+    thumbnail: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
@@ -31,8 +36,8 @@ export default {
         });
       },
       {
-        rootMargin: '150px',
-        threshold: 0.1,
+        rootMargin: '50px',
+        threshold: 0,
       }
     );
 

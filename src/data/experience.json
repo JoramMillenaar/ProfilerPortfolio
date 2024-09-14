@@ -18,6 +18,7 @@
       "Google Cloud"
     ],
     "video": "therapieland.mp4",
+    "thumbnail": "therapieland-thumbnail.webp",
     "modalId": "therapieland-modal"
   },
   {
@@ -29,6 +30,7 @@
     "skills": ["WordPress", "JavaScript", "HTML/CSS"],
     "modalId": "enviu-modal",
     "video": "mac-enviu.mp4",
+    "thumbnail": "mac-enviu-thumbnail.webp",
     "phoneOverlayImg": "iphone-enviu-main.webp",
     "phoneScrollableImg": "maritime-scroll-250w.webp"
   },
@@ -40,6 +42,7 @@
     "description": "Led the development of an interactive web application for visualizing maritime emissions.",
     "skills": ["Python", "Django", "HTML/CSS", "JavaScript", "Git", "Shell"],
     "video": "thrust-website-comp.mp4",
+    "thumbnail": "thrust-thumbnail.webp",
     "modalId": "maritime-emissions-modal"
   }
 ]

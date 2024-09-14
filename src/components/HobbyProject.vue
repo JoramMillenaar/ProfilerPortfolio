@@ -42,7 +42,7 @@
                   v-if="!project.featured"
                   class="article-icon"
                   v-lazy="require(`@/assets/images/${project.image}`)"
-                  :alt="project.title + ' image'"
+                  :alt="project.title + '\'s logo'"
                   loading="lazy"
                 />
               </div>

@@ -6,12 +6,12 @@
             <ol class="footer-links">
               <li class="footer-link">
                 <a title="GitHub" href="https://github.com/JoramMillenaar" target="_blank" rel="noopener">
-                  <img loading="lazy" src="../assets/images/social-links/github.svg" alt="GitHub"/>
+                  <img loading="lazy" src="../assets/svgs/github.svg" alt="GitHub"/>
                 </a>
               </li>
               <li class="footer-link">
                 <a title="LinkedIn" href="https://www.linkedin.com/in/joram-millenaar-099406143/" target="_blank" rel="noopener">
-                  <img loading="lazy" src="../assets/images/social-links/linkedin.svg" alt="LinkedIn"/>
+                  <img loading="lazy" src="../assets/svgs/linkedin.svg" alt="LinkedIn"/>
                 </a>
               </li>
               <!-- Additional links can be added here -->

@@ -2,23 +2,29 @@
   <div class="device-mockup">
     <img
       v-lazy="require('@/assets/images/apple-mockup.webp')"
-      alt="MacBook Mockup"
+      alt="A mockup image of a Macbook and an Iphone displaying the images and video below"
       class="device-image"
       loading="lazy"
     />
     <div class="screen-content">
       <object class="screen-image">
-        <video-content :video="video"></video-content>
+        <video-content :video="video" :thumbnail="thumbnail" />
       </object>
-      <div ref="mockup" class="phone-image">
+      <div class="phone-image">
         <picture class="phone-video">
-          <img class="phone-main" v-lazy="phoneOverlayImg" loading="lazy" />
+          <img
+            class="phone-main"
+            v-lazy="require(`@/assets/images/${phoneOverlayImg}`)"
+            loading="lazy"
+            alt="An IPhone's screen contents displaying a header with the Thrust logo"
+          />
           <img
             :style="transformStyle"
             class="phone-second"
-            v-lazy="phoneScrollableImg"
+            v-lazy="require(`@/assets/images/${phoneScrollableImg}`)"
             ref="scrollable"
             loading="lazy"
+            alt="A series of widgets with boats displayed on the phone's screen"
           />
         </picture>
       </div>
@@ -31,7 +37,7 @@ import VideoContent from './VideoContent.vue';
 
 export default {
   components: { VideoContent },
-  props: ['video', 'phoneOverlayImg', 'phoneScrollableImg'],
+  props: ['video', 'thumbnail', 'phoneOverlayImg', 'phoneScrollableImg'],
   data() {
     return {
       scrollPercentage: 0,
@@ -43,6 +49,7 @@ export default {
   mounted() {
     this.viewportHeight = window.innerHeight;
     window.addEventListener('scroll', this.handleScroll);
+    console.log(this.phoneOverlayImg, this.phoneScrollableImg);
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);

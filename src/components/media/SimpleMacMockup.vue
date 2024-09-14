@@ -2,12 +2,12 @@
   <div class="device-mockup">
     <img
       v-lazy="require('@/assets/images/simple-mac.webp')"
-      alt="MacBook Mockup"
+      alt="MacBook Mockup displaying the video below"
       class="device-image"
       loading="lazy"
     />
     <object class="screen-content">
-      <video-content :video="video"></video-content>
+      <video-content :video="video" :thumbnail="thumbnail"/>
     </object>
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
   components: {
     VideoContent,
   },
-  props: ['video'],
+  props: ['video', 'thumbnail'],
 };
 </script>
 
