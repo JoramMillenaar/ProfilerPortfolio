@@ -1,6 +1,6 @@
 <template>
   <div class="video-container" ref="videoContainer">
-    <img v-if="!videoLoaded" :src="thumbnail">
+    <img v-if="!videoLoaded" :src="thumbnail" alt="Low quality thumbnail of the first frame of the video that's loading">
     <video v-if="videoLoaded" muted loop playsinline autoplay>
       <source :src="video" type="video/mp4" />
       Your browser does not support the video tag.

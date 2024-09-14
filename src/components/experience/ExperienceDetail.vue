@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h3 class="h3">{{ title }}</h3>
-    <h5 class="h5">{{ subtitle }}</h5>
-    <h6 class="h6">{{ location }}</h6>
+    <h3>{{ title }}</h3>
+    <h4>{{ subtitle }}</h4>
+    <h5>{{ location }}</h5>
     <p class="work-text">{{ description }}</p>
     <div class="skills-imgs">
       <skill-emblem
@@ -61,4 +61,18 @@ export default {
   justify-content: space-between;
   gap: var(--gutter-x-small);
 }
+
+h3 {
+  font-size: var(--h3);
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
 </style>

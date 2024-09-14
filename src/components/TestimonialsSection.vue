@@ -13,11 +13,13 @@
           </blockquote>
           <external-link
             contents="Read More"
-            @click="openModal(testimonial.id)"
+            @click.enter="openModal(testimonial.id)"
           />
           <figure class="testimonial-author">
             <img
-              v-lazy="require(`@/assets/images/testimonials/${testimonial.image}`)"
+              v-lazy="
+                require(`@/assets/images/testimonials/${testimonial.image}`)
+              "
               :alt="`Picture of ${testimonial.author}'s face`"
               loading="lazy"
             />
@@ -73,7 +75,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .testimonials {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -138,7 +140,6 @@ export default {
 .testimonial .link {
   margin-block-start: auto;
   margin-left: auto;
-  padding: 0;
   font-weight: 500;
   font-size: initial;
 }

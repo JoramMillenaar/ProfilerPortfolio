@@ -1,16 +1,39 @@
 <template>
-  <a :href="link" class="link" target="_blank" rel="noopener">{{ contents }}</a>
+  <button v-if="!link" @click="handleClick" class="link">{{ contents }}</button>
+  <a v-else :href="link" class="link" target="_blank" rel="noopener noreferrer">{{ contents }}</a>
 </template>
 
 <script>
 export default {
-  props: ['contents', 'link'],
+  props: {
+    contents: {
+      type: String,
+      required: true
+    },
+    link: {
+      type: String,
+      default: ''
+    },
+    onClick: {
+      type: Function,
+      default: null
+    }
+  },
+  methods: {
+    handleClick() {
+      if (this.onClick) {
+        this.onClick();
+      }
+    }
+  }
 };
 </script>
 
 <style>
 .link {
   display: inline-block;
+  background: none;
+  border: none;
   cursor: pointer;
   font-weight: 600;
   font-size: var(--text-small);

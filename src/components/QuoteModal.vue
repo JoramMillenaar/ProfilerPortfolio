@@ -1,64 +1,51 @@
 <template>
   <teleport to="body">
-    <div class="modal" :id="modalId" @click.self="closeModal" v-if="isVisible">
-      <div class="modal-container">
-        <div class="line-container">
-          <object
-            type="image/svg+xml"
-            :data="background"
-            class="background-line"
-          ></object>
-        </div>
-        <div class="modal-box">
-          <div class="modal-article">
-            <figure class="testimonial-author">
+    <section
+      class="modal"
+      :id="modalId"
+      @click.self="closeModal"
+      v-if="isVisible"
+      data-aos="fade-in"
+    >
+      <div class="modal-content">
+        <article class="modal-article" data-aos="zoom-in" @click.stop>
+          <header>
+            <figure>
               <img
                 v-lazy="require(`@/assets/images/testimonials/${image}`)"
-                :alt="`Picture of ${author}'s face`"
+                :alt="`Picture of ${author}`"
                 loading="lazy"
               />
               <figcaption>
                 <h3 class="h3">{{ author }}</h3>
-                <p class="testimonial-author-job">{{ position }}</p>
+                <p>{{ position }}</p>
               </figcaption>
             </figure>
-            <p class="modal-text" v-for="paragraph in content" :key="paragraph">
-              {{ paragraph }}
-            </p>
+            <button class="close-btn" @click="closeModal">X</button>
+          </header>
+          <div class="modal-text">
+            <p v-for="paragraph in content" :key="paragraph">{{ paragraph }}</p>
           </div>
-        </div>
+        </article>
       </div>
-    </div>
+      <object
+        type="image/svg+xml"
+        :data="background"
+        class="background-line"
+      ></object>
+    </section>
   </teleport>
 </template>
 
 <script>
 export default {
   props: {
-    modalId: {
-      type: String,
-      required: true,
-    },
-    isVisible: {
-      type: Boolean,
-      default: false,
-    },
-    author: {
-      type: String,
-      required: true,
-    },
-    position: {
-      type: String,
-      required: true,
-    },
-    image: {
-      type: String,
-      required: true,
-    },
-    content: {
-      type: Array,
-      required: true,
-    },
+    modalId: String,
+    isVisible: Boolean,
+    author: String,
+    position: String,
+    image: String,
+    content: Array,
   },
   emits: ['close'],
   data() {
@@ -76,134 +63,80 @@ export default {
 
 <style scoped>
 .modal {
-  z-index: 3;
   position: fixed;
+  padding-top: 0;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.modal-container {
-  padding-block-start: 7rem;
-  margin: auto;
-  justify-content: center;
-  overflow: scroll;
-  display: flex;
-  flex-wrap: wrap;
-  height: 100%;
-  position: absolute;
+.modal-content {
   padding: 5%;
-  pointer-events: none;
-}
-
-.modal-box {
-  min-width: 400px;
-  flex: 2;
-  z-index: 4;
-  align-self: center;
-}
-
-header.modal-box {
-  flex: 1;
-  align-self: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .modal-article {
   background: var(--bg-color-secondary);
-  padding: var(--gutter-x-small);
-  border-radius: var(--gutter-nano);
+  padding: var(--gutter-small);
+  border-radius: 10px;
   box-shadow: 0 0 10px gray;
-  margin: var(--gutter-micro);
-  height: fit-content;
-  min-width: 250px;
-  font-weight: 300;
+  width: fit-content;
+  pointer-events: auto;
 }
 
-header .modal-article {
-  padding: 0px;
-}
-
-.modal-header-content {
-  padding: var(--gutter-x-small);
-}
-
-.modal-table tr td:last-child {
-  font-weight: 200;
-}
-
-.modal-table {
-  border-collapse: collapse;
-  padding-top: var(--gutter-micro);
-}
-
-.modal-table td {
-  border-top: 1px solid rgba(88, 88, 88, 0.297);
-  border-left: 1px solid rgba(88, 88, 88, 0.297);
-  padding: 8px;
-}
-
-.modal-table tr:first-child td {
-  border-top: none;
-}
-
-.modal-table td:first-child {
-  border-left: none;
-}
-
-.modal-content {
+header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.modal-article ul {
-  padding-left: 20px;
+figure {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.modal-panel {
-  padding: var(--gutter-x-small);
-  border-top: 1px solid #ddd;
+figcaption h3 {
+  margin: 0;
 }
 
-.modal-text {
-  padding: var(--gutter-micro) 0;
-}
-
-.close {
-  color: #aaa;
-  font-size: 28px;
-  font-weight: bold;
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  width: 46px;
   cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-}
-
-.modal-img {
-  border-radius: var(--gutter-nano) var(--gutter-nano) 0 0;
+  color: var(--important);
 }
 
 .background-line {
   position: absolute;
   top: 2vw;
   right: -270px;
-  rotate: 46deg;
+  transform: rotate(46deg);
+  z-index: -1;
 }
 
-.line-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  top: 0;
-  right: 0;
-  pointer-events: none;
+img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--bg-color-secondary);
+}
+
+figcaption p {
+  font-size: medium;
+}
+
+.modal-text p {
+  padding: var(--gutter-micro) 0;
 }
 </style>

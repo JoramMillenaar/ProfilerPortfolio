@@ -50,7 +50,7 @@
             </div>
             <div class="article-info">
               <external-link contents="Source Code" :link="project.link" />
-              <skill-emblem :name="project.skill"></skill-emblem>
+              <skill-emblem :name="project.skill"/>
             </div>
           </div>
         </article>
@@ -75,7 +75,7 @@ export default {
       featured: projectData.featured,
       projects: projectData.projects,
     };
-  }
+  },
 };
 </script>
 

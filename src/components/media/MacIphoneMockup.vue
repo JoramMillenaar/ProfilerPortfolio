@@ -49,7 +49,6 @@ export default {
   mounted() {
     this.viewportHeight = window.innerHeight;
     window.addEventListener('scroll', this.handleScroll);
-    console.log(this.phoneOverlayImg, this.phoneScrollableImg);
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
