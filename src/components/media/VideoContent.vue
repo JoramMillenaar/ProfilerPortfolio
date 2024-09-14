@@ -1,6 +1,9 @@
 <template>
   <div class="video-container" ref="videoContainer">
-    <img v-if="!videoLoaded" :src="thumbnail" alt="Low quality thumbnail of the first frame of the video that's loading">
+    <img
+      :src="thumbnail"
+      alt="Low quality thumbnail of the first frame of the video that's loading"
+    />
     <video v-if="videoLoaded" muted loop playsinline autoplay>
       <source :src="video" type="video/mp4" />
       Your browser does not support the video tag.
@@ -53,5 +56,14 @@ export default {
   height: 0;
   padding-bottom: 56.25%;
 }
-</style>
 
+img {
+  position: relative;
+  z-index: -1;
+}
+
+video {
+  position: absolute;
+  top: 0;
+}
+</style>

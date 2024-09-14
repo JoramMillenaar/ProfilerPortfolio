@@ -1,7 +1,7 @@
 <template>
   <div class="device-mockup">
     <img
-      v-lazy="require('@/assets/images/apple-mockup.webp')"
+      v-lazy="{'src': require('@/assets/images/apple-mockup.webp'), 'loading': require('@/assets/images/apple-mockup-lqip.webp')}"
       alt="A mockup image of a Macbook and an Iphone displaying the images and video below"
       class="device-image"
       loading="lazy"

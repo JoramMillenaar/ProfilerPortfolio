@@ -1,13 +1,16 @@
 <template>
   <div class="device-mockup">
     <img
-      v-lazy="require('@/assets/images/simple-mac.webp')"
+      v-lazy="{
+        src: require('@/assets/images/simple-mac.webp'),
+        loading: require('@/assets/images/simple-mac-lqip.webp'),
+      }"
       alt="MacBook Mockup displaying the video below"
       class="device-image"
       loading="lazy"
     />
     <object class="screen-content">
-      <video-content :video="video" :thumbnail="thumbnail"/>
+      <video-content :video="video" :thumbnail="thumbnail" />
     </object>
   </div>
 </template>
