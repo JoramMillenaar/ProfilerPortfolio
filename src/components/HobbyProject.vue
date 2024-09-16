@@ -6,8 +6,8 @@
         <article
           class="article-box featured-article"
           data-aos="zoom-out-up"
-          data-aos-offset="100"
-          data-aos-duration="500"
+          data-aos-offset="300"
+          data-aos-duration="200"
         >
           <div class="article-textbox">
             <div>
@@ -39,8 +39,7 @@
           v-for="(project, index) in projects"
           :key="project.id"
           data-aos="zoom-out-up"
-          data-aos-offset="200"
-          :data-aos-delay="200 * index"
+          :data-aos-offset="400 + 100 * index"
         >
           <div class="article-textbox">
             <div>

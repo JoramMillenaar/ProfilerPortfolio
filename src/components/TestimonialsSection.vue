@@ -5,8 +5,10 @@
       <ol class="testimonials">
         <li
           class="testimonial"
-          v-for="testimonial in testimonials"
+          v-for="(testimonial, index) in testimonials"
           :key="testimonial.id"
+          data-aos="flip-right"
+          :data-aos-offset="300 + 100 * index"
         >
           <blockquote class="testimonial-text">
             {{ testimonial.quote }}

@@ -5,29 +5,17 @@
 </template>
 
 <script>
-const imageContext = require.context('@/assets/images/skills', false, /\.(svg|webp)$/);
-
-const skillImages = {
-  Python: 'python.svg',
-  Django: 'django.webp',
-  SQL: 'sql.webp',
-  pytest: 'pytest.svg',
-  Git: 'git.webp',
-  JavaScript: 'js.webp',
-  Shell: 'shell.webp',
-  'HTML/CSS': 'css.webp',
-  Kubernetes: 'kubernetes.svg',
-  'Google Cloud': 'googlecloud.svg',
-  WordPress: 'wordpress.webp',
-  VueJS: 'vuejs.svg',
-};
+import { fetchIcon } from '@/utils/iconFetcher';
 
 export default {
   props: ['name'],
-  computed: {
-    skillImage() {
-      return imageContext('./' + skillImages[this.name]);
-    },
+  data() {
+    return {
+      skillImage: '',
+    };
+  },
+  async created() {
+    this.skillImage = await fetchIcon(this.name);
   },
 };
 </script>

@@ -1,13 +1,13 @@
-<template>
+<template>q
   <section class="contact">
     <div class="container">
       <h2 class="h2" id="contact">Reach Out</h2>
       <div class="contact-content">
-        <div class="contact-textbox">
-          <alert-badge :contents="contact.availability" />
-          <p class="contact-text">
-            {{ contact.description }}
-          </p>
+        <div class="artwork">
+          <div class="orbital">
+            <skill-orbital :orbits="orbitsData" />
+          </div>
+          <img v-lazy="require(`@/assets/images/${contact.picture}`)" loading="lazy" />
         </div>
         <form @submit.prevent="sendEmail" class="contact-form">
           <div class="form-field">
@@ -27,15 +27,33 @@
 
 <script>
 import contactInfo from '@/data/contactInfo.json';
-import AlertBadge from './common/AlertBadge.vue';
 import ButtonPrimary from './common/ButtonPrimary.vue';
+import SkillOrbital from './media/SkillOrbital.vue';
 
 export default {
-  components: { AlertBadge, ButtonPrimary },
+  components: { ButtonPrimary, SkillOrbital },
   name: 'ContactForm',
   data() {
     return {
       contact: contactInfo,
+      orbitsData: [
+        {
+          ringClass: 'ring-0',
+          icons: [],
+        },
+        {
+          ringClass: 'ring-1',
+          icons: ['Shell', 'WordPress', 'Google Cloud'],
+        },
+        {
+          ringClass: 'ring-2',
+          icons: ['SQL', 'Git', 'HTML/CSS', '🥾', 'JavaScript', 'VueJS', '🤝', 'Kubernetes'],
+        },
+        {
+          ringClass: 'ring-3',
+          icons: ['Python', 'Django', '🎸'],
+        },
+      ],
     };
   },
   methods: {
@@ -130,5 +148,30 @@ export default {
 .btn {
   margin-top: auto;
   width: 200px;
+}
+
+img {
+  width: 75%;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
+  filter: drop-shadow(0px 0px 172px rgba(255, 255, 255, 0.25));
+  bottom: 0px;
+  pointer-events: none;
+}
+
+.artwork {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  overflow: hidden;
+  align-items: end;
+}
+
+.orbital {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 </style>
