@@ -1,4 +1,4 @@
-<template>q
+<template>
   <section class="contact">
     <div class="container">
       <h2 class="h2" id="contact">Reach Out</h2>
