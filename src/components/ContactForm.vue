@@ -7,7 +7,7 @@
           <div class="orbital">
             <skill-orbital :orbits="orbitsData" />
           </div>
-          <img v-lazy="require(`@/assets/images/${contact.picture}`)" loading="lazy" />
+          <img v-lazy="require(`@/assets/images/${contact.picture}`)" loading="lazy" :alt="contact.pictureAlt" />
         </div>
         <form @submit.prevent="sendEmail" class="contact-form">
           <div class="form-field">
