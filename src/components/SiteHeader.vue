@@ -60,10 +60,6 @@ export default {
 </script>
 
 <style scoped>
-.tech {
-  font-family: 'Tech', 'Montserrat', sans-serif;
-}
-
 .header {
   background: linear-gradient(-45deg, #e68c3a, #e5a876, #94b6ef, #213e60);
   background-size: 400% 400%;

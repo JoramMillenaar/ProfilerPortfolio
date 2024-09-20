@@ -2,9 +2,50 @@
   {
     "id": "therapieland",
     "title": "Back-end Developer",
-    "subtitle": "at Therapieland B.V.",
-    "location": "📍 Amsterdam, The Netherlands",
+    "company": "Therapieland B.V.",
+    "type": "payroll",
+    "location": "Amsterdam, The Netherlands",
     "description": "Advanced the e-health platform as a Backend Developer, improving mental health service delivery in the Netherlands for over 3 years.",
+    "content": [
+      {
+        "type": "paragraph",
+        "content": "As a key member of the software development team at Therapieland B.V., we advanced our e-health SaaS platform, providing mental health services in the Netherlands."
+      },
+      {
+        "type": "header",
+        "content": "Migration Project"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Led the final phase of the script responsible for reshaping and moving hundreds of millions of rows of data efficiently, utilizing Python, SQL, NumPy, and Pandas.",
+          "Emphasized TDD, software architecture, design patterns, and code principles, resulting in 95% test coverage, rapid implementation of critical features late in the project, no major refactors, and minimal post-launch issues.",
+          "Reduced runtime from two weeks to 12 hours through advanced SQL and Pandas optimization."
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Back-End Development"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Developed and maintained large backend systems using Python and Django, ensuring efficient database management with Django ORM, PostgreSQL, and Redis.",
+          "Managed server operations on GCP and Linux, overseeing application deployments using Kubernetes, Docker, and GitLab Pipelines.",
+          "Identified and mitigated major cybersecurity vulnerabilities, preventing potential data breaches and addressing other significant security concerns."
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Front-End Development"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Contributed to both the legacy platform and the new platform built with Vue.js. Including the communication between systems through RESTful APIs"
+        ]
+      }
+    ],
     "skills": [
       "Python",
       "Django",
@@ -18,15 +59,31 @@
       "Google Cloud"
     ],
     "video": "therapieland.mp4",
+    "blurredBackground": "therapieland-background.mp4",
     "thumbnail": "therapieland-thumbnail.webp",
     "modalId": "therapieland-modal"
   },
   {
     "id": "enviu",
     "title": "Front-end Developer",
-    "subtitle": "for ENVIU B.V.",
-    "location": "📍 Rotterdam, The Netherlands",
+    "company": "ENVIU B.V.",
+    "type": "contract",
+    "location": "Rotterdam, The Netherlands",
     "description": "Developed a responsive website showcasing eco-friendly maritime initiatives, featuring an interactive map and dynamic content management using WordPress.",
+    "content": [
+      {
+        "type": "paragraph",
+        "content": "This project showcased environmentally friendly maritime initiatives across the Netherlands. "
+      },
+      {
+        "type": "list",
+        "items": [
+          "Implemented a user-friendly front-end, ensuring the website's responsiveness and interactive features such as a map view and dynamic card listings.",
+          "Developed the back-end infrastructure using WordPress, facilitating easy content management and configuration for non-technical users.",
+          "Worked closely with designers to translate visual concepts into functional web components, maintaining consistency to the initial design specifications."
+        ]
+      }
+    ],
     "skills": ["WordPress", "JavaScript", "HTML/CSS"],
     "modalId": "enviu-modal",
     "video": "mac-enviu.mp4",
@@ -37,9 +94,30 @@
   {
     "id": "maritime-emissions",
     "title": "Lead Developer",
-    "subtitle": "for ENVIU B.V.",
-    "location": "📍 Rotterdam, The Netherlands",
+    "company": "ENVIU B.V.",
+    "type": "contract",
+    "location": "Rotterdam, The Netherlands",
     "description": "Led the development of an interactive web application for visualizing maritime emissions.",
+    "content": [
+      {
+        "type": "list",
+        "items": [
+          "Managed the project's entire lifecycle, from drafting detailed business proposals and negotiating contracts to overseeing product delivery.",
+          "Developed and deployed the application’s front-end and back-end using Python and Django, integrating complex data visualization features that enhance user interaction."
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Impact"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Delivered a user-centric web application that significantly improved clients' understanding of maritime emissions, tailored to various ship types, maritime routes, and propulsion types.",
+          "The successful execution and client satisfaction with the project led to further engagements, securing two additional projects with the client."
+        ]
+      }
+    ],
     "skills": ["Python", "Django", "HTML/CSS", "JavaScript", "Git", "Shell"],
     "video": "thrust-website-comp.mp4",
     "thumbnail": "thrust-thumbnail.webp",

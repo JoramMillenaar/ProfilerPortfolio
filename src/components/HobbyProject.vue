@@ -15,13 +15,7 @@
               <p class="article-text">{{ featured.description }}</p>
             </div>
             <div class="article-info">
-              <a
-                :href="featured.link"
-                class="link"
-                target="_blank"
-                rel="noopener"
-                >Source Code</a
-              >
+              <external-link :href="featured.link" target="_blank">Source Code</external-link>
               <skill-emblem :name="featured.skill"></skill-emblem>
             </div>
           </div>
@@ -56,7 +50,7 @@
               <p class="article-text">{{ project.description }}</p>
             </div>
             <div class="article-info">
-              <external-link contents="Source Code" :link="project.link" />
+              <external-link :href="project.link" target="_blank">Source Code</external-link>
               <skill-emblem :name="project.skill" />
             </div>
           </div>

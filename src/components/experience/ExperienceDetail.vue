@@ -1,8 +1,8 @@
 <template>
   <div>
     <h3>{{ title }}</h3>
-    <h4>{{ subtitle }}</h4>
-    <h5>{{ location }}</h5>
+    <h4>for {{ company }}</h4>
+    <h5>📍 {{ location }}</h5>
     <p class="work-text">{{ description }}</p>
     <div class="skills-imgs">
       <skill-emblem
@@ -12,27 +12,31 @@
       ></skill-emblem>
     </div>
     <div class="work-links">
-      <!-- <router-link :to="{ name: 'detail', params: { id: entryId } }"
-        >Read More</router-link
-      > -->
+      <external-link :to="detailPageLink">Read More</external-link>
     </div>
   </div>
 </template>
 
 <script>
+import ExternalLink from '../common/ExternalLink.vue';
 import SkillEmblem from './SkillEmblem.vue';
 
 export default {
-  components: { SkillEmblem },
+  components: { SkillEmblem, ExternalLink },
   props: [
     'id',
     'title',
-    'subtitle',
+    'company',
     'location',
     'description',
     'skills',
     'modalId',
   ],
+  computed: {
+    detailPageLink() {
+      return { name: 'ExperienceDetail', params: { id: this.id } };
+    },
+  },
 };
 </script>
 

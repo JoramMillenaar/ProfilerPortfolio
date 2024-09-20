@@ -13,10 +13,7 @@
           <blockquote class="testimonial-text">
             {{ testimonial.quote }}
           </blockquote>
-          <external-link
-            contents="Read More"
-            @click.enter="openModal(testimonial.id)"
-          />
+          <external-link isButton @click="openModal(testimonial.id)">Read More</external-link>
           <figure class="testimonial-author">
             <img
               v-lazy="

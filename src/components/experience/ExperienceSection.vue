@@ -8,7 +8,7 @@
             <experience-detail
               :id="experiences[0].id"
               :title="experiences[0].title"
-              :subtitle="experiences[0].subtitle"
+              :company="experiences[0].company"
               :location="experiences[0].location"
               :description="experiences[0].description"
               :skills="experiences[0].skills"
@@ -19,6 +19,7 @@
             <video-content
               :thumbnail="experiences[0].thumbnail"
               :video="experiences[0].video"
+              :blurredBackground="experiences[0].blurredBackground"
             ></video-content>
           </div>
         </div>
@@ -27,14 +28,14 @@
             <experience-detail
               :id="experiences[1].id"
               :title="experiences[1].title"
-              :subtitle="experiences[1].subtitle"
+              :company="experiences[1].company"
               :location="experiences[1].location"
               :description="experiences[1].description"
               :skills="experiences[1].skills"
               :modalId="experiences[1].modalId"
             />
           </div>
-          <div class="work-media" data-aos="zoom-in-up">
+          <div class="work-media shadow" data-aos="zoom-in-up">
             <mac-iphone-mockup
               :video="experiences[1].video"
               :thumbnail="experiences[1].thumbnail"
@@ -48,14 +49,14 @@
             <experience-detail
               :id="experiences[2].id"
               :title="experiences[2].title"
-              :subtitle="experiences[2].subtitle"
+              :company="experiences[2].company"
               :location="experiences[2].location"
               :description="experiences[2].description"
               :skills="experiences[2].skills"
               :modalId="experiences[2].modalId"
             />
           </div>
-          <div class="work-media" data-aos="zoom-in-up">
+          <div class="work-media shadow" data-aos="zoom-in-up">
             <simple-mac-mockup
               :image="experiences[2].image"
               :thumbnail="experiences[2].thumbnail"
@@ -86,12 +87,6 @@ export default {
     return {
       experiences: experienceData,
     }
-  },
-  mounted() {
-    this.experiences.forEach((experience) => {
-      experience.video = require(`@/assets/videos/${experience.video}`);
-      experience.thumbnail = require(`@/assets/images/${experience.thumbnail}`);
-    });
   },
 };
 </script>
@@ -155,9 +150,12 @@ export default {
 }
 
 .work-media {
-  filter: drop-shadow(0px 0px 172px rgba(255, 255, 255, 0.1));
   max-inline-size: 785px;
   transition: 0.6s all;
+}
+
+.shadow {
+  filter: drop-shadow(0px 0px 172px rgba(255, 255, 255, 0.1));
 }
 
 .left {

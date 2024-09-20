@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <nav-bar />
     <router-view />
   </div>
 </template>
@@ -7,8 +8,10 @@
 <script>
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import NavBar from './components/NavBar.vue';
 
 export default {
+  components: { NavBar },
   name: 'App',
   mounted() {
     AOS.init({
@@ -133,6 +136,11 @@ body {
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
+
+.tech {
+  font-family: 'Tech', 'Montserrat', sans-serif;
+}
+
 
 @keyframes gradient {
   0% {
