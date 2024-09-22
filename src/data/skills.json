@@ -3,62 +3,84 @@
     "id": "python",
     "name": "Python",
     "yearsOfExperience": 4,
-    "level": "Advanced"
+    "level": "Advanced",
+    "icon": "python.svg"
   },
   {
     "id": "django",
     "name": "Django",
     "yearsOfExperience": 4,
-    "level": "Advanced"
+    "level": "Advanced",
+    "icon": "django.webp"
   },
-  { "id": "sql", "name": "SQL", "yearsOfExperience": 3, "level": "Seasoned" },
+  {
+    "id": "sql",
+    "name": "SQL",
+    "yearsOfExperience": 3,
+    "level": "Seasoned",
+    "icon": "sql.webp"
+  },
   {
     "id": "pytest",
     "name": "PyTest",
     "yearsOfExperience": 3,
-    "level": "Seasoned"
+    "level": "Seasoned",
+    "icon": "pytest.svg"
   },
-  { "id": "git", "name": "Git", "yearsOfExperience": 4, "level": "Seasoned" },
+  {
+    "id": "git",
+    "name": "Git",
+    "yearsOfExperience": 4,
+    "level": "Seasoned",
+    "icon": "git.webp"
+  },
   {
     "id": "javascript",
     "name": "JavaScript",
     "yearsOfExperience": 4,
-    "level": "Proficient"
+    "level": "Proficient",
+    "icon": "js.webp"
   },
   {
     "id": "shell",
     "name": "Shell",
     "yearsOfExperience": 4,
-    "level": "Proficient"
+    "level": "Proficient",
+    "icon": "shell.webp"
   },
   {
     "id": "css",
     "name": "CSS",
     "yearsOfExperience": 4,
-    "level": "Seasoned"
+    "level": "Seasoned",
+    "icon": "css.webp"
   },
   {
     "id": "kubernetes",
     "name": "Kubernetes",
     "yearsOfExperience": 1,
-    "level": "Familiar"
+    "level": "Familiar",
+    "icon": "kubernetes.svg"
   },
   {
     "id": "googlecloud",
     "name": "Google Cloud",
     "yearsOfExperience": 1,
-    "level": "Familiar"
+    "level": "Familiar",
+    "icon": "googlecloud.svg"
   },
   {
     "id": "wordpress",
     "name": "WordPress",
     "yearsOfExperience": 1,
-    "level": "Familiar"
+    "level": "Familiar",
+    "icon": "wordpress.webp"
   },
   {
     "id": "vuejs",
     "name": "Vue.js",
     "yearsOfExperience": 2,
-    "level": "Proficient"
+    "level": "Proficient",
+    "icon": "vuejs.svg"
   }
 ]
