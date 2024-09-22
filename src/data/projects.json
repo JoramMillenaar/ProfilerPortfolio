@@ -5,7 +5,7 @@
     "description": "This project showcases my expertise in Vue.js through the development of a dynamic, responsive portfolio website designed to feature my software projects and professional accomplishments. It's a hint at my dedication to continuous learning and my passion for combining aesthetic design with functional technology.",
     "link": "https://github.com/JoramMillenaar/ProfilerPortfolio",
     "image": "site-logo.webp",
-    "skill": "VueJS"
+    "skill": "vuejs"
   },
   "projects": [
     {
@@ -14,7 +14,7 @@
       "description": "An audio processing toolkit designed to transform and enhance vocal performances in real-time.",
       "link": "https://github.com/JoramMillenaar/VocalMagic",
       "image": "vocal-magic-logo.webp",
-      "skill": "Python"
+      "skill": "python"
     },
     {
       "id": "audioflex",
@@ -22,7 +22,7 @@
       "description": "A Pure Python Suite of Algorithms to Stretch Audio Duration and/or Pitch",
       "link": "https://github.com/JoramMillenaar/AudioFlex",
       "image": "audio-flex-logo.webp",
-      "skill": "Python"
+      "skill": "python"
     },
     {
       "id": "synthon",
@@ -30,7 +30,7 @@
       "description": "Transform your MIDI inputs into a symphony of synthesized sounds, all powered by Python.",
       "link": "https://github.com/JoramMillenaar/Synthon/blob/master/synthon.py",
       "image": "synthon-logo.webp",
-      "skill": "Python"
+      "skill": "python"
     }
   ]
 }

@@ -43,15 +43,15 @@ export default {
         },
         {
           ringClass: 'ring-1',
-          icons: ['Shell', 'WordPress', 'Google Cloud'],
+          icons: ['shell', 'wordpress', 'googlecloud'],
         },
         {
           ringClass: 'ring-2',
-          icons: ['SQL', 'Git', 'HTML/CSS', '🥾', 'JavaScript', 'VueJS', '🤝', 'Kubernetes'],
+          icons: ['sql', 'git', 'css', '🥾', 'javascript', 'vuejs', '🤝', 'kubernetes'],
         },
         {
           ringClass: 'ring-3',
-          icons: ['Python', 'Django', '🎸'],
+          icons: ['python', 'django', '🎸'],
         },
       ],
     };

@@ -47,16 +47,16 @@
       }
     ],
     "skills": [
-      "Python",
-      "Django",
-      "SQL",
+      "python",
+      "django",
+      "sql",
       "pytest",
-      "Git",
-      "JavaScript",
-      "Shell",
-      "HTML/CSS",
-      "Kubernetes",
-      "Google Cloud"
+      "git",
+      "javascript",
+      "shell",
+      "css",
+      "kubernetes",
+      "googlecloud"
     ],
     "video": "therapieland.mp4",
     "blurredBackground": "therapieland-background.mp4",
@@ -84,7 +84,7 @@
         ]
       }
     ],
-    "skills": ["WordPress", "JavaScript", "HTML/CSS"],
+    "skills": ["wordpress", "javascript", "css"],
     "modalId": "enviu-modal",
     "video": "mac-enviu.mp4",
     "thumbnail": "mac-enviu-thumbnail.webp",
@@ -118,7 +118,7 @@
         ]
       }
     ],
-    "skills": ["Python", "Django", "HTML/CSS", "JavaScript", "Git", "Shell"],
+    "skills": ["python", "django", "css", "javascript", "git", "shell"],
     "video": "thrust-website-comp.mp4",
     "thumbnail": "thrust-thumbnail.webp",
     "modalId": "maritime-emissions-modal"

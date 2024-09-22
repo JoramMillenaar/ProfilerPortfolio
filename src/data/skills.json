@@ -1,0 +1,64 @@
+[
+  {
+    "id": "python",
+    "name": "Python",
+    "yearsOfExperience": 4,
+    "level": "Advanced"
+  },
+  {
+    "id": "django",
+    "name": "Django",
+    "yearsOfExperience": 4,
+    "level": "Advanced"
+  },
+  { "id": "sql", "name": "SQL", "yearsOfExperience": 3, "level": "Seasoned" },
+  {
+    "id": "pytest",
+    "name": "PyTest",
+    "yearsOfExperience": 3,
+    "level": "Seasoned"
+  },
+  { "id": "git", "name": "Git", "yearsOfExperience": 4, "level": "Seasoned" },
+  {
+    "id": "javascript",
+    "name": "JavaScript",
+    "yearsOfExperience": 4,
+    "level": "Proficient"
+  },
+  {
+    "id": "shell",
+    "name": "Shell",
+    "yearsOfExperience": 4,
+    "level": "Proficient"
+  },
+  {
+    "id": "css",
+    "name": "CSS",
+    "yearsOfExperience": 4,
+    "level": "Seasoned"
+  },
+  {
+    "id": "kubernetes",
+    "name": "Kubernetes",
+    "yearsOfExperience": 1,
+    "level": "Familiar"
+  },
+  {
+    "id": "googlecloud",
+    "name": "Google Cloud",
+    "yearsOfExperience": 1,
+    "level": "Familiar"
+  },
+  {
+    "id": "wordpress",
+    "name": "WordPress",
+    "yearsOfExperience": 1,
+    "level": "Familiar"
+  },
+  {
+    "id": "vuejs",
+    "name": "Vue.js",
+    "yearsOfExperience": 2,
+    "level": "Proficient"
+  }
+]

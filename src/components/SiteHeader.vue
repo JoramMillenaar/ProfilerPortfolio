@@ -12,8 +12,13 @@
       </p>
       <div class="header-btns" data-aos="fade-up" data-aos-delay="400">
         <button-secondary
-          :actionCallLink="header.actionCallLink"
-          :actionCallText="header.actionCallText"
+          class="primary-btn"
+          actionCallLink="#contact"
+          actionCallText="Contact Me"
+        />
+        <button-secondary
+          actionCallLink="/skills"
+          actionCallText="Skill Overview"
         />
       </div>
     </div>
@@ -42,7 +47,7 @@ export default {
   data() {
     return {
       header: headerData,
-      viewportWidth: ref(window.innerWidth)
+      viewportWidth: ref(window.innerWidth),
     };
   },
   methods: {
@@ -148,5 +153,16 @@ export default {
     margin: auto;
     width: fit-content;
   }
+}
+
+/* Fix this with TailWind */
+.primary-btn {
+  color: var(--bg-color-secondary);
+  background-color: var(--important);
+}
+
+.primary-btn:hover,
+.primary-btn:focus {
+  box-shadow: #07070733 0 0 0 var(--gutter-nano);
 }
 </style>

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '@/views/HomePage.vue';
 import ExperienceDetailPage from '@/views/ExperienceDetailPage.vue';
+import SkillsPage from '@/views/SkillsPage.vue';
 import { calculateTopPosition } from '@/utils/windowUtils';
 
 const routes = [
@@ -14,6 +15,11 @@ const routes = [
     name: 'ExperienceDetail',
     component: ExperienceDetailPage,
     props: true,
+  },
+  {
+    path: '/skills',
+    name: 'Skills',
+    component: SkillsPage,
   },
 ];
 
