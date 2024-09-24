@@ -138,7 +138,6 @@ body {
   font-family: 'Tech', 'Montserrat', sans-serif;
 }
 
-
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -315,5 +314,96 @@ h3,
 .shown {
   transition: 0.1s;
   color: lightgrey;
+}
+
+.btn-secondary,
+.btn-primary {
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  padding: 18px 60px;
+  border-radius: var(--gutter-nano);
+  transition: 0.3s all ease-in-out;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .btn-primary,
+  .btn-secondary {
+    padding: 16px 48px;
+  }
+}
+
+@media (max-width: 485px) {
+  .btn-primary,
+  .btn-secondary {
+    font-size: 1.2rem;
+    padding: 14px 38px;
+  }
+}
+
+.btn-secondary {
+  border: 1px solid var(--border-dark);
+  color: var(--important);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  border-color: var(--important);
+}
+
+.btn-primary {
+  color: var(--bg-color-primary);
+  background-color: var(--important);
+}
+
+body .btn-primary:hover,
+body .btn-primary:focus {
+  box-shadow: #07070733 0 0 0 var(--gutter-nano);
+}
+
+.link {
+  display: inline-block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: var(--text-small);
+  padding: var(--gutter-nano) 0;
+  text-decoration: none;
+  color: var(--important);
+  position: relative;
+}
+
+.link::after,
+.link::before {
+  content: '';
+  width: 100%;
+  height: 1px;
+  margin-block-start: var(--gutter-nano);
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  transition: 300ms;
+}
+
+body .link::before {
+  background-color: lightgray;
+}
+
+body .link::after {
+  background-color: black;
+}
+
+.link::after {
+  background-color: white;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.link:hover::after,
+.link:focus::after {
+  transform: scaleX(1);
 }
 </style>

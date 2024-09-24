@@ -7,7 +7,11 @@
           <div class="orbital">
             <skill-orbital :orbits="orbitsData" />
           </div>
-          <img v-lazy="require(`@/assets/images/${contact.picture}`)" loading="lazy" :alt="contact.pictureAlt" />
+          <img
+            v-lazy="require(`@/assets/images/${contact.picture}`)"
+            loading="lazy"
+            :alt="contact.pictureAlt"
+          />
         </div>
         <form @submit.prevent="sendEmail" class="contact-form">
           <div class="form-field">
@@ -18,7 +22,7 @@
             <label for="message">How can I help you?</label>
             <textarea name="message" id="message" required=""></textarea>
           </div>
-          <button-primary class="btn" contents="Send" />
+          <button type="submit" class="btn-primary">Continue</button>
         </form>
       </div>
     </div>
@@ -27,11 +31,10 @@
 
 <script>
 import contactInfo from '@/data/contactInfo.json';
-import ButtonPrimary from './common/ButtonPrimary.vue';
 import SkillOrbital from './media/SkillOrbital.vue';
 
 export default {
-  components: { ButtonPrimary, SkillOrbital },
+  components: { SkillOrbital },
   name: 'ContactForm',
   data() {
     return {
@@ -47,7 +50,16 @@ export default {
         },
         {
           ringClass: 'ring-2',
-          icons: ['sql', 'git', 'css', '🥾', 'javascript', 'vuejs', '🤝', 'kubernetes'],
+          icons: [
+            'sql',
+            'git',
+            'css',
+            '🥾',
+            'javascript',
+            'vuejs',
+            '🤝',
+            'kubernetes',
+          ],
         },
         {
           ringClass: 'ring-3',
@@ -145,9 +157,9 @@ export default {
   margin-inline-start: var(--gutter-nano);
 }
 
-.btn {
+button {
   margin-top: auto;
-  width: 200px;
+  width: fit-content;
 }
 
 img {

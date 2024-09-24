@@ -12,7 +12,7 @@
       ></skill-emblem>
     </div>
     <div class="work-links">
-      <external-link :to="detailPageLink">Read More</external-link>
+      <external-link class="link" :to="detailPageLink">Read More</external-link>
     </div>
   </div>
 </template>

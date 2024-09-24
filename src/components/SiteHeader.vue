@@ -11,15 +11,8 @@
         {{ header.subheader }}
       </p>
       <div class="header-btns" data-aos="fade-up" data-aos-delay="400">
-        <button-secondary
-          class="primary-btn"
-          actionCallLink="#contact"
-          actionCallText="Contact Me"
-        />
-        <button-secondary
-          actionCallLink="/skills"
-          actionCallText="Skill Overview"
-        />
+        <a href="#contact" class="btn-primary">Contact Me</a>
+        <external-link class="btn-secondary" to="/skills">Skill Overview</external-link>
       </div>
     </div>
     <img
@@ -35,15 +28,12 @@
 
 <script>
 import headerData from '@/data/headerFooter.json';
-import ButtonSecondary from './common/ButtonSecondary.vue';
 import TextSlider from './common/TextSlider.vue';
 import { ref } from 'vue';
+import ExternalLink from './common/ExternalLink.vue';
 
 export default {
-  components: {
-    TextSlider,
-    ButtonSecondary,
-  },
+  components: { TextSlider, ExternalLink },
   data() {
     return {
       header: headerData,
@@ -153,16 +143,5 @@ export default {
     margin: auto;
     width: fit-content;
   }
-}
-
-/* Fix this with TailWind */
-.primary-btn {
-  color: var(--bg-color-secondary);
-  background-color: var(--important);
-}
-
-.primary-btn:hover,
-.primary-btn:focus {
-  box-shadow: #07070733 0 0 0 var(--gutter-nano);
 }
 </style>

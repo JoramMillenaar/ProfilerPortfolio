@@ -8,9 +8,9 @@
     <nav class="navbar" v-show="isVisible">
       <router-link :to="{ name: 'Home' }" class="nav-logo tech">JM</router-link>
       <div class="nav-links">
-        <external-link to="/">Home</external-link>
-        <external-link to="/skills">Skills</external-link>
-        <external-link to="/#contact">Contact</external-link>
+        <external-link class="link" to="/">Home</external-link>
+        <external-link class="link" to="/skills">Skills</external-link>
+        <external-link class="link" to="/#contact">Contact</external-link>
       </div>
     </nav>
   </transition>
