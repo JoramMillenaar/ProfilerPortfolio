@@ -1,4 +1,5 @@
 <template>
+  <nav-bar :showAtTop="false" />
   <div class="header">
     <div class="header-top">
       <div class="header-text">
@@ -49,10 +50,11 @@ import experienceData from '@/data/experience.json';
 import SkillEmblem from '@/components/experience/SkillEmblem.vue';
 import VideoContent from '@/components/media/VideoContent.vue';
 import SiteFooter from '@/components/SiteFooter.vue';
+import NavBar from '@/components/NavBar.vue';
 
 export default {
   name: 'ExperienceDetailPage',
-  components: { SkillEmblem, VideoContent, SiteFooter },
+  components: { SkillEmblem, VideoContent, SiteFooter, NavBar },
   data() {
     return {
       experience: {},

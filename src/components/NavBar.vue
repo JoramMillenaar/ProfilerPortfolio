@@ -14,6 +14,14 @@
       </div>
     </nav>
   </transition>
+  <div
+    v-if="!isVisible"
+    class="navbar-handle"
+    @mouseover="showNavBar"
+    @click="showNavBar"
+  >
+    <div class="navbar-handle-bar"></div>
+  </div>
 </template>
 
 <script>
@@ -21,6 +29,12 @@ import ExternalLink from './common/ExternalLink.vue';
 export default {
   components: { ExternalLink },
   name: 'NavBar',
+  props: {
+    showAtTop: {
+      type: Boolean,
+      default: true,
+    },
+  },
   data() {
     return {
       lastScroll: 0,
@@ -30,20 +44,23 @@ export default {
   methods: {
     handleScroll() {
       const currentScroll = window.scrollY;
-      if (
-        this.isVisible &&
-        currentScroll > this.lastScroll &&
-        currentScroll > 100
-      ) {
-        this.isVisible = false;
-      } else if (
-        !this.isVisible &&
-        currentScroll < this.lastScroll &&
-        currentScroll > 100
-      ) {
-        this.isVisible = true;
+      if (currentScroll <= 100) {
+        if (this.showAtTop) {
+          this.isVisible = true;
+        } else {
+          this.isVisible = false;
+        }
+      } else {
+        if (currentScroll > this.lastScroll) {
+          this.isVisible = false;
+        } else if (currentScroll < this.lastScroll) {
+          this.isVisible = true;
+        }
       }
       this.lastScroll = currentScroll;
+    },
+    showNavBar() {
+      this.isVisible = true;
     },
     beforeEnter(el) {
       el.style.transform = 'translateY(-100%)';
@@ -62,6 +79,16 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
+    this.lastScroll = window.scrollY;
+    if (window.scrollY <= 100) {
+      if (this.showAtTop) {
+        this.isVisible = true;
+      } else {
+        this.isVisible = false;
+      }
+    } else {
+      this.isVisible = false;
+    }
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -84,7 +111,26 @@ export default {
   z-index: 1000;
   border-radius: 10px;
   margin: var(--gutter-micro);
-  /* border-bottom: 1px solid var(--important); */
+}
+
+.navbar-handle {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.navbar-handle-bar {
+  width: 70px;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 2px;
 }
 
 .nav-logo {

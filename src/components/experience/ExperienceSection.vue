@@ -15,7 +15,7 @@
               :modalId="experiences[0].modalId"
             />
           </div>
-          <div class="work-media rounded" data-aos="zoom-in-up">
+          <div class="work-media rounded shadow" data-aos="zoom-in-up">
             <video-content
               :thumbnail="experiences[0].thumbnail"
               :video="experiences[0].video"

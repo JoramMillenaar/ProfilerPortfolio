@@ -1,4 +1,5 @@
 <template>
+  <nav-bar :showAtTop="true" />
   <div class="skills-page">
     <main>
       <section class="skills-section">
@@ -27,9 +28,9 @@
                     <span v-else>▼</span>
                   </span>
                 </th>
-                <th @click="sortBy('yearsOfExperience')">
-                  Years of Experience
-                  <span v-if="sortKey === 'yearsOfExperience'">
+                <th @click="sortBy('estHours')">
+                  Est. Hours Spent
+                  <span v-if="sortKey === 'estHours'">
                     <span v-if="sortOrder === 'asc'">▲</span>
                     <span v-else>▼</span>
                   </span>
@@ -49,7 +50,7 @@
                   <skill-emblem :name="skill.id" />
                 </td>
                 <td>{{ skill.name }}</td>
-                <td>{{ skill.yearsOfExperience }}</td>
+                <td>{{ skill.estHours }}</td>
                 <td>{{ skill.level }}</td>
               </tr>
             </tbody>
@@ -65,11 +66,13 @@
 import SiteFooter from '../components/SiteFooter.vue';
 import skillsData from '@/data/skills.json';
 import SkillEmblem from '@/components/experience/SkillEmblem.vue';
+import NavBar from '@/components/NavBar.vue';
 
 export default {
   components: {
     SiteFooter,
     SkillEmblem,
+    NavBar,
   },
   data() {
     return {
@@ -139,6 +142,7 @@ export default {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: black;
+  color: white;
 }
 
 .skills-table {

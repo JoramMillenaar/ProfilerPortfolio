@@ -1,5 +1,6 @@
 <template>
   <div class="home-page">
+    <nav-bar :showAtTop="false" />
     <site-header></site-header>
     <main>
       <experience-section></experience-section>
@@ -18,6 +19,7 @@ import TestimonialsSection from '../components/TestimonialsSection.vue';
 import HobbyProject from '../components/HobbyProject.vue';
 import ContactForm from '../components/ContactForm.vue';
 import SiteFooter from '../components/SiteFooter.vue';
+import NavBar from '@/components/NavBar.vue';
 
 export default {
   components: {
@@ -27,6 +29,7 @@ export default {
     HobbyProject,
     ContactForm,
     SiteFooter,
+    NavBar,
   },
 };
 </script>

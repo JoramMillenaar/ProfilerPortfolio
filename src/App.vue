@@ -1,6 +1,5 @@
 <template>
-  <div id="app">
-    <nav-bar />
+  <div id="app" style="overflow-x: clip">
     <router-view />
   </div>
 </template>
@@ -8,10 +7,8 @@
 <script>
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import NavBar from './components/NavBar.vue';
 
 export default {
-  components: { NavBar },
   name: 'App',
   mounted() {
     AOS.init({

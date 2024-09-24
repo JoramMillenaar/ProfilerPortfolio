@@ -2,85 +2,92 @@
   {
     "id": "python",
     "name": "Python",
-    "yearsOfExperience": 4,
+    "estHours": 4500,
     "level": "Advanced",
     "icon": "python.svg"
   },
   {
     "id": "django",
     "name": "Django",
-    "yearsOfExperience": 4,
+    "estHours": 4000,
     "level": "Advanced",
     "icon": "django.webp"
   },
   {
     "id": "sql",
     "name": "SQL",
-    "yearsOfExperience": 3,
+    "estHours": 150,
     "level": "Seasoned",
     "icon": "sql.webp"
   },
   {
     "id": "pytest",
     "name": "PyTest",
-    "yearsOfExperience": 3,
-    "level": "Seasoned",
+    "estHours": 400,
+    "level": "Advanced",
     "icon": "pytest.svg"
   },
   {
     "id": "git",
     "name": "Git",
-    "yearsOfExperience": 4,
+    "estHours": 100,
     "level": "Seasoned",
     "icon": "git.webp"
   },
   {
     "id": "javascript",
     "name": "JavaScript",
-    "yearsOfExperience": 4,
+    "estHours": 400,
     "level": "Proficient",
     "icon": "js.webp"
   },
   {
     "id": "shell",
-    "name": "Shell",
-    "yearsOfExperience": 4,
+    "name": "Shell (Linux)",
+    "estHours": 200,
     "level": "Proficient",
     "icon": "shell.webp"
   },
   {
     "id": "css",
     "name": "CSS",
-    "yearsOfExperience": 4,
+    "estHours": 500,
     "level": "Seasoned",
     "icon": "css.webp"
   },
   {
     "id": "kubernetes",
     "name": "Kubernetes",
-    "yearsOfExperience": 1,
+    "estHours": 50,
     "level": "Familiar",
     "icon": "kubernetes.svg"
   },
   {
     "id": "googlecloud",
     "name": "Google Cloud",
-    "yearsOfExperience": 1,
+    "estHours": 50,
     "level": "Familiar",
     "icon": "googlecloud.svg"
   },
   {
     "id": "wordpress",
     "name": "WordPress",
-    "yearsOfExperience": 1,
+    "estHours": 80,
     "level": "Familiar",
     "icon": "wordpress.webp"
   },
   {
     "id": "vuejs",
     "name": "Vue.js",
-    "yearsOfExperience": 2,
+    "estHours": 80,
     "level": "Proficient",
     "icon": "vuejs.svg"
+  },
+  {
+    "id": "cpp",
+    "name": "C++",
+    "estHours": 20,
+    "level": "Familiar",
+    "icon": "cpp.svg"
   }
 ]

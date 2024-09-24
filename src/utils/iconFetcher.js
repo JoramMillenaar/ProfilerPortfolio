@@ -11,7 +11,6 @@ export async function fetchIcon(skillId) {
     const image = await import(`@/assets/images/skills/${skill.icon}`);
     return image.default;
   } catch (error) {
-    console.error(`Error fetching icon for ${skillId}: ${error.message}`);
     return null;
   }
 }
