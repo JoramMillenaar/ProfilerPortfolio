@@ -58,14 +58,14 @@
   {
     "id": "kubernetes",
     "name": "Kubernetes",
-    "estHours": 50,
+    "estHours": 80,
     "level": "Familiar",
     "icon": "kubernetes.svg"
   },
   {
     "id": "googlecloud",
     "name": "Google Cloud",
-    "estHours": 50,
+    "estHours": 80,
     "level": "Familiar",
     "icon": "googlecloud.svg"
   },
@@ -79,7 +79,7 @@
   {
     "id": "vuejs",
     "name": "Vue.js",
-    "estHours": 80,
+    "estHours": 100,
     "level": "Proficient",
     "icon": "vuejs.svg"
   },
