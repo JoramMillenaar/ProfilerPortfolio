@@ -15,12 +15,10 @@
           </blockquote>
           <external-link class="link" isButton @click="openModal(testimonial.id)">Read More</external-link>
           <figure class="testimonial-author">
-            <img
-              v-lazy="
-                require(`@/assets/images/testimonials/${testimonial.image}`)
-              "
+            <ImageContent
+              className="img"
+              :src="'testimonials/' + testimonial.image"
               :alt="`Picture of ${testimonial.author}'s face`"
-              loading="lazy"
             />
             <figcaption>
               <h3 class="testimonial-author-name">{{ testimonial.author }}</h3>
@@ -46,6 +44,7 @@
 
 <script>
 import ExternalLink from './common/ExternalLink.vue';
+import ImageContent from './media/ImageContent.vue';
 import QuoteModal from './QuoteModal.vue';
 import testimonialData from '@/data/testimonials.json';
 
@@ -53,6 +52,7 @@ export default {
   components: {
     QuoteModal,
     ExternalLink,
+    ImageContent,
   },
   methods: {
     openModal(modalId) {
@@ -76,7 +76,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .testimonials {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -145,7 +145,7 @@ export default {
   font-size: initial;
 }
 
-.testimonial-author > img {
+.testimonial-author > .img > img {
   block-size: 52px;
   inline-size: 52px;
   border-radius: 50%;

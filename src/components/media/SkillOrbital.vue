@@ -3,12 +3,12 @@
     <ul class="orbit-wrap">
       <li v-for="(orbit, index) in orbits" :key="index">
         <ul :class="`ring-${index}`">
-          <li v-for="(iconUrl, idx) in orbit.iconImages" :key="idx">
-            <img
-              class="orbit-icon"
-              v-if="iconUrl"
-              v-lazy="iconUrl"
-              :alt="orbit.icons[idx]"
+          <li v-for="(icon, idx) in orbit.icons" :key="idx">
+            <ImageContent
+              className="orbit-icon"
+              v-if="getPath(icon)"
+              :src="getPath(icon)"
+              :alt="icon"
             />
             <i v-else>{{ orbit.icons[idx] }}</i>
           </li>
@@ -19,31 +19,32 @@
 </template>
 
 <script>
-import { fetchIcon } from '@/utils/iconFetcher';
+import ImageContent from './ImageContent.vue';
+import skillsData from '/src/data/skills.json';
 
 export default {
   name: 'SkillOrbital',
+  components: { ImageContent },
   props: {
     orbits: {
       type: Array,
       required: true,
     },
   },
-  mounted() {
-    this.fetchAllIcons();
-  },
   methods: {
-    async fetchAllIcons() {
-      for (let orbit of this.orbits) {
-        const iconPromises = orbit.icons.map((iconName) => fetchIcon(iconName));
-        orbit.iconImages = await Promise.all(iconPromises);
+    getPath(name) {
+      const skill = skillsData.find((skill) => skill.id === name);
+      if (skill) {
+        return 'skills/' + skill.icon;
+      } else {
+        return null
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style scoped>
+<style>
 .orbit {
   float: left;
   width: 100%;

@@ -1,10 +1,10 @@
 <template>
   <div class="device-mockup">
-    <img
-      v-lazy="{'src': require('@/assets/images/apple-mockup.webp'), 'loading': require('@/assets/images/apple-mockup-lqip.webp')}"
+    <ImageContent
+      src="apple-mockup.webp"
+      placeholder="apple-mockup-lqip.webp"
       alt="A mockup image of a Macbook and an Iphone displaying the images and video below"
-      class="device-image"
-      loading="lazy"
+      className="device-image"
     />
     <div class="screen-content">
       <object class="screen-image">
@@ -12,20 +12,19 @@
       </object>
       <div class="phone-image">
         <picture class="phone-video">
-          <img
-            class="phone-main"
-            v-lazy="require(`@/assets/images/${phoneOverlayImg}`)"
-            loading="lazy"
-            alt="An IPhone's screen contents displaying a header with the Thrust logo"
+          <ImageContent
+            className="phone-main"
+            :src="phoneOverlayImg"
+            alt="An iPhone's screen contents displaying a header with the Thrust logo"
           />
-          <img
-            :style="transformStyle"
-            class="phone-second"
-            v-lazy="require(`@/assets/images/${phoneScrollableImg}`)"
-            ref="scrollable"
-            loading="lazy"
-            alt="A series of widgets with boats displayed on the phone's screen"
-          />
+          <div ref="scrollable">
+            <ImageContent
+              :style="transformStyle"
+              className="phone-second"
+              :src="phoneScrollableImg"
+              alt="A series of widgets with boats displayed on the phone's screen"
+            />
+          </div>
         </picture>
       </div>
     </div>
@@ -33,10 +32,11 @@
 </template>
 
 <script>
+import ImageContent from './ImageContent.vue';
 import VideoContent from './VideoContent.vue';
 
 export default {
-  components: { VideoContent },
+  components: { VideoContent, ImageContent },
   props: ['video', 'thumbnail', 'phoneOverlayImg', 'phoneScrollableImg'],
   data() {
     return {

@@ -12,12 +12,14 @@
       </p>
       <div class="header-btns" data-aos="fade-up" data-aos-delay="400">
         <a href="#contact" class="btn-primary">Contact Me</a>
-        <external-link class="btn-secondary" to="/skills">Skill Overview</external-link>
+        <external-link class="btn-secondary" to="/skills"
+          >Skill Overview</external-link
+        >
       </div>
     </div>
     <img
       v-if="viewportWidth >= 600"
-      :src="require(`@/assets/images/${header.image}`)"
+      :src="HeaderImage"
       class="main-img"
       fetchpriority="high"
       loading="eager"
@@ -31,6 +33,7 @@ import headerData from '@/data/headerFooter.json';
 import TextSlider from './common/TextSlider.vue';
 import { ref } from 'vue';
 import ExternalLink from './common/ExternalLink.vue';
+import HeaderImage from '/src/assets/images/profile-picture.webp';  // TODO: Make this dynamic
 
 export default {
   components: { TextSlider, ExternalLink },
@@ -38,6 +41,7 @@ export default {
     return {
       header: headerData,
       viewportWidth: ref(window.innerWidth),
+      HeaderImage,
     };
   },
   methods: {

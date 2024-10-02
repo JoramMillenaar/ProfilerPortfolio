@@ -11,10 +11,10 @@
         <article class="content" data-aos="zoom-in" @click.stop>
           <header>
             <figure>
-              <img
-                v-lazy="require(`@/assets/images/testimonials/${image}`)"
+              <ImageContent
+                className="img"
+                :src="'testimonials/' + image"
                 :alt="`Picture of ${author}`"
-                loading="lazy"
               />
               <figcaption>
                 <h3 class="h3">{{ author }}</h3>
@@ -30,7 +30,7 @@
       </div>
       <object
         type="image/svg+xml"
-        :data="background"
+        :data="LineBackground"
         class="background-line"
       ></object>
     </section>
@@ -38,6 +38,9 @@
 </template>
 
 <script>
+import ImageContent from './media/ImageContent.vue';
+import LineBackground  from '@/assets/images/line.svg';
+
 export default {
   props: {
     modalId: String,
@@ -47,10 +50,11 @@ export default {
     image: String,
     content: Array,
   },
+  components: { ImageContent },
   emits: ['close'],
   data() {
     return {
-      background: require('@/assets/svgs/line.svg'),
+      LineBackground
     };
   },
   methods: {
@@ -126,7 +130,7 @@ figcaption h3 {
   z-index: -1;
 }
 
-img {
+.img {
   width: 52px;
   height: 52px;
   border-radius: 50%;

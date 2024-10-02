@@ -23,15 +23,16 @@
         "@type": "WebPage",
         "image": {
           "@type": "ImageObject",
-          "url": "<%= BASE_URL %>thumbnail.webp",
+          "url": "/thumbnail.webp",
           "height": 628,
           "width": 1200
         }
       }
-      </script>
+    </script>
+    <script type="module" src="/src/main.js"></script>
 
     <!-- Reference screenshot of updated site's header in place of content -->
-    <meta itemprop="image" content="<%= BASE_URL %>thumbnail.webp" />
+    <meta itemprop="image" content="/thumbnail.webp" />
 
     <!-- Facebook Meta Tags -->
     <meta property="og:type" content="website" />
@@ -42,7 +43,7 @@
     />
 
     <!-- Reference screenshot of updated site's header in content -->
-    <meta property="og:image" content="<%= BASE_URL %>thumbnail.webp" />
+    <meta property="og:image" content="/thumbnail.webp" />
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -53,11 +54,11 @@
     />
 
     <!-- Reference screenshot of updated site's header in content -->
-    <meta name="twitter:image" content="<%= BASE_URL %>thumbnail.webp" />
+    <meta name="twitter:image" content="/thumbnail.webp" />
 
     <!-- Update favicon href attribute with image of yourself -->
-    <link rel="icon" href="<%= BASE_URL %>favicon.svg" type="image/svg+xml">
-    <link rel="alternate icon" href="<%= BASE_URL %>favicon.ico">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="/favicon.ico" />
 
     <title>Joram Millenaar's Portfolio</title>
   </head>
@@ -65,9 +66,8 @@
   <body>
     <noscript>
       <strong
-        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
-        properly without JavaScript enabled. Please enable it to
-        continue.</strong
+        >We're sorry but this website doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong
       >
     </noscript>
     <div id="app"></div>

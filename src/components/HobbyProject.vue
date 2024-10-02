@@ -15,18 +15,15 @@
               <p class="article-text">{{ featured.description }}</p>
             </div>
             <div class="article-info">
-              <external-link class="link" :href="featured.link" target="_blank"
-                >Source Code</external-link
-              >
+              <external-link class="link" :href="featured.link" target="_blank">Source Code</external-link>
               <skill-emblem :name="featured.skill"></skill-emblem>
             </div>
           </div>
           <picture class="article-illustration">
-            <img
+            <ImageContent
               v-if="!featured.featured"
-              v-lazy="require(`@/assets/images/${featured.image}`)"
+              :src="featured.image"
               :alt="featured.title + ' image'"
-              loading="lazy"
             />
           </picture>
         </article>
@@ -41,20 +38,17 @@
             <div>
               <div class="article-title">
                 <h3 class="h4">{{ project.title }}</h3>
-                <img
+                <ImageContent
                   v-if="!project.featured"
-                  class="article-icon"
-                  v-lazy="require(`@/assets/images/${project.image}`)"
+                  className="article-icon"
+                  :src="project.image"
                   :alt="project.title + '\'s logo'"
-                  loading="lazy"
                 />
               </div>
               <p class="article-text">{{ project.description }}</p>
             </div>
             <div class="article-info">
-              <external-link class="link" :href="project.link" target="_blank"
-                >Source Code</external-link
-              >
+              <external-link class="link" :href="project.link" target="_blank">Source Code</external-link>
               <skill-emblem :name="project.skill" />
             </div>
           </div>
@@ -68,12 +62,14 @@
 import SkillEmblem from './experience/SkillEmblem.vue';
 import projectData from '@/data/projects.json';
 import ExternalLink from './common/ExternalLink.vue';
+import ImageContent from './media/ImageContent.vue';
 
 export default {
   name: 'HobbyProject',
   components: {
     SkillEmblem,
     ExternalLink,
+    ImageContent
   },
   data() {
     return {

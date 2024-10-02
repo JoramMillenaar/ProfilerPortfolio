@@ -1,13 +1,10 @@
 <template>
   <div class="device-mockup">
-    <img
-      v-lazy="{
-        src: require('@/assets/images/simple-mac.webp'),
-        loading: require('@/assets/images/simple-mac-lqip.webp'),
-      }"
+    <ImageContent
+      src="simple-mac.webp"
+      placeholder="simple-mac-lqip.webp"
       alt="MacBook Mockup displaying the video below"
-      class="device-image"
-      loading="lazy"
+      className="device-image"
     />
     <object class="screen-content">
       <video-content :video="video" :thumbnail="thumbnail" />
@@ -16,10 +13,12 @@
 </template>
 
 <script>
+import ImageContent from './ImageContent.vue';
 import VideoContent from './VideoContent.vue';
 export default {
   components: {
     VideoContent,
+    ImageContent,
   },
   props: ['video', 'thumbnail'],
 };

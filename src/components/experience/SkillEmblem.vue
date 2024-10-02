@@ -1,21 +1,24 @@
 <template>
   <span class="tooltip" :data-title="name">
-    <img v-lazy="skillImage" :alt="name" class="skills-img" />
+    <ImageContent :src="skillImage" :alt="name" className="skills-img" />
   </span>
 </template>
 
 <script>
-import { fetchIcon } from '@/utils/iconFetcher';
+import ImageContent from '../media/ImageContent.vue';
+import skillsData from '/src/data/skills.json';
 
 export default {
   props: ['name'],
+  components: { ImageContent },
   data() {
     return {
       skillImage: '',
     };
   },
   async created() {
-    this.skillImage = await fetchIcon(this.name);
+    const skill = skillsData.find((skill) => skill.id === this.name);
+    this.skillImage = 'skills/' + skill.icon;
   },
 };
 </script>
@@ -88,7 +91,7 @@ export default {
 
 .tooltip:after {
   border-right: 6px solid transparent;
-  border-bottom: 6px solid rgba(255, 255, 255, 0.2);;
+  border-bottom: 6px solid rgba(255, 255, 255, 0.2);
   border-left: 6px solid transparent;
   content: '';
   height: 0;

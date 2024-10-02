@@ -1,4 +1,4 @@
-import skillsData from '@/data/skills.json';
+import skillsData from '/src/data/skills.json';
 
 export async function fetchIcon(skillId) {
   try {
@@ -8,9 +8,10 @@ export async function fetchIcon(skillId) {
       throw new Error(`Skill not found: ${skillId}`);
     }
 
-    const image = await import(`@/assets/images/skills/${skill.icon}`);
+    const image = await import(`/src/assets/images/skills/${skill.icon}`);
     return image.default;
   } catch (error) {
+    console.error(error);
     return null;
   }
 }

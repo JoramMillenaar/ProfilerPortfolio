@@ -7,9 +7,8 @@
           <div class="orbital">
             <skill-orbital :orbits="orbitsData" />
           </div>
-          <img
-            v-lazy="require(`@/assets/images/${contact.picture}`)"
-            loading="lazy"
+          <ImageContent
+            :src="contact.picture"
             :alt="contact.pictureAlt"
           />
         </div>
@@ -32,9 +31,10 @@
 <script>
 import contactInfo from '@/data/contactInfo.json';
 import SkillOrbital from './media/SkillOrbital.vue';
+import ImageContent from './media/ImageContent.vue';
 
 export default {
-  components: { SkillOrbital },
+  components: { SkillOrbital, ImageContent },
   name: 'ContactForm',
   data() {
     return {

@@ -1,73 +1,74 @@
 <template>
-  <div class="video-container" ref="videoContainer">
-    <img
-      v-if="!videoLoaded"
-      :src="require(`@/assets/images/${thumbnail}`)"
-      alt="Low quality thumbnail of the first frame of the video that's loading"
+  <div class="relative">
+    <ImageContent
+      v-if="!isVideoVisible || !videoSrc"
+      :src="thumbnail"
+      className="w-full h-auto"
+      alt="Thumbnail"
     />
     <video
-      v-if="videoLoaded"
+      v-else
+      :src="videoSrc"
+      autoplay
       muted
       loop
       playsinline
-      autoplay
-      preload="auto"
-      ref="mainVideo"
-    >
-      <source :src="require(`@/assets/videos/${video}`)" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+      class="w-full h-auto"
+    ></video>
   </div>
 </template>
 
 <script>
+import ImageContent from './ImageContent.vue';
+
 export default {
-  props: ['video', 'thumbnail', 'blurredBackground'],
+  props: ['video', 'thumbnail'],
+  components: { ImageContent },
   data() {
     return {
-      videoLoaded: false,
+      isVideoVisible: false,
+      videoSrc: '',
     };
   },
   mounted() {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !this.videoLoaded) {
-            this.videoLoaded = true;
-            observer.unobserve(this.$refs.videoContainer);
-          }
+    const img = this.$el.querySelector('img');
+    img.addEventListener('load', () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              this.isVideoVisible = true;
+              this.loadVideo(this.video);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(img);
+    });
+  },
+  methods: {
+    async loadVideo(fileName) {
+      try {
+        const videos = import.meta.glob('/src/assets/videos/**/*', {
+          as: 'url',
         });
-      },
-      {
-        rootMargin: '50px',
-        threshold: 0,
-      }
-    );
+        const importVideo = videos[`/src/assets/videos/${fileName}`];
 
-    observer.observe(this.$refs.videoContainer);
+        if (importVideo) {
+          this.videoSrc = await importVideo();
+        } else {
+          console.error(`Video not found: ${fileName}`);
+          this.videoSrc = this.placeholder;
+        }
+      } catch (error) {
+        console.error(`Error loading image: ${fileName}`, error);
+        this.videoSrc = this.placeholder;
+      }
+    },
   },
 };
 </script>
 
-
-<style scoped>
-.video-container {
-  position: relative;
-  width: 100%;
-  /* Remove height and padding-bottom to allow dynamic sizing */
-}
-
-img {
-  position: relative;
-  z-index: -1;
-  width: 100%;
-  height: auto;
-}
-
-video {
-  width: 100%;
-  height: auto;
-  display: block; /* Ensure the video takes the full width of its container */
-}
-</style>
-
+<style scoped></style>
