@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import VueLazyload from 'vue-lazyload';
+import './index.css'
 
 createApp(App)
   .use(router)

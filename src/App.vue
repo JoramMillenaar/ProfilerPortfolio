@@ -1,5 +1,5 @@
 <template>
-  <div id="app" style="overflow-x: clip">
+  <div id="app" class="overflow-x-clip">
     <router-view />
   </div>
 </template>
