@@ -16,7 +16,7 @@
           <external-link class="link" isButton @click="openModal(testimonial.id)">Read More</external-link>
           <figure class="testimonial-author">
             <ImageContent
-              className="img"
+              className="size-14 rounded-[50%] bg-secondary"
               :src="'testimonials/' + testimonial.image"
               :alt="`Picture of ${testimonial.author}'s face`"
             />
@@ -143,12 +143,5 @@ export default {
   margin-left: auto;
   font-weight: 500;
   font-size: initial;
-}
-
-.testimonial-author > .img > img {
-  block-size: 52px;
-  inline-size: 52px;
-  border-radius: 50%;
-  background-color: var(--bg-color-secondary);
 }
 </style>
