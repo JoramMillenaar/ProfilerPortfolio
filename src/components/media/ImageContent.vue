@@ -35,7 +35,6 @@
       async loadImage(fileName) {
         try {
           const images = import.meta.glob('/src/assets/images/**/*', { as: 'url' });
-          console.log(images)
           const importImage = images[`/src/assets/images/${fileName}`];
   
           if (importImage) {

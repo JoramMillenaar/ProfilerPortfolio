@@ -165,8 +165,8 @@ h3,
     @apply text-important
 }
 
-.h1 {
-    @apply text-h1;
+h1 {
+    @apply text-h1 font-tech;
 }
 
 .h2 {

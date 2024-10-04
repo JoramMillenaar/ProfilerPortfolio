@@ -4,7 +4,7 @@
       <div data-aos="fade" data-aos-duration="500">
         <text-slider />
       </div>
-      <h1 class="font-tech h1" data-aos="fade-up">
+      <h1 data-aos="fade-up">
         {{ header.titleLineOne }}<br />{{ header.titleLineTwo }}
       </h1>
       <p class="header-text" data-aos="fade-up" data-aos-delay="200">
