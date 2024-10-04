@@ -61,10 +61,6 @@
 }
 
 :root {
-    --h1: 3.5rem;
-    --h2: 3rem;
-    --h3: 2.145rem;
-    --h4: 1.5rem;
     --text-large: 1.6rem;
     --text-medium: 1.275rem;
     --text-small: 1.125rem;
@@ -111,10 +107,6 @@ body {
     line-height: 1.4;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
-}
-
-.tech {
-    font-family: 'Tech', 'Montserrat', sans-serif;
 }
 
 @keyframes gradient {
@@ -166,84 +158,27 @@ img {
     object-fit: contain;
 }
 
-textarea {
-    resize: none;
-}
-
-input,
-textarea,
-button {
-    font: inherit;
-}
-
-p,
 h1,
 h2,
 h3,
 .h4 {
-    overflow-wrap: break-word;
-}
-
-h1,
-h2,
-h3,
-.h4 {
-    font-stretch: 125%;
-    line-height: 1.2;
-    color: var(--important);
+    @apply text-important
 }
 
 .h1 {
-    font-size: var(--h1);
+    @apply text-h1;
 }
 
 .h2 {
-    border-image: linear-gradient(to right,
-            transparent 10%,
-            gray 50%,
-            transparent 90%) 1;
-    border-bottom: 1px solid;
-    font-size: var(--h2);
-    text-align: center;
-    padding-bottom: 1rem;
+    @apply text-h2 text-center pb-4;
 }
 
 .h3 {
-    font-size: var(--h3);
+    @apply text-h3;
 }
 
 .h4 {
-    font-size: var(--h4);
-}
-
-@media (max-width: 845px) {
-    :root {
-        --h1: 2.845rem;
-        --h2: 2.45rem;
-        --h3: 1.85rem;
-    }
-}
-
-@media (max-width: 700px) {
-    :root {
-        --h1: 2.545rem;
-    }
-}
-
-@media (max-width: 545px) {
-    :root {
-        --h1: 2.4rem;
-        --text-large: 1.5rem;
-    }
-}
-
-@media (max-width: 485px) {
-    :root {
-        --h1: 2.145rem;
-        --h2: 1.875rem;
-        --h3: 1.6rem;
-        --text-large: 1.345rem;
-    }
+    @apply text-h4;
 }
 
 .container {

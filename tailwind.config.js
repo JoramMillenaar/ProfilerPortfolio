@@ -10,6 +10,9 @@ module.exports = {
         sans: ['Montserrat', 'sans-serif'],
         tech: ['Tech', 'Montserrat', 'sans-serif'],
       },
+      height: {
+        'h1': '3.5rem',
+      },
       colors: {
         'primary': '#1b1b1b',
         'secondary': '#202020',

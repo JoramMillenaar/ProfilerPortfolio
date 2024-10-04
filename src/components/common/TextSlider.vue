@@ -1,14 +1,14 @@
 <template>
-  <div class="slider">
-    <div class="slider-container">
-      <h1 class="h1 slider-container-text">Hello </h1>
-      <ul class="slider-container-list">
+  <div class="font-tech mb-3">
+    <div class="overflow-hidden flex h-h1">
+      <h1 class="text-h1 inline m-0 leading-tight">Hello </h1>
+      <ul class="mt-0 pl-4 text-left list-none h-fit animate-list">
         <li
-          class="slider-container-list-item"
+          class="m-0"
           v-for="(greeting, index) in greetings"
           :key="index"
         >
-          <h1 class="h1">{{ greeting }}</h1>
+          <h1 class="text-h1 leading-tight">{{ greeting }}</h1>
         </li>
       </ul>
     </div>
@@ -38,39 +38,13 @@ export default {
 </script>
 
 <style scoped>
-.slider {
-  font-family: 'Tech', 'Montserrat', sans-serif;
-  margin-bottom: 0.7rem;
-}
-
-.slider-container {
-  overflow: hidden;
-  height: var(--h1);
-  display: flex;
-}
-
-.slider-container-text {
-  display: inline;
-  margin: 0;
-}
-
-.slider-container-list {
-  margin-top: 0;
-  padding-left: var(--gutter-micro);
-  text-align: left;
-  list-style: none;
+.animate-list {
   -webkit-animation-name: change;
   -webkit-animation-duration: 40s;
   -webkit-animation-iteration-count: infinite;
   animation-name: change;
   animation-duration: 40s;
   animation-iteration-count: infinite;
-  height: fit-content;
-}
-
-.slider-container-list-item {
-  line-height: 40px;
-  margin: 0;
 }
 
 @-webkit-keyframes opacity {

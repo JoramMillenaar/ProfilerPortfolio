@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{ title }}</h3>
+    <h3 class="text-h3">{{ title }}</h3>
     <h4>for {{ company }}</h4>
     <h5>📍 {{ location }}</h5>
     <p class="work-text">{{ description }}</p>
@@ -64,10 +64,6 @@ export default {
   align-items: center;
   justify-content: space-between;
   gap: var(--gutter-x-small);
-}
-
-h3 {
-  font-size: var(--h3);
 }
 
 h4 {

@@ -3,7 +3,7 @@
   <div class="header">
     <div class="header-top">
       <div class="header-text">
-        <h1 class="h1 tech">{{ experience.company }}</h1>
+        <h1 class="h1 font-tech">{{ experience.company }}</h1>
         <h2>{{ experience.title }}</h2>
         <h3>{{ experience.location }}</h3>
       </div>

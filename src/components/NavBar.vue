@@ -6,7 +6,7 @@
     @leave="leave"
   >
     <nav class="navbar" v-show="isVisible">
-      <router-link :to="{ name: 'Home' }" class="nav-logo tech">JM</router-link>
+      <router-link :to="{ name: 'Home' }" class="font-tech text-h3 text-important">JM</router-link>
       <div class="nav-links">
         <external-link class="link" to="/">Home</external-link>
         <external-link class="link" to="/skills">Skills</external-link>
@@ -131,12 +131,6 @@ export default {
   background-color: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
   border-radius: 2px;
-}
-
-.nav-logo {
-  font-size: var(--h3);
-  text-decoration: none;
-  color: var(--important);
 }
 
 .nav-links {
