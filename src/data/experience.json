@@ -1,48 +1,42 @@
 [
   {
     "id": "therapieland",
-    "title": "Back-end Developer",
+    "title": "Full-Stack Developer",
     "company": "Therapieland B.V.",
     "type": "payroll",
     "location": "Amsterdam, The Netherlands",
-    "description": "Advanced the e-health platform as a Backend Developer, improving mental health service delivery in the Netherlands for over 3 years.",
+    "description": "Advanced the SaaS e-health application for over three years, improving mental health service delivery in the Netherlands",
     "content": [
       {
+        "type": "header",
+        "content": "High-Impact Data Migration Leadership"
+      },
+      {
         "type": "paragraph",
-        "content": "As a key member of the software development team at Therapieland B.V., we advanced our e-health SaaS platform, providing mental health services in the Netherlands."
-      },
-      {
-        "type": "header",
-        "content": "Migration Project"
+        "content": "Led the final stage of a business-critical project, migrating and translating 100M+ rows of data."
       },
       {
         "type": "list",
         "items": [
-          "Led the final phase of the script responsible for reshaping and moving hundreds of millions of rows of data efficiently, utilizing Python, SQL, NumPy, and Pandas.",
-          "Emphasized TDD, software architecture, design patterns, and code principles, resulting in 95% test coverage, rapid implementation of critical features late in the project, no major refactors, and minimal post-launch issues.",
-          "Reduced runtime from two weeks to 12 hours through advanced SQL and Pandas optimization."
+          "Tripled team productivity during two critical weeks by doubling my working hours and motivating co-workers to increase their commitments in support of urgent needs.",
+          "Reduced script runtime from 336 hours to 12, optimizing its performance by leveraging my understanding of low-level mechanics in Python, Pandas, and SQL.",
+          "Avoided the typical 2x-5x effort increase in late-stage changes by architecting scalable, testable, and modular software early in the project, ensuring seamless final-stage additions.",
+          "Reduced post-launch fallout from two anticipated weeks of chaos to a few minor issues by prioritizing and mentoring the team in creating a rich automated test suite, covering 95%."
         ]
       },
       {
         "type": "header",
-        "content": "Back-End Development"
+        "content": "Collaboration and Operation"
       },
       {
         "type": "list",
         "items": [
-          "Developed and maintained large backend systems using Python and Django, ensuring efficient database management with Django ORM, PostgreSQL, and Redis.",
-          "Managed server operations on GCP and Linux, overseeing application deployments using Kubernetes, Docker, and GitLab Pipelines.",
-          "Identified and mitigated major cybersecurity vulnerabilities, preventing potential data breaches and addressing other significant security concerns."
-        ]
-      },
-      {
-        "type": "header",
-        "content": "Front-End Development"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Contributed to both the legacy platform and the new platform built with Vue.js. Including the communication between systems through RESTful APIs"
+          "Led workshops focused on TDD, AI tools, and PyTest, transforming Friday afternoon lulls into opportunities for knowledge-sharing, further collaborating on advanced SQL and core code principles.",
+          "Doubled collaboration between IT and stakeholders by simplifying and presenting complex topics, resulting in clear, actionable insights and encouraging more engaged discussions and questions.",
+          "Saved weeks of misdirected efforts by developing data visualizations and access tools driving key decisions, enabling secure, independent data retrieval, and freeing up development time.",
+          "Reduced platform downtime from hours per month to mere minutes by automating legacy system deployments, supporting cloud migration, and enhancing DevOps with GitLab CI/CD pipelines.",
+          "Mitigated major cybersecurity risks by a factor of 10 to 1,000 through identifying vulnerabilities, implementing Snyk for dependency monitoring, advocating for best practices, and actively supporting cyberattack responses.",
+          "Eliminated costly knowledge silos by driving documentation from one entry per month to multiple per week through the creation of a frictionless contribution system."
         ]
       }
     ],
