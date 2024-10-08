@@ -7,7 +7,7 @@
       <h1 data-aos="fade-up">
         {{ header.titleLineOne }}<br />{{ header.titleLineTwo }}
       </h1>
-      <p class="header-text" data-aos="fade-up" data-aos-delay="200">
+      <p class="text-text-large font-normal max-w-[745px] mb-gutter-large mt-8 xl:max-w-[685px]" data-aos="fade-up" data-aos-delay="200">
         {{ header.subheader }}
       </p>
       <div class="header-btns" data-aos="fade-up" data-aos-delay="400">
@@ -106,20 +106,6 @@ export default {
   right: 0px;
   height: 100vh;
   top: 0;
-}
-
-.header-text {
-  font-size: var(--text-large);
-  font-weight: 400;
-  max-inline-size: 745px;
-  margin-block-start: var(--gutter-micro);
-  margin-block-end: var(--gutter-medium);
-}
-
-@media (max-width: 1200px) {
-  .header-text {
-    max-inline-size: 685px;
-  }
 }
 
 @media (max-width: 845px) {

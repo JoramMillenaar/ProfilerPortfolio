@@ -12,7 +12,7 @@
           <div class="article-textbox">
             <div>
               <h3 class="h3">{{ featured.title }}</h3>
-              <p class="article-text">{{ featured.description }}</p>
+              <p class="text-text-medium my-6">{{ featured.description }}</p>
             </div>
             <div class="article-info">
               <external-link class="link" :href="featured.link" target="_blank">Source Code</external-link>
@@ -45,7 +45,7 @@
                   :alt="project.title + '\'s logo'"
                 />
               </div>
-              <p class="article-text">{{ project.description }}</p>
+              <p class="text-text-small my-6">{{ project.description }}</p>
             </div>
             <div class="article-info">
               <external-link class="link" :href="project.link" target="_blank">Source Code</external-link>
@@ -115,29 +115,10 @@ export default {
   flex-direction: column;
 }
 
-.article-text {
-  font-size: var(--text-small);
-  margin-block: var(--gutter-x-small);
-}
-
 .article-info {
   display: flex;
   justify-content: space-between;
   margin-block-start: auto;
-}
-
-.star-box {
-  text-decoration: none;
-  color: var(--body);
-  align-content: end;
-  font-size: var(--text-medium);
-}
-
-.star-icon {
-  display: inline-block;
-  vertical-align: middle;
-  fill: currentColor;
-  height: var(--text-medium);
 }
 
 .reaction-count {
@@ -214,9 +195,5 @@ export default {
 
 .article-illustration img {
   border-radius: var(--gutter-nano);
-}
-
-.featured-article .article-text {
-  font-size: var(--text-medium);
 }
 </style>

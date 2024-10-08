@@ -10,10 +10,16 @@
           data-aos="flip-right"
           :data-aos-offset="300 + 100 * index"
         >
-          <blockquote class="testimonial-text">
+          <blockquote class="text-text-small mb-6 flex flex-col justify-between">
             {{ testimonial.quote }}
           </blockquote>
-          <external-link class="link" isButton @click="openModal(testimonial.id)">Read More</external-link>
+          <!-- .testimonial .link {
+  margin-block-start: auto;
+  margin-left: auto;
+  font-weight: 500;
+  font-size: initial;
+} -->
+          <external-link class="link ml-auto order-2 pb-0 font-medium text-text-small" isButton @click="openModal(testimonial.id)">Read More</external-link>
           <figure class="testimonial-author">
             <ImageContent
               className="size-14 rounded-[50%] bg-secondary"
@@ -108,22 +114,8 @@ export default {
   background-color: var(--bg-color-primary);
 }
 
-.testimonial-text {
-  font-size: var(--text-small);
-  margin-block-end: var(--gutter-x-small);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.testimonial-text .link {
-  margin-left: auto;
-  order: 2;
-  padding-bottom: 0;
-}
-
 .testimonial-author {
-  margin-block-start: 8px;
+  margin-block-start: auto;
   display: flex;
   align-items: center;
   gap: var(--gutter-micro);
@@ -135,13 +127,6 @@ export default {
 
 .testimonial-author-name,
 .testimonial-author-job {
-  font-size: initial;
-}
-
-.testimonial .link {
-  margin-block-start: auto;
-  margin-left: auto;
-  font-weight: 500;
   font-size: initial;
 }
 </style>

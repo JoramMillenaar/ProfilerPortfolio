@@ -14,11 +14,11 @@
         </div>
         <form @submit.prevent="sendEmail" class="contact-form">
           <div class="form-field">
-            <label for="name">Name</label>
+            <label for="name" class="text-text-small my-gutter-nano text-important">Name</label>
             <input type="text" name="name" id="name" required="" />
           </div>
           <div class="form-field">
-            <label for="message">How can I help you?</label>
+            <label for="message" class="text-text-small my-gutter-nano text-important">How can I help you?</label>
             <textarea name="message" id="message" required=""></textarea>
           </div>
           <button type="submit" class="btn-primary">Continue</button>
@@ -125,18 +125,9 @@ export default {
   width: 100%;
 }
 
-.form-field label {
-  color: var(--important);
-}
-
 .form-field input,
 .form-field textarea {
-  font-size: var(--text-small);
-  color: var(--sub);
-  border: none;
-  outline: none;
-  border-bottom: 1px solid var(--border);
-  background-color: transparent;
+  @apply text-text-small text-important outline-none border-b-border border-b bg-transparent
 }
 
 .form-field input:focus,
@@ -149,12 +140,6 @@ export default {
   margin-block-end: var(--gutter-small);
   padding: var(--gutter-nano);
   margin-inline: var(--gutter-nano);
-}
-
-.form-field label {
-  font-size: var(--text-small);
-  margin-block-end: var(--gutter-nano);
-  margin-inline-start: var(--gutter-nano);
 }
 
 button {
