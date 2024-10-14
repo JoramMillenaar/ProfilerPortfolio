@@ -7,10 +7,7 @@
           <div class="orbital">
             <skill-orbital :orbits="orbitsData" />
           </div>
-          <ImageContent
-            :src="contact.picture"
-            :alt="contact.pictureAlt"
-          />
+          <ImageContent :src="contact.picture" :alt="contact.pictureAlt" />
         </div>
         <form @submit.prevent="sendEmail" class="contact-form">
           <div class="form-field">
@@ -21,7 +18,7 @@
             <label for="message" class="text-text-small my-gutter-nano text-important">How can I help you?</label>
             <textarea name="message" id="message" required=""></textarea>
           </div>
-          <button type="submit" class="btn-primary">Continue</button>
+          <button type="submit" class="btn-primary">Send via Email</button>
         </form>
       </div>
     </div>
@@ -74,11 +71,19 @@ export default {
       var message = document.getElementById('message').value;
       var subject = encodeURIComponent(name + ' Reaching Out');
       var emailBody = message;
+      var emailEndpoint = atob(this.contact.b64EmailEndpoint);
 
-      window.location.href = `mailto:${
-        this.contact.email
-      }?subject=${subject}&body=${encodeURIComponent(emailBody)}`;
-    },
+      fetch(emailEndpoint)
+        .then(response => response.json())
+        .then(data => {
+          const email = data.email ? data.email : this.contact.email;
+          window.location.href = `mailto:${email}?subject=${subject}&body=${encodeURIComponent(emailBody)}`;
+        })
+        .catch(error => {
+          console.error('Error fetching email:', error);
+          window.location.href = `mailto:${this.contact.email}?subject=${subject}&body=${encodeURIComponent(emailBody)}`;
+        });
+    }
   },
 };
 </script>
