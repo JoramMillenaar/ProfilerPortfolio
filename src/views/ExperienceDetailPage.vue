@@ -4,8 +4,8 @@
     <div class="header-top">
       <div class="header-text">
         <h1>{{ experience.company }}</h1>
-        <h2>{{ experience.title }}</h2>
-        <h3>{{ experience.location }}</h3>
+        <h3>{{ experience.title }}</h3>
+        <h4>{{ experience.location }}</h4>
       </div>
       <div class="header-media">
         <video-content
@@ -30,7 +30,7 @@
         :key="index"
         class="text-box"
       >
-        <h2 v-if="section.type == 'header'" class="subheader">{{ section.content }}</h2>
+        <h3 v-if="section.type == 'header'" class="subheader">{{ section.content }}</h3>
         <p v-if="section.type == 'paragraph'">{{ section.content }}</p>
         <ul v-if="section.type == 'list'">
           <li v-for="(item, index) in section.items" :key="index">

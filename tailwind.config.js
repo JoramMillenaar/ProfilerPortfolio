@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      dropShadow: {
+        'bloom': '0px 0px 172px rgba(255, 255, 255, 0.25)',
+      },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
         tech: ['Tech', 'Montserrat', 'sans-serif'],

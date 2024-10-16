@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2 class="h2" id="testimonials">Testimonials</h2>
+    <h2 id="testimonials">Testimonials</h2>
     <div class="container">
       <ol class="testimonials">
         <li

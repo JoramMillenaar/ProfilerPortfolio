@@ -1,7 +1,7 @@
 <template>
   <section class="article">
     <div class="container">
-      <h2 class="h2" id="projects">My Hobby Projects</h2>
+      <h2 id="projects">My Hobby Projects</h2>
       <div class="article-boxes">
         <article
           class="article-box featured-article"

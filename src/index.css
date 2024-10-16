@@ -149,8 +149,8 @@ h1 {
     @apply text-h1 font-tech leading-none;
 }
 
-.h2 {
-    @apply text-h2 text-center pb-4;
+h2 {
+    @apply text-h2 text-center pb-4 font-semibold;
 }
 
 .h3 {

@@ -4,7 +4,7 @@
     <main>
       <section class="skills-section">
         <div class="container">
-          <h2 class="h2" id="skills">My Skills</h2>
+          <h2 id="skills">My Skills</h2>
           <input
             type="text"
             v-model="searchQuery"

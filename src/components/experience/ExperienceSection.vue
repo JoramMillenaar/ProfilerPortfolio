@@ -1,7 +1,7 @@
 <template>
   <section class="work">
     <div class="container">
-      <h2 class="h2" id="work">My Experience</h2>
+      <h2 id="work">My Experience</h2>
       <div class="work-boxes">
         <div class="work-box">
           <div class="work-textbox" data-aos="fade-right">
