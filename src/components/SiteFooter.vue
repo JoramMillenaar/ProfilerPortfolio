@@ -1,30 +1,19 @@
 <template>
-  <footer class="footer">
+  <footer class="px-gutter-large py-0 border-t-2 border-border border-solid text-center pt-6">
     <div class="container">
-      <div class="footer-content">
+      <div>
         <nav>
-          <ol class="footer-links">
+          <ol class="list-none p-0 flex justify-center gap-gutter-small">
             <li class="footer-link">
-              <a
-                title="GitHub"
-                href="https://github.com/JoramMillenaar"
-                target="_blank"
-                rel="noopener"
-              >
-                <ImageContent src="github.svg" alt="GitHub" />
+              <a class="inline-block" title="GitHub" href="https://github.com/JoramMillenaar" target="_blank"
+                rel="noopener">
+                <ImageContent src="github.svg" alt="GitHub" className="w-6" />
               </a>
             </li>
             <li class="footer-link">
-              <a
-                title="LinkedIn"
-                href="https://www.linkedin.com/in/joram-millenaar-099406143/"
-                target="_blank"
-                rel="noopener"
-              >
-                <ImageContent
-                  src="linkedin.svg"
-                  alt="LinkedIn"
-                />
+              <a class="inline-block" title="LinkedIn" href="https://www.linkedin.com/in/joram-millenaar-099406143/"
+                target="_blank" rel="noopener">
+                <ImageContent src="linkedin.svg" alt="LinkedIn" className="w-6" />
               </a>
             </li>
             <!-- Additional links can be added here -->
@@ -44,31 +33,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.footer {
-  padding: var(--gutter-large) 0;
-  border-top: 1px solid var(--border);
-  text-align: center;
-}
-
-.footer-links {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: var(--gutter-small);
-}
-
-.footer-link a {
-  display: inline-block;
-  transition: opacity 0.3s ease;
-}
-
-.footer-link a:hover {
-  opacity: 0.8;
-}
-
-.footer-link img {
-  width: 24px;
-}
-</style>
+<style scoped></style>
