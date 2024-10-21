@@ -2,7 +2,7 @@
   <section>
     <div>
       <h2 id="projects">My Hobby Projects</h2>
-      <div class="flex flex-wrap flex-row gap-[3.5%] mt-24 max-lg:max-w-2xl max-lg:mx-auto max-lg:justify-center max-lg:gap-[4%]">
+      <div class="flex flex-wrap flex-row gap-[3.5%] mt-24 mx-[4%]">
         <article
           class="article-box featured-article"
           data-aos="zoom-out-up"
