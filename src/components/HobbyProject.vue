@@ -1,8 +1,8 @@
 <template>
-  <section class="article">
-    <div class="container">
+  <section>
+    <div>
       <h2 id="projects">My Hobby Projects</h2>
-      <div class="article-boxes">
+      <div class="flex flex-wrap flex-row gap-[3.5%] mt-24 mx-[4%]">
         <article
           class="article-box featured-article"
           data-aos="zoom-out-up"
@@ -81,13 +81,6 @@ export default {
 </script>
 
 <style scoped>
-.article-boxes {
-  display: flex;
-  flex-flow: row wrap;
-  gap: 3.5%;
-  margin-block-start: var(--gutter-x-large);
-}
-
 .article-box {
   flex-basis: 31%;
   border: 1px solid var(--border);
@@ -129,13 +122,6 @@ export default {
 }
 
 @media (max-width: 985px) {
-  .article-boxes {
-    max-inline-size: 685px;
-    margin-inline: auto;
-    justify-content: center;
-    gap: 4%;
-  }
-
   .article-box:nth-of-type(2),
   .article-box:nth-of-type(3) {
     flex-basis: 48%;

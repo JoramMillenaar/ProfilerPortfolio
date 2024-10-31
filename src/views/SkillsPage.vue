@@ -1,17 +1,17 @@
 <template>
   <nav-bar :showAtTop="true" />
-  <div class="skills-page">
+  <div class="px-0 py-8">
     <main>
-      <section class="skills-section">
+      <section>
         <div class="container">
           <h2 id="skills">My Skills</h2>
           <input
             type="text"
             v-model="searchQuery"
             placeholder="Search skills..."
-            class="search-bar"
+            class="my-6 mx-0 p-3 w-full max-w-sm text-base border-2 border-solid border-border bg-black text-white rounded-xl"
           />
-          <table class="skills-table">
+          <table class="w-full border-collapse">
             <thead>
               <tr>
                 <th @click="sortBy('id')">
@@ -129,48 +129,21 @@ export default {
 </script>
 
 <style scoped>
-.skills-page {
-  padding: 2rem 0;
-}
-
-.search-bar {
-  margin: 1.5rem 0;
-  padding: 0.75rem;
-  width: 100%;
-  max-width: 400px;
-  font-size: 1rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: black;
-  color: white;
-}
-
-.skills-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.skills-table th,
-.skills-table td {
+table th,
+table td {
   padding: 1rem;
   text-align: left;
   border-bottom: 1px solid var(--border);
 }
 
-.skills-table th {
+table th {
   background-color: var(--bg-color-secondary);
   cursor: pointer;
   user-select: none;
 }
 
-.skills-table th span {
+table th span {
   margin-left: 5px;
   font-size: 0.8em;
-}
-
-.skill-emblem {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
 }
 </style>
