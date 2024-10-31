@@ -1,17 +1,17 @@
 <template>
   <div>
     <h3 class="text-h3">{{ title }}</h3>
-    <h4>for {{ company }}</h4>
-    <h5>📍 {{ location }}</h5>
-    <p class="work-text">{{ description }}</p>
-    <div class="skills-imgs">
+    <h4 class="text-xl">for {{ company }}</h4>
+    <h5 class="text-base font-light">📍 {{ location }}</h5>
+    <p class="my-4">{{ description }}</p>
+    <div class="flex flex-row flex-wrap justify-start sm:gap-gutter-small py-gutter-small gap-gutter-large">
       <skill-emblem
         v-for="skill in skills"
         :key="skill"
         :name="skill"
       ></skill-emblem>
     </div>
-    <div class="work-links">
+    <div class="flex items-center justify-between gap-6">
       <external-link class="link" :to="detailPageLink">Read More</external-link>
     </div>
   </div>
@@ -40,39 +40,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.work-text {
-  margin-block: var(--gutter-micro);
-}
-
-.skills-imgs {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  gap: var(--gutter-small);
-  padding-block: var(--gutter-small);
-}
-
-@media (max-width: 675px) {
-  .skills-imgs {
-    gap: var(--gutter-large);
-  }
-}
-
-.work-links {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--gutter-x-small);
-}
-
-h4 {
-  font-size: 1.2rem;
-}
-
-h5 {
-  font-size: 1rem;
-  font-weight: 300;
-}
-
-</style>
+<style scoped></style>
