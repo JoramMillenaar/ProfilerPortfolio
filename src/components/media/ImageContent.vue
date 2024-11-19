@@ -8,6 +8,7 @@ export default {
   data() {
     return {
       currentSrc: this.placeholder,
+      loadedImages: {},
     };
   },
   mounted() {
@@ -16,23 +17,30 @@ export default {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            this.loadImage(this.src);
+            console.log('Preloading:', this.src);
+            this.preloadImage(this.src);
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1 }
+      { rootMargin: '200px' }
     );
     observer.observe(img);
   },
   methods: {
-    async loadImage(fileName) {
+    async preloadImage(fileName) {
       try {
+        if (this.loadedImages[fileName]) {
+          this.currentSrc = this.loadedImages[fileName];
+          return;
+        }
+        
         const images = import.meta.glob('/src/assets/images/**/*', { as: 'url' });
         const importImage = images[`/src/assets/images/${fileName}`];
 
         if (importImage) {
           const imageUrl = await importImage();
+          this.loadedImages[fileName] = imageUrl;
           this.currentSrc = imageUrl;
         } else {
           console.error(`Image not found: ${fileName}`);
