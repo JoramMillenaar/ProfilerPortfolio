@@ -17,7 +17,6 @@ export default {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            console.log('Preloading:', this.src);
             this.preloadImage(this.src);
             observer.unobserve(entry.target);
           }
