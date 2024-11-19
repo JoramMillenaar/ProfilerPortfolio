@@ -3,7 +3,7 @@
     <div class="container">
       <h2 id="work">My Experience</h2>
       <div class="work-boxes">
-        <div class="work-box">
+        <div class="work-box left">
           <div class="work-textbox" data-aos="fade-right">
             <experience-detail
               :id="experiences[0].id"
@@ -23,8 +23,8 @@
             ></video-content>
           </div>
         </div>
-        <div class="work-box left">
-          <div class="work-textbox" data-aos="fade-left">
+        <div class="work-box">
+          <div class="work-textbox" data-aos="fade-right">
             <experience-detail
               :id="experiences[1].id"
               :title="experiences[1].title"
@@ -35,17 +35,16 @@
               :modalId="experiences[1].modalId"
             />
           </div>
-          <div class="work-media shadow" data-aos="zoom-in-up">
-            <mac-iphone-mockup
-              :video="experiences[1].video"
+          <div class="work-media rounded shadow" data-aos="zoom-in-up">
+            <video-content
               :thumbnail="experiences[1].thumbnail"
-              :phoneOverlayImg="experiences[1].phoneOverlayImg"
-              :phoneScrollableImg="experiences[1].phoneScrollableImg"
-            ></mac-iphone-mockup>
+              :video="experiences[1].video"
+              :blurredBackground="experiences[1].blurredBackground"
+            ></video-content>
           </div>
         </div>
-        <div class="work-box">
-          <div class="work-textbox" data-aos="fade-right">
+        <div class="work-box left">
+          <div class="work-textbox" data-aos="fade-left">
             <experience-detail
               :id="experiences[2].id"
               :title="experiences[2].title"
@@ -57,10 +56,31 @@
             />
           </div>
           <div class="work-media shadow" data-aos="zoom-in-up">
-            <simple-mac-mockup
-              :image="experiences[2].image"
-              :thumbnail="experiences[2].thumbnail"
+            <mac-iphone-mockup
               :video="experiences[2].video"
+              :thumbnail="experiences[2].thumbnail"
+              :phoneOverlayImg="experiences[2].phoneOverlayImg"
+              :phoneScrollableImg="experiences[2].phoneScrollableImg"
+            ></mac-iphone-mockup>
+          </div>
+        </div>
+        <div class="work-box">
+          <div class="work-textbox" data-aos="fade-right">
+            <experience-detail
+              :id="experiences[3].id"
+              :title="experiences[3].title"
+              :company="experiences[3].company"
+              :location="experiences[3].location"
+              :description="experiences[3].description"
+              :skills="experiences[3].skills"
+              :modalId="experiences[3].modalId"
+            />
+          </div>
+          <div class="work-media shadow" data-aos="zoom-in-up">
+            <simple-mac-mockup
+              :image="experiences[3].image"
+              :thumbnail="experiences[3].thumbnail"
+              :video="experiences[3].video"
             ></simple-mac-mockup>
           </div>
         </div>

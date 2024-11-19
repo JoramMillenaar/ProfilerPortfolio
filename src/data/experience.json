@@ -1,5 +1,57 @@
 [
   {
+    "id": "opensource",
+    "title": "Open Source Developer",
+    "company": "various projects",
+    "type": "independent",
+    "location": "Remote",
+    "description": "Developed open-source solutions, advancing knowledge management, signal processing, and developer tools.",
+    "content": [
+      {
+        "type": "header",
+        "content": "Obsidian ML Plugin"
+      },
+      {
+        "type": "paragraph",
+        "content": "Developed a machine-learning plugin in TypeScript for Obsidian, designed to automate networked note-taking and enhance knowledge management workflows. Launching February 2023."
+      },
+      {
+        "type": "header",
+        "content": "Signal and Audio Processing"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Created 7 Python projects translating complex signal/audio processing algorithms from C++ to Python for accessibility and clarity.",
+          "Designed reusable interfaces to simplify the integration of advanced audio features."
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Developer Portfolio Tools"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Built Vue.js and React applications to help developers dynamically showcase their portfolios.",
+          "Focused on modularity and ease of customization for user-friendly experiences."
+        ]
+      }
+    ],
+    "skills": [
+      "python",
+      "typescript",
+      "vuejs",
+      "react",
+      "javascript",
+      "tailwind",
+      "ml",
+      "git"
+    ],
+    "thumbnail": "opensource-thumbnail.webp",
+    "modalId": "opensource-modal"
+  },  
+  {
     "id": "therapieland",
     "title": "Full-Stack Developer",
     "company": "Therapieland B.V.",

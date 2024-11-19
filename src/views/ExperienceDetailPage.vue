@@ -3,7 +3,7 @@
   <div class="header">
     <div class="header-top">
       <div class="header-text">
-        <h1>{{ experience.company }}</h1>
+        <h1 class="capitalize">{{ experience.company }}</h1>
         <h3>{{ experience.title }}</h3>
         <h4>{{ experience.location }}</h4>
       </div>

@@ -89,5 +89,33 @@
     "estHours": 20,
     "level": "Familiar",
     "icon": "cpp.svg"
+  },
+  {
+    "id": "typescript",
+    "name": "TypeScript",
+    "estHours": 80,
+    "level": "Familiar",
+    "icon": "ts.svg"
+  },
+  {
+    "id": "react",
+    "name": "React",
+    "estHours": 40,
+    "level": "Familiar",
+    "icon": "react.svg"
+  },
+  {
+    "id": "ml",
+    "name": "Machine Learning",
+    "estHours": 40,
+    "level": "Familiar",
+    "icon": "ml.svg"
+  },
+  {
+    "id": "tailwind",
+    "name": "Tailwind",
+    "estHours": 40,
+    "level": "Familiar",
+    "icon": "tailwind.svg"
   }
 ]
