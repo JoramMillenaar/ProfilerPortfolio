@@ -22,7 +22,7 @@ export default {
           }
         });
       },
-      { rootMargin: '200px' }
+      { rootMargin: '500px' }
     );
     observer.observe(img);
   },
