@@ -1,10 +1,10 @@
 {
   "featured": {
-    "id": "portfolio",
-    "title": "Dynamic Vue.js Developer Portfolio",
-    "description": "This project showcases my expertise in Vue.js through the development of a dynamic, responsive portfolio website designed to feature my software projects and professional accomplishments. It's a hint at my dedication to continuous learning and my passion for combining aesthetic design with functional technology.",
-    "link": "https://github.com/JoramMillenaar/ProfilerPortfolio",
-    "image": "site-logo.webp",
+    "id": "obsidian-plugin",
+    "title": "ML Document Search Plugin",
+    "description": "Obsidian.md plugin: related notes. Discover similar documents by meaning, leveraging a locally run LM to ensure privacy and data ownership.",
+    "link": "https://github.com/JoramMillenaar/obsidian-related-notes",
+    "image": "related-notes-reel.gif",
     "skill": "vuejs"
   },
   "projects": [
@@ -13,6 +13,7 @@
       "title": "Vocal Magic",
       "description": "An audio processing toolkit designed to transform and enhance vocal performances in real-time.",
       "link": "https://github.com/JoramMillenaar/VocalMagic",
+
       "image": "vocal-magic-logo.webp",
       "skill": "python"
     },
@@ -25,12 +26,12 @@
       "skill": "python"
     },
     {
-      "id": "synthon",
-      "title": "Synthon",
-      "description": "Transform your MIDI inputs into a symphony of synthesized sounds, all powered by Python.",
-      "link": "https://github.com/JoramMillenaar/Synthon/blob/master/synthon.py",
-      "image": "synthon-logo.webp",
-      "skill": "python"
+      "id": "portfolio",
+      "title": "Dynamic Vue.js Developer Portfolio",
+      "description": "A responsive Vue.js portfolio website designed to feature my software projects and professional accomplishments.",
+      "link": "https://github.com/JoramMillenaar/ProfilerPortfolio",
+      "image": "site-logo.webp",
+      "skill": "vuejs"
     }
   ]
 }
