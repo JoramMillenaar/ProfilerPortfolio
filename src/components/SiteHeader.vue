@@ -1,5 +1,6 @@
 <template>
   <header class="header">
+    <div class="bg-fade"></div>
     <div class="header-textbox">
       <div data-aos="fade" data-aos-duration="500">
         <text-slider />
@@ -79,6 +80,13 @@ export default {
   z-index: 2;
   padding-right: 210px;
   padding-left: var(--gutter-x-large);
+}
+
+.bg-fade {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.3), transparent);
 }
 
 @media (max-width: 1275px) {
