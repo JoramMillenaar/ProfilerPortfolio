@@ -3,6 +3,7 @@
     "id": "python",
     "name": "Python",
     "estHours": 4500,
+    "experienceYears": 5,
     "level": "Advanced",
     "icon": "python.svg"
   },
@@ -10,13 +11,15 @@
     "id": "django",
     "name": "Django",
     "estHours": 4000,
+    "experienceYears": 5,
     "level": "Advanced",
     "icon": "django.webp"
   },
   {
     "id": "sql",
     "name": "SQL",
-    "estHours": 150,
+    "estHours": 200,
+    "experienceYears": 2,
     "level": "Seasoned",
     "icon": "sql.webp"
   },
@@ -24,13 +27,15 @@
     "id": "pytest",
     "name": "PyTest",
     "estHours": 400,
+    "experienceYears": 2,
     "level": "Advanced",
     "icon": "pytest.svg"
   },
   {
     "id": "git",
     "name": "Git",
-    "estHours": 100,
+    "estHours": 200,
+    "experienceYears": 5,
     "level": "Seasoned",
     "icon": "git.webp"
   },
@@ -38,6 +43,7 @@
     "id": "javascript",
     "name": "JavaScript",
     "estHours": 400,
+    "experienceYears": 3,
     "level": "Proficient",
     "icon": "js.webp"
   },
@@ -45,6 +51,7 @@
     "id": "shell",
     "name": "Shell (Linux)",
     "estHours": 200,
+    "experienceYears": 5,
     "level": "Proficient",
     "icon": "shell.webp"
   },
@@ -52,6 +59,7 @@
     "id": "css",
     "name": "CSS",
     "estHours": 500,
+    "experienceYears": 5,
     "level": "Seasoned",
     "icon": "css.webp"
   },
@@ -59,6 +67,7 @@
     "id": "kubernetes",
     "name": "Kubernetes",
     "estHours": 80,
+    "experienceYears": 1,
     "level": "Familiar",
     "icon": "kubernetes.svg"
   },
@@ -66,6 +75,7 @@
     "id": "googlecloud",
     "name": "Google Cloud",
     "estHours": 80,
+    "experienceYears": 2,
     "level": "Familiar",
     "icon": "googlecloud.svg"
   },
@@ -73,6 +83,7 @@
     "id": "wordpress",
     "name": "WordPress",
     "estHours": 80,
+    "experienceYears": 1,
     "level": "Familiar",
     "icon": "wordpress.webp"
   },
@@ -80,6 +91,7 @@
     "id": "vuejs",
     "name": "Vue.js",
     "estHours": 100,
+    "experienceYears": 1,
     "level": "Proficient",
     "icon": "vuejs.svg"
   },
@@ -87,6 +99,7 @@
     "id": "cpp",
     "name": "C++",
     "estHours": 20,
+    "experienceYears": 0,
     "level": "Familiar",
     "icon": "cpp.svg"
   },
@@ -94,13 +107,15 @@
     "id": "typescript",
     "name": "TypeScript",
     "estHours": 80,
-    "level": "Familiar",
+    "experienceYears": 1,
+    "level": "Seasoned",
     "icon": "ts.svg"
   },
   {
     "id": "react",
     "name": "React",
     "estHours": 40,
+    "experienceYears": 0,
     "level": "Familiar",
     "icon": "react.svg"
   },
@@ -108,6 +123,7 @@
     "id": "ml",
     "name": "Machine Learning",
     "estHours": 40,
+    "experienceYears": 0,
     "level": "Familiar",
     "icon": "ml.svg"
   },
@@ -115,6 +131,7 @@
     "id": "tailwind",
     "name": "Tailwind",
     "estHours": 40,
+    "experienceYears": 0,
     "level": "Familiar",
     "icon": "tailwind.svg"
   }

@@ -28,9 +28,9 @@
                     <span v-else>▼</span>
                   </span>
                 </th>
-                <th @click="sortBy('estHours')">
-                  Est. Hours Spent
-                  <span v-if="sortKey === 'estHours'">
+                <th @click="sortBy('experienceYears')">
+                  Years of Experience
+                  <span v-if="sortKey === 'experienceYears'">
                     <span v-if="sortOrder === 'asc'">▲</span>
                     <span v-else>▼</span>
                   </span>
@@ -50,7 +50,7 @@
                   <skill-emblem :name="skill.id" />
                 </td>
                 <td>{{ skill.name }}</td>
-                <td>{{ skill.estHours }}</td>
+                <td>{{ skill.experienceYears }}</td>
                 <td>{{ skill.level }}</td>
               </tr>
             </tbody>
@@ -86,6 +86,8 @@ export default {
     filteredSkills() {
       let filtered = this.skills.filter((skill) =>
         skill.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      ).filter((skill) =>
+        skill.experienceYears >= 1
       );
 
       if (this.sortKey) {
