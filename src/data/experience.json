@@ -1,5 +1,78 @@
 [
   {
+    "id": "everbetter",
+    "title": "AI Software Developer",
+    "company": "Marty Mosely",
+    "type": "contract",
+    "location": "Remote",
+    "description": "Led HIPAA-compliant AI infrastructure, reducing costs and latency while building real-time transcription, secure data pipelines, and contextual AI experiences.",
+    "content": [
+      {
+        "type": "header",
+        "content": "HIPAA Compliance & Infra Overhaul"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Defined HIPAA standards across the stack, enforced end-to-end encryption, and enabled auditability via NATS + BigQuery.",
+          "Negotiated Business Associate Agreements (BAAs) with external services to ensure regulatory compliance."
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Cost Reduction & Model Optimization"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Cut thousands in monthly infrastructure costs by migrating from custom LLMs to HIPAA-compliant public models.",
+          "Improved model performance and output quality despite reduced cost."
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Real-Time Transcription Pipeline"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Built a modular, WebSocket-based audio pipeline for real-time transcription from browser-captured audio.",
+          "Used pluggable stream abstractions to keep the architecture clean and flexible."
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Contextual AI & Secure Integration"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Integrated OpenAI, custom LLMs, embeddings, and agent frameworks under strict security and latency constraints.",
+          "Delivered contextual AI outputs tailored to user workflows."
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Open Source Contribution"
+      },
+      {
+        "type": "paragraph",
+        "content": "Contributed to LightRAG, optimizing it for constrained environments and increasing reliability for long-context retrieval in production."
+      }
+    ],
+    "skills": [
+      "python",
+      "ml",
+      "react",
+      "typescript",
+      "git",
+      "googlecloud",
+      "kubernetes"
+    ],
+    "thumbnail": "everbetter-thumbnail.webp",
+    "modalId": "everbetter-modal"
+  },
+  {
     "id": "opensource",
     "title": "Open Source Developer",
     "company": "various projects",
@@ -50,7 +123,7 @@
     ],
     "thumbnail": "opensource-thumbnail.webp",
     "modalId": "opensource-modal"
-  },  
+  },
   {
     "id": "therapieland",
     "title": "Full-Stack Developer",
@@ -130,7 +203,11 @@
         ]
       }
     ],
-    "skills": ["wordpress", "javascript", "css"],
+    "skills": [
+      "wordpress",
+      "javascript",
+      "css"
+    ],
     "modalId": "enviu-modal",
     "video": "mac-enviu.mp4",
     "thumbnail": "mac-enviu-thumbnail.webp",
@@ -164,7 +241,14 @@
         ]
       }
     ],
-    "skills": ["python", "django", "css", "javascript", "git", "shell"],
+    "skills": [
+      "python",
+      "django",
+      "css",
+      "javascript",
+      "git",
+      "shell"
+    ],
     "video": "thrust-website-comp.mp4",
     "thumbnail": "thrust-thumbnail.webp",
     "modalId": "maritime-emissions-modal"
