@@ -5,6 +5,7 @@
     "date": "2025-09-01",
     "readTime": "6 min read",
     "summary": "What trying to build a fully local semantic search plugin for Obsidian taught me about constraints, sandboxed environments, and real engineering trade-offs.",
+    "seal": "Disclaimer • AI assisted writing",
     "tags": [
       "engineering",
       "local-first",

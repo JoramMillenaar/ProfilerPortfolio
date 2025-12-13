@@ -2,6 +2,13 @@
   <nav-bar :showAtTop="false"/>
   <article class="blog-detail">
     <div class="container">
+      <div v-if="post.seal" class="seal-float" aria-hidden="true">
+        <CircularSeal
+            :text="post.seal"
+            :size="120"
+            :duration="22"
+        />
+      </div>
       <header class="hero" v-if="post">
         <p class="eyebrow">Stories & Processes</p>
         <h1 class="title">{{ post.title }}</h1>
@@ -34,10 +41,11 @@ import NavBar from '@/components/NavBar.vue';
 import SiteFooter from '@/components/SiteFooter.vue';
 import blogPosts from '@/data/blogPosts.json';
 import CustomText from "@/components/common/customText.vue";
+import CircularSeal from "@/components/common/CircleSeal.vue";
 
 export default {
   name: 'BlogDetailPage',
-  components: {CustomText, NavBar, SiteFooter},
+  components: {CircularSeal, CustomText, NavBar, SiteFooter},
   data() {
     return {
       post: null,
@@ -61,7 +69,7 @@ export default {
         day: 'numeric',
       });
     },
-  },
+  }
 };
 </script>
 
@@ -76,6 +84,39 @@ export default {
   max-width: 960px;
   margin: 0 auto;
   padding: var(--gutter-x-large) var(--gutter-medium);
+  position: relative;
+}
+
+.hero {
+  padding-bottom: var(--gutter-large);
+  border-bottom: 1px solid var(--border);
+  padding-right: clamp(110px, 16vw, 170px);
+}
+
+.seal-float {
+  position: absolute;
+  top: 18vh;
+  right: 0;
+  transform: rotate(8deg);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.9;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-right: 0;
+  }
+
+  .seal-float {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-left: auto;
+    margin-bottom: var(--gutter-small);
+    transform: rotate(6deg);
+    width: fit-content;
+  }
 }
 
 .hero {
@@ -148,6 +189,10 @@ export default {
 
   .title {
     font-size: clamp(2rem, 6vw, 2.5rem);
+  }
+
+  .seal-float {
+    display: none;
   }
 }
 </style>
