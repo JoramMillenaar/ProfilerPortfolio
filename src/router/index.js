@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '@/views/HomePage.vue';
 import ExperienceDetailPage from '@/views/ExperienceDetailPage.vue';
-import SkillsPage from '@/views/SkillsPage.vue';
+import BlogPage from '@/views/BlogPage.vue';
 import { calculateTopPosition } from '@/utils/windowUtils';
 
 const routes = [
@@ -17,9 +17,9 @@ const routes = [
     props: true,
   },
   {
-    path: '/skills',
-    name: 'Skills',
-    component: SkillsPage,
+    path: '/blog',
+    name: 'Blog',
+    component: BlogPage,
   },
 ];
 

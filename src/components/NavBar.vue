@@ -9,7 +9,7 @@
       <router-link :to="{ name: 'Home' }" class="font-tech text-h3 text-important">JM</router-link>
       <div class="nav-links">
         <external-link class="link" to="/">Home</external-link>
-        <external-link class="link" to="/skills">Skills</external-link>
+        <external-link class="link" to="/blog">Blog</external-link>
         <external-link class="link" to="/#contact">Contact</external-link>
       </div>
     </nav>

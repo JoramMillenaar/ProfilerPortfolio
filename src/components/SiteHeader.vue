@@ -13,8 +13,8 @@
       </p>
       <div class="header-btns" data-aos="fade-up" data-aos-delay="400">
         <a href="#contact" class="btn-primary">Contact Me</a>
-        <external-link class="btn-secondary" to="/skills"
-          >Skill Overview</external-link
+        <external-link class="btn-secondary" to="/blog"
+          >Latest Stories</external-link
         >
       </div>
     </div>

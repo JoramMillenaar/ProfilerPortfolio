@@ -1,0 +1,91 @@
+[
+  {
+    "id": "local-ai-in-a-sandbox",
+    "title": "Building local AI in a sandboxed world",
+    "date": "2025-09-01",
+    "readTime": "6 min read",
+    "summary": "What trying to build a fully local semantic search plugin for Obsidian taught me about constraints, sandboxed environments, and real engineering trade-offs.",
+    "tags": [
+      "engineering",
+      "local-first",
+      "developer experience",
+      "learning",
+      "architecture"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "content": "A little over a year ago, I started building an Obsidian plugin to add fully local semantic search. No cloud, no APIs — just your notes, your machine, your data. At first, things went smoothly: the framework came together, the core logic worked, and I shipped an MVP to the community. I genuinely thought I was close to a stable release."
+      },
+      {
+        "type": "paragraph",
+        "content": "That confidence didn’t last long."
+      },
+      {
+        "type": "header",
+        "content": "Hitting an unexpected wall"
+      },
+      {
+        "type": "paragraph",
+        "content": "I spent days circling the same problem from every angle. Should I ship native binaries? Run a separate process and communicate via IPC? Compile everything to WebAssembly? Surely there had to be a way to escape the sandbox."
+      },
+      {
+        "type": "paragraph",
+        "content": "There wasn’t."
+      },
+      {
+        "type": "paragraph",
+        "content": "Obsidian plugins run inside a sandboxed Electron environment. The Node.js you get isn’t \"real\" Node — it’s Node inside Electron inside Chromium. You can’t ship binaries. You can’t rely on external files. Everything has to be bundled into a single main.js file. And once you rule out calling external APIs, the problem changes shape entirely."
+      },
+      {
+        "type": "header",
+        "content": "The real question"
+      },
+      {
+        "type": "paragraph",
+        "content": "At that point, the core question became unavoidable: can you build a fully local AI system inside one single vanilla JavaScript file? That’s not a quick fix. That’s a systems problem."
+      },
+      {
+        "type": "header",
+        "content": "What I learned along the way"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Execution environments matter more than clever code — constraints will always win.",
+          "Research beats brute force; progress sped up once I stopped guessing and started understanding the sandbox, build pipeline, and module resolution.",
+          "Experiment in isolation before committing to an architectural direction; many ideas fail simply because they don’t fit the environment.",
+          "LLMs are powerful tools, but they don’t replace deep reasoning about constraints — they accelerate thinking, they don’t do it for you."
+        ]
+      },
+      {
+        "type": "header",
+        "content": "What actually worked"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Consistency: showing up daily compounds, even when progress feels inefficient.",
+          "Trying unfamiliar technologies instead of retreating to comfortable stacks.",
+          "Leaning into discomfort as part of the learning process rather than a signal to stop."
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Where this leaves me now"
+      },
+      {
+        "type": "paragraph",
+        "content": "Revisiting this project recently reminded me why it still matters. The question is still open. The constraints are still real. And the problem is still interesting."
+      },
+      {
+        "type": "paragraph",
+        "content": "The crossroads isn’t purely technical anymore — it’s strategic. Can this be iterated on in small, daily steps, or does it require a fundamentally different shape? That’s not failure. That’s honest engineering."
+      },
+      {
+        "type": "paragraph",
+        "content": "Some projects don’t fail loudly. They quietly reveal that the problem is deeper than you expected. And sometimes, that’s exactly where the real learning begins."
+      }
+    ]
+  }
+]
