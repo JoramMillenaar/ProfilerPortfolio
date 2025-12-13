@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '@/views/HomePage.vue';
 import ExperienceDetailPage from '@/views/ExperienceDetailPage.vue';
 import BlogPage from '@/views/BlogPage.vue';
+import BlogDetailPage from '@/views/BlogDetailPage.vue';
 import { calculateTopPosition } from '@/utils/windowUtils';
 
 const routes = [
@@ -20,6 +21,12 @@ const routes = [
     path: '/blog',
     name: 'Blog',
     component: BlogPage,
+  },
+  {
+    path: '/blog/:id',
+    name: 'BlogDetail',
+    component: BlogDetailPage,
+    props: true,
   },
 ];
 

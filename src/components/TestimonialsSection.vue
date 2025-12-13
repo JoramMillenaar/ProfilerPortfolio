@@ -4,27 +4,24 @@
     <div class="container">
       <ol class="testimonials">
         <li
-          class="testimonial"
-          v-for="(testimonial, index) in testimonials"
-          :key="testimonial.id"
-          data-aos="flip-right"
-          :data-aos-offset="300 + 100 * index"
+            class="testimonial"
+            v-for="(testimonial, index) in testimonials"
+            :key="testimonial.id"
+            data-aos="flip-right"
+            :data-aos-offset="300 + 100 * index"
         >
           <blockquote class="text-text-small mb-6 flex flex-col justify-between">
             {{ testimonial.quote }}
           </blockquote>
-          <!-- .testimonial .link {
-  margin-block-start: auto;
-  margin-left: auto;
-  font-weight: 500;
-  font-size: initial;
-} -->
-          <external-link class="link ml-auto order-2 pb-0 font-medium text-text-small" isButton @click="openModal(testimonial.id)">Read More</external-link>
+
+          <external-link class="link ml-auto order-2 pb-0 font-medium text-text-small" isButton
+                         @click="openModal(testimonial.id)">Read More
+          </external-link>
           <figure class="testimonial-author">
             <ImageContent
-              className="size-14 rounded-[50%] bg-secondary"
-              :src="'testimonials/' + testimonial.image"
-              :alt="`Picture of ${testimonial.author}'s face`"
+                className="size-14 rounded-[50%] bg-secondary"
+                :src="'testimonials/' + testimonial.image"
+                :alt="`Picture of ${testimonial.author}'s face`"
             />
             <figcaption>
               <h3 class="testimonial-author-name">{{ testimonial.author }}</h3>
@@ -34,15 +31,15 @@
         </li>
       </ol>
       <quote-modal
-        v-for="testimony in testimonials"
-        :key="testimony.id"
-        :modal-id="testimony.id"
-        :is-visible="testimony.isVisible"
-        :author="testimony.author"
-        :position="testimony.position"
-        :image="testimony.image"
-        :content="testimony.content.split('\n')"
-        @close="closeModal(testimony.id)"
+          v-for="testimony in testimonials"
+          :key="testimony.id"
+          :modal-id="testimony.id"
+          :is-visible="testimony.isVisible"
+          :author="testimony.author"
+          :position="testimony.position"
+          :image="testimony.image"
+          :content="testimony.content.split('\n')"
+          @close="closeModal(testimony.id)"
       />
     </div>
   </section>
@@ -90,8 +87,8 @@ export default {
   margin-block-start: var(--gutter-x-large);
   list-style-type: none;
   background-image: linear-gradient(
-    rgba(88, 88, 88, 0.297),
-    rgba(214, 214, 214, 0.082)
+      rgba(88, 88, 88, 0.297),
+      rgba(214, 214, 214, 0.082)
   );
 }
 

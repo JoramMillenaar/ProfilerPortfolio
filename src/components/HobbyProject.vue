@@ -114,13 +114,6 @@ export default {
   margin-block-start: auto;
 }
 
-.reaction-count {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--gutter-nano);
-  font-size: initial;
-}
-
 @media (max-width: 985px) {
   .article-box:nth-of-type(2),
   .article-box:nth-of-type(3) {

@@ -81,7 +81,7 @@ body {
     --body: #cbcbcb;
     --border: #62626234;
     --border-dark: #5e5e5e1f;
-    font-size: 1.275rem;
+    font-size: 1rem;
     color: var(--body);
     background-color: var(--bg-color-primary);
     line-height: 1.4;
