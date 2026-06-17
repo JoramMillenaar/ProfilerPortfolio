@@ -15,6 +15,11 @@
         </li>
       </ul>
 
+      <figure v-else-if="section.type === 'image'" class="image-block shadow">
+        <img :src="section.src" :alt="section.alt || ''"/>
+        <figcaption v-if="section.caption">{{ section.caption }}</figcaption>
+      </figure>
+
       <p v-else class="unknown">
         Unknown section type: {{ section.type }}
       </p>
@@ -57,6 +62,29 @@ ul > li:before {
   content: '-';
   width: 1em;
   margin-left: -1em;
+}
+
+.image-block {
+  margin: 0;
+  padding-bottom: var(--gutter-medium);
+}
+
+.image-block img {
+  display: block;
+  max-width: 100%;
+  margin: auto;
+  height: auto;
+}
+
+.image-block figcaption {
+  padding-top: var(--gutter-nano);
+  font-size: 0.875em;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.shadow {
+  filter: drop-shadow(0px 0px 172px rgba(255, 255, 255, 0.1));
 }
 
 .unknown {

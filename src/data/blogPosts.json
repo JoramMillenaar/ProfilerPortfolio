@@ -88,5 +88,142 @@
         "content": "Some projects don’t fail loudly. They quietly reveal that the problem is deeper than you expected. And sometimes, that’s exactly where the real learning begins."
       }
     ]
+  },
+  {
+    "id": "ship-one-thing",
+    "title": "For engagement sake: Ship one thing",
+    "date": "2026-06-16",
+    "readTime": "8 min read",
+    "summary": "Shipping one seemingly simple thing that works beats shipping many things that might. The proof is that your users start engaging.",
+    "seal": "Disclaimer • Human writing",
+    "tags": [
+      "engineering",
+      "local-first",
+      "UX",
+      "learning"
+    ],
+    "content": [
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dizkkm7dq/image/upload/v1781675515/meme_szgcvj.png",
+        "alt": "Woody from Toy Story captioned 'Users Looking For Help' looking concerned while Buzz captioned 'platforms offering 36 vibe-coded features' promisingly points ahead."
+      },
+      {
+        "type": "paragraph",
+        "content": "I had done it, the minimal working version of my Obsidian plugin was working. I could now explore my notes by their *meaning*. In the meantime, I was compiling this whole list of features I wanted to add; NLP clustering, multi-modal support, local LLM summarizers, automatic titles, and so on. The thought of having all those features was exciting. Though, at that point, I had already been developing software for over five years, and perhaps intuition made me uncomfortable at that feature list. Queue flashbacks of countless products, PM's and stakeholders that over-invested in a feature set, killing the main value driver. Now, in my own project, I saw why it was so appealing. And I was facing the choice; expand the feature set, or harden and simplify the value the plugin offered."
+      },
+      {
+        "type": "header",
+        "content": "Simple is the most difficult"
+      },
+      {
+        "type": "paragraph",
+        "content": "Here's the thing people underestimate about that choice; the simplification version was the _hard_ one. This whole plugin runs locally, inside Obsidian's sandboxed environment, single-threaded. Every one of those features on my list (the clustering, the summarizers) would've been a new thing fighting for the same tiny pool of compute, on a thread that also needs to stay responsive while you're typing. Adding features wasn't the most value-yielding path I was telling myself it was. It was the path that quietly suffocated the one thing the plugin actually promised to do."
+      },
+      {
+        "type": "paragraph",
+        "content": "So I chose the simplification route. I reduced and removed as much as I could, tested alternatives to the more complex parts, simplified what I could. The result? Same functionality, half the code, much easier to understand (a courtesy for my future self). And through solving some misunderstandings, indexing was speed and accuracy increased by 30% (!!)."
+      },
+      {
+        "type": "header",
+        "content": "Battle-testing"
+      },
+      {
+        "type": "paragraph",
+        "content": "The next thing to do is use it—a lot. Something I've found incredibly valuable is _using_ the products you make. It sounds obvious when you say it out loud, but—my fellow developers—how often have you actually actively used the thing you built for a client, or even for yourself?"
+      },
+      {
+        "type": "paragraph",
+        "content": "After some use I caught myself disabling my own plugin, because it'd hang the UI for a split second—very disruptive when you're writing. That stung a little. I added debouncers, which helped, but wasn't enough. Around that same time the community started engaging more, and I got some great feedback. One person was honest in saying they stopped using it after five minutes, because the initial indexing step took too long and too many resources. So I added a task queue for the heavy processes, and gave control over what and when to process. Now the most relevant notes get indexed first, the plugin is immediately useful, and I could pause processing whenever the UI needed to stay responsive. Same single feature—just better, lighter, and friendlier now, even though heavy work was happening underneath."
+      },
+      {
+        "type": "header",
+        "content": "Retrospect"
+      },
+      {
+        "type": "paragraph",
+        "content": "What's left is a dependable core; simple and dependable semantic search. And in retrospect, a big part of me believes the focus on simplifying is what _enabled_ the engagement. In a previous post I wrote about attention becoming a scarcer commodity. Throwing dozens of half-baked features at people doesn't feel generous, it feels like a demand—it causes decision paralysis and disengagement. Not because the product is bad, it's not that personal; it's that we're all squeezed for attention, and disengaging when too much is asked of us is almost becoming a survival response."
+      },
+      {
+        "type": "paragraph",
+        "content": "So I offered one (seemingly) simple thing by hiding as much complexity as I could, I smoothed the user experienced, and left the user to just experience the one thing; exploring their notes by meaning. And here's the part I didn't expect; because there was only one legible thing, the effort for people to tell me exactly what was and wasn't working became much less. The feedback came back freely, immediately, without me asking."
+      },
+      {
+        "type": "header",
+        "content": "Conclusion"
+      },
+      {
+        "type": "paragraph",
+        "content": "Thinking back to that feature list I wanted to start on. Every item on it would have made the plugin more impressive to _describe_, and worse to _use_—and it would've buried the signal I actually needed from my users under noise. Discipline lies in what *not* to build. Not to say you can't experiment, A/B test, or build what you like--but to pay attention and effort towards a less demanding user experience."
+      },
+      {
+        "type": "paragraph",
+        "content": "If you take one thing from this; one thing that's reliable and useful will beat ten things that aren't. And your users will be able to afford to spend the most useful currency there is; attention and engagement."
+      }
+    ]
+  },
+  {
+    "id": "attention-deficit",
+    "title": "The growing attention deficit",
+    "date": "2026-06-11",
+    "readTime": "3 min read",
+    "summary": "Everyone is out for our attention, more than ever. And we're all disengaging with it all as a result",
+    "seal": "Disclaimer • AI assisted writing",
+    "tags": [
+      "trends",
+      "UX"
+    ],
+    "content": [
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dizkkm7dq/image/upload/v1781674519/Screenshot_2026-06-11_at_11.42.53_AM_acaymw.png",
+        "alt": "A graph showing app reviews and significant app usage going down while app releases surge."
+      },
+      {
+        "type": "paragraph",
+        "content": "Everyone is out for our attention, more than ever. And I think we're all just disengaging with it all as a result..."
+      },
+      {
+        "type": "paragraph",
+        "content": "App releases are up 180%. App reviews and significant usage are down."
+      },
+      {
+        "type": "paragraph",
+        "content": "A new MIT/Wharton study tracked 100,000 developers across three generations of AI tools. Autonomous agents drove a 741% increase in lines of code written. By the time you get to actual shipped releases, that's down to 30%. By individual developer impact—10%."
+      },
+      {
+        "type": "paragraph",
+        "content": "But then the confusing part is that the flood of new software isn't finding users. It's just sitting there."
+      },
+      {
+        "type": "paragraph",
+        "content": "The same pattern keeps showing up everywhere;"
+      },
+      {
+        "type": "list",
+        "items": [
+          "AI lowered the cost of making things.",
+          "Books tripled.",
+          "Average quality dropped.",
+          "Recommendation systems got harder to navigate."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Perhaps, one person's time saved quietly became several people's time spent finding the good one."
+      },
+      {
+        "type": "paragraph",
+        "content": "AI removed the constraint on supply. It didn't touch the constraint on attention."
+      },
+      {
+        "type": "paragraph",
+        "content": "We seem to be measuring the wrong output. Lines written, releases shipped, content produced; all up. Value consumed, discovered, actually used; flat or falling."
+      },
+      {
+        "type": "paragraph",
+        "content": "Curious on how we are going to adapt to this. In this ever-pressing attention economy, what happens now that we're completely stretched thin on what we  give our attention to? How do we move forward and adopt new things when our attention budget is nearing 0?"
+      }
+    ]
   }
 ]
