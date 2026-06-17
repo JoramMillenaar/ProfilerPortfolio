@@ -6,60 +6,7 @@
     "type": "contract",
     "location": "Remote",
     "description": "Led HIPAA-compliant AI infrastructure, reducing costs and latency while building real-time transcription, secure data pipelines, and contextual AI experiences.",
-    "content": [
-      {
-        "type": "header",
-        "content": "HIPAA Compliance & Infra Overhaul"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Defined HIPAA standards across the stack, enforced end-to-end encryption, and enabled auditability via NATS + BigQuery.",
-          "Negotiated Business Associate Agreements (BAAs) with external services to ensure regulatory compliance."
-        ]
-      },
-      {
-        "type": "header",
-        "content": "Cost Reduction & Model Optimization"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Cut thousands in monthly infrastructure costs by migrating from custom LLMs to HIPAA-compliant public models.",
-          "Improved model performance and output quality despite reduced cost."
-        ]
-      },
-      {
-        "type": "header",
-        "content": "Real-Time Transcription Pipeline"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Built a modular, WebSocket-based audio pipeline for real-time transcription from browser-captured audio.",
-          "Used pluggable stream abstractions to keep the architecture clean and flexible."
-        ]
-      },
-      {
-        "type": "header",
-        "content": "Contextual AI & Secure Integration"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Integrated OpenAI, custom LLMs, embeddings, and agent frameworks under strict security and latency constraints.",
-          "Delivered contextual AI outputs tailored to user workflows."
-        ]
-      },
-      {
-        "type": "header",
-        "content": "Open Source Contribution"
-      },
-      {
-        "type": "paragraph",
-        "content": "Contributed to LightRAG, optimizing it for constrained environments and increasing reliability for long-context retrieval in production."
-      }
-    ],
+    "content": "## HIPAA Compliance & Infra Overhaul\n\n- Defined HIPAA standards across the stack, enforced end-to-end encryption, and enabled auditability via NATS + BigQuery.\n- Negotiated Business Associate Agreements (BAAs) with external services to ensure regulatory compliance.\n\n## Cost Reduction & Model Optimization\n\n- Cut thousands in monthly infrastructure costs by migrating from custom LLMs to HIPAA-compliant public models.\n- Improved model performance and output quality despite reduced cost.\n\n## Real-Time Transcription Pipeline\n\n- Built a modular, WebSocket-based audio pipeline for real-time transcription from browser-captured audio.\n- Used pluggable stream abstractions to keep the architecture clean and flexible.\n\n## Contextual AI & Secure Integration\n\n- Integrated OpenAI, custom LLMs, embeddings, and agent frameworks under strict security and latency constraints.\n- Delivered contextual AI outputs tailored to user workflows.\n\n## Open Source Contribution\n\nContributed to LightRAG, optimizing it for constrained environments and increasing reliability for long-context retrieval in production.",
     "skills": [
       "python",
       "ml",
@@ -79,38 +26,7 @@
     "type": "independent",
     "location": "Remote",
     "description": "Developed open-source solutions, advancing knowledge management, signal processing, and developer tools.",
-    "content": [
-      {
-        "type": "header",
-        "content": "Obsidian ML Plugin"
-      },
-      {
-        "type": "paragraph",
-        "content": "Developed a machine-learning plugin in TypeScript for Obsidian, designed to automate networked note-taking and enhance knowledge management workflows. Launching February 2023."
-      },
-      {
-        "type": "header",
-        "content": "Signal and Audio Processing"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Created 7 Python projects translating complex signal/audio processing algorithms from C++ to Python for accessibility and clarity.",
-          "Designed reusable interfaces to simplify the integration of advanced audio features."
-        ]
-      },
-      {
-        "type": "header",
-        "content": "Developer Portfolio Tools"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Built Vue.js and React applications to help developers dynamically showcase their portfolios.",
-          "Focused on modularity and ease of customization for user-friendly experiences."
-        ]
-      }
-    ],
+    "content": "## Obsidian ML Plugin\n\nDeveloped a machine-learning plugin in TypeScript for Obsidian, designed to automate networked note-taking and enhance knowledge management workflows. Launching February 2023.\n\n## Signal and Audio Processing\n\n- Created 7 Python projects translating complex signal/audio processing algorithms from C++ to Python for accessibility and clarity.\n- Designed reusable interfaces to simplify the integration of advanced audio features.\n\n## Developer Portfolio Tools\n\n- Built Vue.js and React applications to help developers dynamically showcase their portfolios.\n- Focused on modularity and ease of customization for user-friendly experiences.",
     "skills": [
       "python",
       "typescript",
@@ -131,40 +47,7 @@
     "type": "payroll",
     "location": "Amsterdam, The Netherlands",
     "description": "Advanced the SaaS e-health application for over three years, improving mental health service delivery in the Netherlands",
-    "content": [
-      {
-        "type": "header",
-        "content": "High-Impact Data Migration Leadership"
-      },
-      {
-        "type": "paragraph",
-        "content": "Led the final stage of a business-critical project, migrating and translating 100M+ rows of data."
-      },
-      {
-        "type": "list",
-        "items": [
-          "Tripled team productivity during two critical weeks by doubling my working hours and motivating co-workers to increase their commitments in support of urgent needs.",
-          "Reduced script runtime from 336 hours to 12, optimizing its performance by leveraging my understanding of low-level mechanics in Python, Pandas, and SQL.",
-          "Avoided the typical 2x-5x effort increase in late-stage changes by architecting scalable, testable, and modular software early in the project, ensuring seamless final-stage additions.",
-          "Reduced post-launch fallout from two anticipated weeks of chaos to a few minor issues by prioritizing and mentoring the team in creating a rich automated test suite, covering 95%."
-        ]
-      },
-      {
-        "type": "header",
-        "content": "Collaboration and Operation"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Led workshops focused on TDD, AI tools, and PyTest, transforming Friday afternoon lulls into opportunities for knowledge-sharing, further collaborating on advanced SQL and core code principles.",
-          "Doubled collaboration between IT and stakeholders by simplifying and presenting complex topics, resulting in clear, actionable insights and encouraging more engaged discussions and questions.",
-          "Saved weeks of misdirected efforts by developing data visualizations and access tools driving key decisions, enabling secure, independent data retrieval, and freeing up development time.",
-          "Reduced platform downtime from hours per month to mere minutes by automating legacy system deployments, supporting cloud migration, and enhancing DevOps with GitLab CI/CD pipelines.",
-          "Mitigated major cybersecurity risks by a factor of 10 to 1,000 through identifying vulnerabilities, implementing Snyk for dependency monitoring, advocating for best practices, and actively supporting cyberattack responses.",
-          "Eliminated costly knowledge silos by driving documentation from one entry per month to multiple per week through the creation of a frictionless contribution system."
-        ]
-      }
-    ],
+    "content": "## High-Impact Data Migration Leadership\n\nLed the final stage of a business-critical project, migrating and translating 100M+ rows of data.\n\n- Tripled team productivity during two critical weeks by doubling my working hours and motivating co-workers to increase their commitments in support of urgent needs.\n- Reduced script runtime from 336 hours to 12, optimizing its performance by leveraging my understanding of low-level mechanics in Python, Pandas, and SQL.\n- Avoided the typical 2x-5x effort increase in late-stage changes by architecting scalable, testable, and modular software early in the project, ensuring seamless final-stage additions.\n- Reduced post-launch fallout from two anticipated weeks of chaos to a few minor issues by prioritizing and mentoring the team in creating a rich automated test suite, covering 95%.\n\n## Collaboration and Operation\n\n- Led workshops focused on TDD, AI tools, and PyTest, transforming Friday afternoon lulls into opportunities for knowledge-sharing, further collaborating on advanced SQL and core code principles.\n- Doubled collaboration between IT and stakeholders by simplifying and presenting complex topics, resulting in clear, actionable insights and encouraging more engaged discussions and questions.\n- Saved weeks of misdirected efforts by developing data visualizations and access tools driving key decisions, enabling secure, independent data retrieval, and freeing up development time.\n- Reduced platform downtime from hours per month to mere minutes by automating legacy system deployments, supporting cloud migration, and enhancing DevOps with GitLab CI/CD pipelines.\n- Mitigated major cybersecurity risks by a factor of 10 to 1,000 through identifying vulnerabilities, implementing Snyk for dependency monitoring, advocating for best practices, and actively supporting cyberattack responses.\n- Eliminated costly knowledge silos by driving documentation from one entry per month to multiple per week through the creation of a frictionless contribution system.",
     "skills": [
       "python",
       "django",
@@ -189,20 +72,7 @@
     "type": "contract",
     "location": "Rotterdam, The Netherlands",
     "description": "Developed a responsive website showcasing eco-friendly maritime initiatives, featuring an interactive map and dynamic content management using WordPress.",
-    "content": [
-      {
-        "type": "paragraph",
-        "content": "This project showcased environmentally friendly maritime initiatives across the Netherlands. "
-      },
-      {
-        "type": "list",
-        "items": [
-          "Implemented a user-friendly front-end, ensuring the website's responsiveness and interactive features such as a map view and dynamic card listings.",
-          "Developed the back-end infrastructure using WordPress, facilitating easy content management and configuration for non-technical users.",
-          "Worked closely with designers to translate visual concepts into functional web components, maintaining consistency to the initial design specifications."
-        ]
-      }
-    ],
+    "content": "This project showcased environmentally friendly maritime initiatives across the Netherlands. \n\n- Implemented a user-friendly front-end, ensuring the website's responsiveness and interactive features such as a map view and dynamic card listings.\n- Developed the back-end infrastructure using WordPress, facilitating easy content management and configuration for non-technical users.\n- Worked closely with designers to translate visual concepts into functional web components, maintaining consistency to the initial design specifications.",
     "skills": [
       "wordpress",
       "javascript",
@@ -221,26 +91,7 @@
     "type": "contract",
     "location": "Rotterdam, The Netherlands",
     "description": "Led the development of an interactive web application for visualizing maritime emissions.",
-    "content": [
-      {
-        "type": "list",
-        "items": [
-          "Managed the project's entire lifecycle, from drafting detailed business proposals and negotiating contracts to overseeing product delivery.",
-          "Developed and deployed the application’s front-end and back-end using Python and Django, integrating complex data visualization features that enhance user interaction."
-        ]
-      },
-      {
-        "type": "header",
-        "content": "Impact"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Delivered a user-centric web application that significantly improved clients' understanding of maritime emissions, tailored to various ship types, maritime routes, and propulsion types.",
-          "The successful execution and client satisfaction with the project led to further engagements, securing two additional projects with the client."
-        ]
-      }
-    ],
+    "content": "- Managed the project's entire lifecycle, from drafting detailed business proposals and negotiating contracts to overseeing product delivery.\n- Developed and deployed the application’s front-end and back-end using Python and Django, integrating complex data visualization features that enhance user interaction.\n\n## Impact\n\n- Delivered a user-centric web application that significantly improved clients' understanding of maritime emissions, tailored to various ship types, maritime routes, and propulsion types.\n- The successful execution and client satisfaction with the project led to further engagements, securing two additional projects with the client.",
     "skills": [
       "python",
       "django",
