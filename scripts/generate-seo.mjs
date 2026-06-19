@@ -35,14 +35,14 @@ const today = new Date().toISOString().slice(0, 10);
 // ---- sitemap.xml ----
 const urls = [
   { loc: '/', lastmod: latestPostDate || today, priority: '1.0' },
-  { loc: '/blog', lastmod: latestPostDate || today, priority: '0.9' },
+  { loc: '/blog/', lastmod: latestPostDate || today, priority: '0.9' },
   ...sortedPosts.map((p) => ({
-    loc: `/blog/${p.id}`,
+    loc: `/blog/${p.id}/`,
     lastmod: p.date,
     priority: '0.8',
   })),
   ...experience.map((e) => ({
-    loc: `/experience/${e.id}`,
+    loc: `/experience/${e.id}/`,
     lastmod: today,
     priority: '0.6',
   })),
@@ -66,8 +66,8 @@ const items = sortedPosts
   .map(
     (p) => `    <item>
       <title>${xmlEscape(p.title)}</title>
-      <link>${SITE_URL}/blog/${p.id}</link>
-      <guid isPermaLink="true">${SITE_URL}/blog/${p.id}</guid>
+      <link>${SITE_URL}/blog/${p.id}/</link>
+      <guid isPermaLink="true">${SITE_URL}/blog/${p.id}/</guid>
       <description>${xmlEscape(p.summary || '')}</description>
       <pubDate>${new Date(p.date).toUTCString()}</pubDate>
 ${(p.tags || [])
@@ -81,7 +81,7 @@ const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>${xmlEscape(SITE_TITLE)}</title>
-    <link>${SITE_URL}/blog</link>
+    <link>${SITE_URL}/blog/</link>
     <description>${xmlEscape(SITE_DESCRIPTION)}</description>
     <language>en</language>
     <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />

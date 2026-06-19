@@ -13,6 +13,13 @@ export function absoluteUrl(path = '/') {
   return `${siteUrl}${path.startsWith('/') ? '' : '/'}${path}`;
 }
 
+// Ensure an internal path ends with a trailing slash (the canonical form,
+// matching vite-ssg's `nested` output on GitHub Pages).
+export function withTrailingSlash(path = '/') {
+  if (!path) return '/';
+  return path.endsWith('/') ? path : `${path}/`;
+}
+
 // Strip markdown / inline HTML so content can be reused as a plain-text description.
 export function stripMarkdown(md = '') {
   return md
@@ -50,7 +57,7 @@ export function pageHead({
   publishedTime,
   tags = [],
 } = {}) {
-  const url = absoluteUrl(path);
+  const url = absoluteUrl(withTrailingSlash(path));
   const img = image ? absoluteUrl(image) : defaultImage;
   const desc = truncate(description || defaultDescription, 200);
   const fullTitle = title ? `${title} — ${author}` : siteName;

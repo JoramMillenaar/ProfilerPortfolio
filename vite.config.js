@@ -22,6 +22,9 @@ export default defineConfig({
   // Consumed by vite-ssg (`vite-ssg build`).
   ssgOptions: {
     formatting: 'minify',
+    // Emit `route/index.html` so trailing-slash URLs resolve on GitHub Pages
+    // (and the non-slash form 301-redirects to it). Canonical form = trailing slash.
+    dirStyle: 'nested',
     // Expand dynamic routes into a concrete path per blog post / experience.
     includedRoutes(paths) {
       const staticPaths = paths.filter((p) => !p.includes(':'));
