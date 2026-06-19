@@ -35,22 +35,49 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+import { useHead } from '@unhead/vue';
 import experienceData from '@/data/experience.json';
 import SkillEmblem from '@/components/experience/SkillEmblem.vue';
 import VideoContent from '@/components/media/VideoContent.vue';
 import SiteFooter from '@/components/SiteFooter.vue';
 import NavBar from '@/components/NavBar.vue';
 import CustomText from "@/components/common/customText.vue";
+import { pageHead, stripMarkdown, truncate } from '@/utils/seo';
 
 export default {
   name: 'ExperienceDetailPage',
   components: {SkillEmblem, VideoContent, SiteFooter, NavBar, CustomText},
-  data() {
-    return {experience: {}};
-  },
-  beforeMount() {
-    const experienceId = this.$route.params.id;
-    this.experience = experienceData.find((exp) => exp.id === experienceId);
+  setup() {
+    const route = useRoute();
+    const experience = computed(
+      () =>
+        experienceData.find((exp) => exp.id === route.params.id) || {},
+    );
+
+    useHead(
+      computed(() => {
+        const exp = experience.value;
+        if (!exp.id) {
+          return pageHead({ path: `/experience/${route.params.id}` });
+        }
+        const intro = `${exp.title} at ${exp.company}${
+          exp.location ? ` — ${exp.location}` : ''
+        }.`;
+        const description = truncate(
+          `${intro} ${stripMarkdown(exp.content || '')}`,
+          160,
+        );
+        return pageHead({
+          title: `${exp.title} at ${exp.company}`,
+          description,
+          path: `/experience/${exp.id}`,
+        });
+      }),
+    );
+
+    return { experience };
   },
 };
 </script>

@@ -7,7 +7,8 @@
           <p class="text-important mb-3 uppercase tracking-[0.35em] text-sm font-semibold">
             Stories & Processes
           </p>
-          <h2 id="blog">On the Blog</h2>
+          <!-- styled to match the previous h2 look; h1 for one main heading per page -->
+          <h1 id="blog" class="text-h2 text-center pb-4 font-semibold font-sans">On the Blog</h1>
           <p class="intro text-text-large max-w-3xl mb-gutter-large mt-4">
             I use this space to document how I build, learn, and experiment. These posts
             unpack the decisions, trade-offs, and processes behind the work.
@@ -64,14 +65,43 @@
 </template>
 
 <script>
+import { useHead } from '@unhead/vue';
 import SiteFooter from '@/components/SiteFooter.vue';
 import NavBar from '@/components/NavBar.vue';
 import blogPosts from '@/data/blogPosts.json';
+import { pageHead, jsonLd, siteUrl } from '@/utils/seo';
 
 export default {
   components: {
     SiteFooter,
     NavBar,
+  },
+  setup() {
+    const head = pageHead({
+      title: 'Blog',
+      description:
+        'Stories and processes on how I build, learn, and experiment — the decisions and trade-offs behind the work.',
+      path: '/blog',
+    });
+    const sorted = [...blogPosts].sort(
+      (a, b) => new Date(b.date) - new Date(a.date),
+    );
+    head.script = [
+      jsonLd({
+        '@context': 'https://schema.org',
+        '@type': 'Blog',
+        name: 'On the Blog',
+        url: `${siteUrl}/blog`,
+        blogPost: sorted.map((p) => ({
+          '@type': 'BlogPosting',
+          headline: p.title,
+          datePublished: p.date,
+          url: `${siteUrl}/blog/${p.id}`,
+          keywords: (p.tags || []).join(', '),
+        })),
+      }),
+    ];
+    useHead(head);
   },
   data() {
     return {

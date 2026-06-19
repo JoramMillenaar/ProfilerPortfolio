@@ -5,12 +5,13 @@
 </template>
 
 <script>
-import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 export default {
   name: 'App',
-  mounted() {
+  async mounted() {
+    // Loaded client-side only so the build-time prerender never touches AOS.
+    const { default: AOS } = await import('aos');
     AOS.init({
       offset: 120,
       delay: 100,

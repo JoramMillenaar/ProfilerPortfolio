@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { useHead } from '@unhead/vue';
 import SiteHeader from '../components/SiteHeader.vue';
 import ExperienceSection from '@/components/experience/ExperienceSection.vue';
 import TestimonialsSection from '../components/TestimonialsSection.vue';
@@ -20,6 +21,8 @@ import HobbyProject from '../components/HobbyProject.vue';
 import ContactForm from '../components/ContactForm.vue';
 import SiteFooter from '../components/SiteFooter.vue';
 import NavBar from '@/components/NavBar.vue';
+import { pageHead, jsonLd, siteUrl, author, defaultImage } from '@/utils/seo';
+import { defaultDescription } from '@/config/site';
 
 export default {
   components: {
@@ -30,6 +33,31 @@ export default {
     ContactForm,
     SiteFooter,
     NavBar,
+  },
+  setup() {
+    const head = pageHead({ path: '/' });
+    head.script = [
+      jsonLd({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: author,
+        url: siteUrl,
+        image: defaultImage,
+        jobTitle: 'Software Solutions Engineer',
+        description: defaultDescription,
+        sameAs: [
+          'https://github.com/JoramMillenaar',
+          'https://www.linkedin.com/in/joram-millenaar-099406143/',
+        ],
+      }),
+      jsonLd({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: "Joram Millenaar's Portfolio",
+        url: siteUrl,
+      }),
+    ];
+    useHead(head);
   },
 };
 </script>

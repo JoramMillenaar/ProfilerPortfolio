@@ -1,11 +1,10 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
 import HomePage from '@/views/HomePage.vue';
 import ExperienceDetailPage from '@/views/ExperienceDetailPage.vue';
 import BlogPage from '@/views/BlogPage.vue';
 import BlogDetailPage from '@/views/BlogDetailPage.vue';
 import { calculateTopPosition } from '@/utils/windowUtils';
 
-const routes = [
+export const routes = [
   {
     path: '/',
     name: 'Home',
@@ -30,40 +29,34 @@ const routes = [
   },
 ];
 
-const router = createRouter({
-  history: createWebHashHistory(import.meta.env.BASE_URL),
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    if (to.hash) {
-      let element = document.querySelector(to.hash);
-      if (element) {
-        return {
-          top: calculateTopPosition(element),
-          behavior: 'smooth',
-        };
-      } else {
-        return new Promise((resolve) => {
-          setTimeout(() => {
-            element = document.querySelector(to.hash);
-            if (element) {
-              resolve({
-                top: calculateTopPosition(element),
-                behavior: 'smooth',
-              });
-            } else {
-              resolve({
-                top: 0,
-              });
-            }
-          }, 300); // Adjust delay as necessary
-        });
-      }
-    } else if (savedPosition) {
-      return savedPosition;
+export function scrollBehavior(to, from, savedPosition) {
+  if (to.hash) {
+    let element = document.querySelector(to.hash);
+    if (element) {
+      return {
+        top: calculateTopPosition(element),
+        behavior: 'smooth',
+      };
     } else {
-      return { top: 0 };
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          element = document.querySelector(to.hash);
+          if (element) {
+            resolve({
+              top: calculateTopPosition(element),
+              behavior: 'smooth',
+            });
+          } else {
+            resolve({
+              top: 0,
+            });
+          }
+        }, 300); // Adjust delay as necessary
+      });
     }
-  },
-});
-
-export default router;
+  } else if (savedPosition) {
+    return savedPosition;
+  } else {
+    return { top: 0 };
+  }
+}

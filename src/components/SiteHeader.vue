@@ -41,7 +41,8 @@ export default {
   data() {
     return {
       header: headerData,
-      viewportWidth: ref(window.innerWidth),
+      // Guarded for build-time prerender where `window` is undefined.
+      viewportWidth: ref(typeof window !== 'undefined' ? window.innerWidth : 1024),
       HeaderImage,
     };
   },

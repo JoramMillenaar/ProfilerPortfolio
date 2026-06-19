@@ -37,39 +37,87 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+import { useHead } from '@unhead/vue';
 import NavBar from '@/components/NavBar.vue';
 import SiteFooter from '@/components/SiteFooter.vue';
 import blogPosts from '@/data/blogPosts.json';
 import CustomText from "@/components/common/customText.vue";
 import CircularSeal from "@/components/common/CircleSeal.vue";
+import {
+  pageHead,
+  jsonLd,
+  firstContentImage,
+  stripMarkdown,
+  truncate,
+  absoluteUrl,
+  siteUrl,
+  author,
+  defaultImage,
+} from '@/utils/seo';
 
 export default {
   name: 'BlogDetailPage',
   components: {CircularSeal, CustomText, NavBar, SiteFooter},
-  data() {
-    return {
-      post: null,
-    };
-  },
-  created() {
-    this.loadPost();
-  },
-  watch: {
-    '$route.params.id': 'loadPost',
-  },
-  methods: {
-    loadPost() {
-      const postId = this.$route.params.id;
-      this.post = blogPosts.find((entry) => entry.id === postId) || null;
-    },
-    formattedDate(dateString) {
-      return new Date(dateString).toLocaleDateString(undefined, {
+  setup() {
+    const route = useRoute();
+    const post = computed(
+      () => blogPosts.find((entry) => entry.id === route.params.id) || null,
+    );
+
+    useHead(
+      computed(() => {
+        const p = post.value;
+        if (!p) {
+          return pageHead({
+            title: 'Post not found',
+            path: `/blog/${route.params.id}`,
+          });
+        }
+        const image = firstContentImage(p.content);
+        const description =
+          p.summary || truncate(stripMarkdown(p.content), 160);
+        const head = pageHead({
+          title: p.title,
+          description,
+          path: `/blog/${p.id}`,
+          image,
+          type: 'article',
+          publishedTime: p.date,
+          tags: p.tags,
+        });
+        head.script = [
+          jsonLd({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            headline: p.title,
+            description,
+            datePublished: p.date,
+            dateModified: p.date,
+            image: image ? [absoluteUrl(image)] : [defaultImage],
+            keywords: (p.tags || []).join(', '),
+            author: { '@type': 'Person', name: author, url: siteUrl },
+            publisher: { '@type': 'Person', name: author, url: siteUrl },
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': `${siteUrl}/blog/${p.id}`,
+            },
+          }),
+        ];
+        return head;
+      }),
+    );
+
+    const formattedDate = (dateString) =>
+      new Date(dateString).toLocaleDateString(undefined, {
         year: 'numeric',
         month: 'short',
         day: 'numeric',
       });
-    },
-  }
+
+    return { post, formattedDate };
+  },
 };
 </script>
 
