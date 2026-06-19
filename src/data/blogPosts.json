@@ -45,7 +45,7 @@
   },
   {
     "id": "graphed-ambient-clinical-documentation-system",
-    "title": "What I'd Do Differently Building an Ambient Clinical Documentation System",
+    "title": "Lessons from my Ambient Clinical Documentation System",
     "date": "2026-06-19",
     "readTime": "6 min read",
     "summary": "What I learned building a clinical AI scribe, and what I'd build differently now",

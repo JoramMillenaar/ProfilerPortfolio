@@ -13,11 +13,11 @@ export function absoluteUrl(path = '/') {
   return `${siteUrl}${path.startsWith('/') ? '' : '/'}${path}`;
 }
 
-// Ensure an internal path ends with a trailing slash (the canonical form,
-// matching vite-ssg's `nested` output on GitHub Pages).
-export function withTrailingSlash(path = '/') {
-  if (!path) return '/';
-  return path.endsWith('/') ? path : `${path}/`;
+// Normalize an internal path to the canonical, no-trailing-slash form
+// (root stays "/"). Matches vite-ssg's flat output served on GitHub Pages.
+export function canonicalPath(path = '/') {
+  if (!path || path === '/') return '/';
+  return path.replace(/\/+$/, '');
 }
 
 // Strip markdown / inline HTML so content can be reused as a plain-text description.
@@ -57,7 +57,7 @@ export function pageHead({
   publishedTime,
   tags = [],
 } = {}) {
-  const url = absoluteUrl(withTrailingSlash(path));
+  const url = absoluteUrl(canonicalPath(path));
   const img = image ? absoluteUrl(image) : defaultImage;
   const desc = truncate(description || defaultDescription, 200);
   const fullTitle = title ? `${title} — ${author}` : siteName;

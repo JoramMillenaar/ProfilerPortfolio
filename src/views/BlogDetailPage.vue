@@ -101,7 +101,7 @@ export default {
             publisher: { '@type': 'Person', name: author, url: siteUrl },
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': `${siteUrl}/blog/${p.id}/`,
+              '@id': `${siteUrl}/blog/${p.id}`,
             },
           }),
         ];
