@@ -1,5 +1,5 @@
 // Generates sitemap.xml and rss.xml into dist/ after the SSG build.
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, readdirSync, writeFileSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -17,6 +17,14 @@ const readJson = (rel) =>
 
 const blogPosts = readJson('src/data/blogPosts.json');
 const experience = readJson('src/data/experience.json');
+
+// Deep dives are Vue components (one folder per dive); the folder name is the slug.
+const deepDiveSlugs = readdirSync(
+  path.resolve(root, 'src/content/deep-dives'),
+  { withFileTypes: true },
+)
+  .filter((entry) => entry.isDirectory())
+  .map((entry) => entry.name);
 
 const xmlEscape = (s = '') =>
   s
@@ -39,6 +47,12 @@ const urls = [
   ...sortedPosts.map((p) => ({
     loc: `/blog/${p.id}`,
     lastmod: p.date,
+    priority: '0.8',
+  })),
+  { loc: '/deep-dives', lastmod: today, priority: '0.9' },
+  ...deepDiveSlugs.map((slug) => ({
+    loc: `/deep-dives/${slug}`,
+    lastmod: today,
     priority: '0.8',
   })),
   ...experience.map((e) => ({

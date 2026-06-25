@@ -1,0 +1,133 @@
+<script>
+// Catalog metadata for this deep dive. Read by the list page and SEO via the
+// catalog in `src/content/deep-dives/index.js`. Keep this in sync with the
+// folder name (`embeddings`), which is the URL slug.
+export const meta = {
+  title: 'Embeddings',
+  summary: 'A deep dive into embeddings.',
+};
+
+export default {
+  name: 'EmbeddingsDeepDive',
+};
+</script>
+
+<template>
+  <div class="deep-dive-body">
+    <p>
+      "ask" and "inquire", "start" and "commence", "pineapple on pizza" and "absolutely delicious and appropriate"—potáto-potàto, we understand they <em>mean</em> the same thing. But computers are traditionally very literal: "banana" and "Banana" (with a capital 'B') are absolutely not the same thing.
+    </p>
+
+    <p>
+      It'd be extremely useful for us to be able to have computers 'know what we <em>mean</em>' as well. And you could see how solving this was a huge stepping stone to the AI/LLM's we know today.
+    </p>
+
+    <p>
+      Below is that very system that takes text like "Under the weather" and "Feeling sick", and turns it into something that we can measure by how <em>similar</em> it is in meaning.
+    </p>
+
+    <figure class="diagram">
+      <svg
+          width="100%"
+          viewBox="0 0 680 480"
+          role="img"
+          style="max-width: 680px; display: block; margin-inline: auto;"
+      >
+        <title>Embedder illustration</title>
+        <desc>Text tokens flow into a black box, which projects them as points onto a 2D plane, showing clustering by semantic similarity</desc>
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </marker>
+          <marker id="arrow-w" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#aaa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </marker>
+        </defs>
+        <g>
+          <rect x="28" y="50" width="88" height="32" rx="6" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"></rect>
+          <text x="72" y="66" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="13" fill="#0C447C">king</text>
+        </g>
+        <g>
+          <rect x="28" y="96" width="88" height="32" rx="6" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"></rect>
+          <text x="72" y="112" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="13" fill="#0C447C">queen</text>
+        </g>
+        <g>
+          <rect x="28" y="142" width="88" height="32" rx="6" fill="#EEEDFE" stroke="#7F77DD" stroke-width="0.5"></rect>
+          <text x="72" y="158" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="13" fill="#3C3489">man</text>
+        </g>
+        <g>
+          <rect x="28" y="188" width="88" height="32" rx="6" fill="#EEEDFE" stroke="#7F77DD" stroke-width="0.5"></rect>
+          <text x="72" y="204" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="13" fill="#3C3489">woman</text>
+        </g>
+        <g>
+          <rect x="28" y="248" width="88" height="32" rx="6" fill="#E1F5EE" stroke="#1D9E75" stroke-width="0.5"></rect>
+          <text x="72" y="264" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="13" fill="#085041">cat</text>
+        </g>
+        <g>
+          <rect x="28" y="294" width="88" height="32" rx="6" fill="#E1F5EE" stroke="#1D9E75" stroke-width="0.5"></rect>
+          <text x="72" y="310" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="13" fill="#085041">dog</text>
+        </g>
+        <g>
+          <rect x="28" y="340" width="88" height="32" rx="6" fill="#E1F5EE" stroke="#1D9E75" stroke-width="0.5"></rect>
+          <text x="72" y="356" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="13" fill="#085041">fish</text>
+        </g>
+        <line x1="116" y1="66" x2="218" y2="130" stroke="#aaa" stroke-width="0.8" fill="none" marker-end="url(#arrow-w)"></line>
+        <line x1="116" y1="112" x2="218" y2="160" stroke="#aaa" stroke-width="0.8" fill="none" marker-end="url(#arrow-w)"></line>
+        <line x1="116" y1="158" x2="218" y2="185" stroke="#aaa" stroke-width="0.8" fill="none" marker-end="url(#arrow-w)"></line>
+        <line x1="116" y1="204" x2="218" y2="210" stroke="#aaa" stroke-width="0.8" fill="none" marker-end="url(#arrow-w)"></line>
+        <line x1="116" y1="264" x2="218" y2="238" stroke="#aaa" stroke-width="0.8" fill="none" marker-end="url(#arrow-w)"></line>
+        <line x1="116" y1="310" x2="218" y2="253" stroke="#aaa" stroke-width="0.8" fill="none" marker-end="url(#arrow-w)"></line>
+        <line x1="116" y1="356" x2="218" y2="266" stroke="#aaa" stroke-width="0.8" fill="none" marker-end="url(#arrow-w)"></line>
+        <rect x="220" y="110" width="100" height="170" rx="10" fill="#111" stroke="#444" stroke-width="1"></rect>
+        <line x1="235" y1="145" x2="305" y2="145" stroke="#333" stroke-width="0.5"></line>
+        <line x1="235" y1="175" x2="305" y2="175" stroke="#333" stroke-width="0.5"></line>
+        <line x1="235" y1="205" x2="305" y2="205" stroke="#333" stroke-width="0.5"></line>
+        <line x1="235" y1="235" x2="305" y2="235" stroke="#333" stroke-width="0.5"></line>
+        <line x1="255" y1="115" x2="255" y2="275" stroke="#333" stroke-width="0.5"></line>
+        <line x1="280" y1="115" x2="280" y2="275" stroke="#333" stroke-width="0.5"></line>
+        <circle cx="248" cy="133" r="2.5" fill="#378ADD" opacity="0.7"></circle>
+        <circle cx="272" cy="148" r="2.5" fill="#7F77DD" opacity="0.7"></circle>
+        <circle cx="293" cy="160" r="2.5" fill="#7F77DD" opacity="0.7"></circle>
+        <circle cx="248" cy="183" r="2.5" fill="#1D9E75" opacity="0.7"></circle>
+        <circle cx="260" cy="222" r="2.5" fill="#378ADD" opacity="0.7"></circle>
+        <circle cx="286" cy="198" r="2.5" fill="#1D9E75" opacity="0.7"></circle>
+        <circle cx="298" cy="244" r="2.5" fill="#1D9E75" opacity="0.7"></circle>
+        <line x1="320" y1="195" x2="402" y2="195" stroke="#aaa" stroke-width="1" fill="none" marker-end="url(#arrow-w)"></line>
+        <rect x="408" y="60" width="248" height="340" rx="10" fill="none" stroke="var(--color-border-tertiary)" stroke-width="1"></rect>
+        <line x1="420" y1="230" x2="644" y2="230" stroke="var(--color-border-tertiary)" stroke-width="0.5" stroke-dasharray="3 3"></line>
+        <line x1="532" y1="72" x2="532" y2="388" stroke="var(--color-border-tertiary)" stroke-width="0.5" stroke-dasharray="3 3"></line>
+        <circle cx="485" cy="115" r="9" fill="#378ADD" opacity="0.85"></circle>
+        <circle cx="508" cy="98" r="9" fill="#378ADD" opacity="0.85"></circle>
+        <ellipse cx="496" cy="106" rx="28" ry="22" fill="none" stroke="#378ADD" stroke-width="0.5" stroke-dasharray="4 3" opacity="0.5"></ellipse>
+        <circle cx="548" cy="130" r="9" fill="#7F77DD" opacity="0.85"></circle>
+        <circle cx="572" cy="112" r="9" fill="#7F77DD" opacity="0.85"></circle>
+        <ellipse cx="560" cy="121" rx="28" ry="22" fill="none" stroke="#7F77DD" stroke-width="0.5" stroke-dasharray="4 3" opacity="0.5"></ellipse>
+        <circle cx="470" cy="320" r="9" fill="#1D9E75" opacity="0.85"></circle>
+        <circle cx="506" cy="342" r="9" fill="#1D9E75" opacity="0.85"></circle>
+        <circle cx="543" cy="310" r="9" fill="#1D9E75" opacity="0.85"></circle>
+        <ellipse cx="506" cy="325" rx="48" ry="28" fill="none" stroke="#1D9E75" stroke-width="0.5" stroke-dasharray="4 3" opacity="0.5"></ellipse>
+        <line x1="494" y1="115" x2="548" y2="130" stroke="#999" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.5"></line>
+        <line x1="508" y1="100" x2="572" y2="115" stroke="#999" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.5"></line>
+      </svg>
+    </figure>
+  </div>
+</template>
+
+<style scoped>
+.deep-dive-body {
+  color: var(--text-color-primary);
+  line-height: 1.8;
+  font-size: var(--text-large, 1.125rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter-medium);
+}
+
+.deep-dive-body :deep(em) {
+  font-style: italic;
+}
+
+.diagram {
+  margin: var(--gutter-medium) 0;
+}
+</style>

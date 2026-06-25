@@ -2,6 +2,8 @@ import HomePage from '@/views/HomePage.vue';
 import ExperienceDetailPage from '@/views/ExperienceDetailPage.vue';
 import BlogPage from '@/views/BlogPage.vue';
 import BlogDetailPage from '@/views/BlogDetailPage.vue';
+import DeepDivesPage from '@/views/DeepDivesPage.vue';
+import DeepDiveDetailPage from '@/views/DeepDiveDetailPage.vue';
 import { calculateTopPosition } from '@/utils/windowUtils';
 
 export const routes = [
@@ -25,6 +27,17 @@ export const routes = [
     path: '/blog/:id',
     name: 'BlogDetail',
     component: BlogDetailPage,
+    props: true,
+  },
+  {
+    path: '/deep-dives',
+    name: 'DeepDives',
+    component: DeepDivesPage,
+  },
+  {
+    path: '/deep-dives/:id',
+    name: 'DeepDiveDetail',
+    component: DeepDiveDetailPage,
     props: true,
   },
 ];

@@ -10,6 +10,7 @@
       <div class="nav-links">
         <external-link class="link" to="/">Home</external-link>
         <external-link class="link" to="/blog">Blog</external-link>
+        <external-link class="link" to="/deep-dives">Deep Dives</external-link>
         <external-link class="link" to="/#contact">Contact</external-link>
       </div>
     </nav>
