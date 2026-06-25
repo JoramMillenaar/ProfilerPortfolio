@@ -5,13 +5,41 @@
     @enter="enter"
     @leave="leave"
   >
-    <nav class="navbar" v-show="isVisible">
-      <router-link :to="{ name: 'Home' }" class="font-tech text-h3 text-important">JM</router-link>
+    <nav
+      v-show="isVisible"
+      class="navbar"
+    >
+      <router-link
+        :to="{ name: 'Home' }"
+        class="font-tech text-h3 text-important"
+      >
+        JM
+      </router-link>
       <div class="nav-links">
-        <external-link class="link" to="/">Home</external-link>
-        <external-link class="link" to="/blog">Blog</external-link>
-        <external-link class="link" to="/deep-dives">Deep Dives</external-link>
-        <external-link class="link" to="/#contact">Contact</external-link>
+        <external-link
+          class="link"
+          to="/"
+        >
+          Home
+        </external-link>
+        <external-link
+          class="link"
+          to="/blog"
+        >
+          Blog
+        </external-link>
+        <external-link
+          class="link"
+          to="/deep-dives"
+        >
+          Deep Dives
+        </external-link>
+        <external-link
+          class="link"
+          to="/#contact"
+        >
+          Contact
+        </external-link>
       </div>
     </nav>
   </transition>
@@ -21,15 +49,15 @@
     @mouseover="showNavBar"
     @click="showNavBar"
   >
-    <div class="navbar-handle-bar"></div>
+    <div class="navbar-handle-bar" />
   </div>
 </template>
 
 <script>
 import ExternalLink from './common/ExternalLink.vue';
 export default {
-  components: { ExternalLink },
   name: 'NavBar',
+  components: { ExternalLink },
   props: {
     showAtTop: {
       type: Boolean,
@@ -41,6 +69,22 @@ export default {
       lastScroll: 0,
       isVisible: false,
     };
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+    this.lastScroll = window.scrollY;
+    if (window.scrollY <= 100) {
+      if (this.showAtTop) {
+        this.isVisible = true;
+      } else {
+        this.isVisible = false;
+      }
+    } else {
+      this.isVisible = false;
+    }
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
     handleScroll() {
@@ -77,22 +121,6 @@ export default {
       el.style.transform = 'translateY(-100%)';
       setTimeout(() => done(), 300); // match transition duration
     },
-  },
-  mounted() {
-    window.addEventListener('scroll', this.handleScroll);
-    this.lastScroll = window.scrollY;
-    if (window.scrollY <= 100) {
-      if (this.showAtTop) {
-        this.isVisible = true;
-      } else {
-        this.isVisible = false;
-      }
-    } else {
-      this.isVisible = false;
-    }
-  },
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
   },
 };
 </script>

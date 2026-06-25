@@ -1,5 +1,8 @@
 <template>
-  <div class="markdown-body" v-html="renderedContent"></div>
+  <div
+    class="markdown-body"
+    v-html="renderedContent"
+  />
 </template>
 
 <script>

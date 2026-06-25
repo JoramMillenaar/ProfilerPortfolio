@@ -1,7 +1,9 @@
 <template>
   <section>
     <div>
-      <h2 id="projects">My Hobby Projects</h2>
+      <h2 id="projects">
+        My Hobby Projects
+      </h2>
       <div class="flex flex-wrap flex-row gap-[3.5%] mt-24 mx-[4%]">
         <article
           class="article-box featured-article"
@@ -11,12 +13,22 @@
         >
           <div class="article-textbox">
             <div>
-              <h3 class="h3">{{ featured.title }}</h3>
-              <p class="text-text-medium my-6">{{ featured.description }}</p>
+              <h3 class="h3">
+                {{ featured.title }}
+              </h3>
+              <p class="text-text-medium my-6">
+                {{ featured.description }}
+              </p>
             </div>
             <div class="article-info">
-              <external-link class="link" :href="featured.link" target="_blank">Source Code</external-link>
-              <skill-emblem :name="featured.skill"></skill-emblem>
+              <external-link
+                class="link"
+                :href="featured.link"
+                target="_blank"
+              >
+                Source Code
+              </external-link>
+              <skill-emblem :name="featured.skill" />
             </div>
           </div>
           <picture class="article-illustration">
@@ -28,27 +40,37 @@
           </picture>
         </article>
         <article
-          class="article-box"
           v-for="(project, index) in projects"
           :key="project.id"
+          class="article-box"
           data-aos="zoom-out-up"
           :data-aos-offset="400 + 100 * index"
         >
           <div class="article-textbox">
             <div>
               <div class="article-title">
-                <h3 class="h4">{{ project.title }}</h3>
+                <h3 class="h4">
+                  {{ project.title }}
+                </h3>
                 <ImageContent
                   v-if="!project.featured"
-                  className="article-icon"
+                  class-name="article-icon"
                   :src="project.image"
                   :alt="project.title + '\'s logo'"
                 />
               </div>
-              <p class="text-text-small my-6">{{ project.description }}</p>
+              <p class="text-text-small my-6">
+                {{ project.description }}
+              </p>
             </div>
             <div class="article-info">
-              <external-link class="link" :href="project.link" target="_blank">Source Code</external-link>
+              <external-link
+                class="link"
+                :href="project.link"
+                target="_blank"
+              >
+                Source Code
+              </external-link>
               <skill-emblem :name="project.skill" />
             </div>
           </div>

@@ -1,36 +1,38 @@
 <template>
-  <nav-bar :showAtTop="false"/>
+  <nav-bar :show-at-top="false" />
   <div class="header">
     <div class="header-top">
       <div class="header-text">
-        <h1 class="capitalize">{{ experience.company }}</h1>
+        <h1 class="capitalize">
+          {{ experience.company }}
+        </h1>
         <h3>{{ experience.title }}</h3>
         <h4>{{ experience.location }}</h4>
       </div>
       <div class="header-media">
         <video-content
-            :thumbnail="experience.thumbnail"
-            :video="experience.video"
-            :blurred-background="experience.blurredBackground"
+          :thumbnail="experience.thumbnail"
+          :video="experience.video"
+          :blurred-background="experience.blurredBackground"
         />
       </div>
     </div>
 
     <div class="skills">
       <skill-emblem
-          v-for="skill in experience.skills"
-          :key="skill"
-          :name="skill"
+        v-for="skill in experience.skills"
+        :key="skill"
+        :name="skill"
       />
     </div>
   </div>
   <div class="container">
     <div class="text-section">
-      <custom-text :content="experience.content"/>
+      <custom-text :content="experience.content" />
     </div>
   </div>
   <div class="footer">
-    <site-footer/>
+    <site-footer />
   </div>
 </template>
 

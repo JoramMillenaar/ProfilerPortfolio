@@ -1,30 +1,46 @@
 <template>
   <teleport to="body">
     <section
-      class="background"
-      :id="modalId"
-      @click.self="closeModal"
       v-if="isVisible"
+      :id="modalId"
+      class="background"
       data-aos="fade-in"
+      @click.self="closeModal"
     >
       <div class="modal">
-        <article class="content" data-aos="zoom-in" @click.stop>
+        <article
+          class="content"
+          data-aos="zoom-in"
+          @click.stop
+        >
           <header>
             <figure>
               <ImageContent
-                className="img"
+                class-name="img"
                 :src="'testimonials/' + image"
                 :alt="`Picture of ${author}`"
               />
               <figcaption>
-                <h3 class="h3">{{ author }}</h3>
+                <h3 class="h3">
+                  {{ author }}
+                </h3>
                 <p>{{ position }}</p>
               </figcaption>
             </figure>
-            <button class="close-btn" @click="closeModal">X</button>
+            <button
+              class="close-btn"
+              @click="closeModal"
+            >
+              X
+            </button>
           </header>
           <div class="modal-text">
-            <p v-for="paragraph in content" :key="paragraph">{{ paragraph }}</p>
+            <p
+              v-for="paragraph in content"
+              :key="paragraph"
+            >
+              {{ paragraph }}
+            </p>
           </div>
         </article>
       </div>
@@ -32,7 +48,7 @@
         type="image/svg+xml"
         :data="LineBackground"
         class="background-line"
-      ></object>
+      />
     </section>
   </teleport>
 </template>
@@ -42,6 +58,7 @@ import ImageContent from './media/ImageContent.vue';
 import LineBackground  from '@/assets/images/line.svg';
 
 export default {
+  components: { ImageContent },
   props: {
     modalId: String,
     isVisible: Boolean,
@@ -50,7 +67,6 @@ export default {
     image: String,
     content: Array,
   },
-  components: { ImageContent },
   emits: ['close'],
   data() {
     return {

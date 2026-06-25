@@ -1,5 +1,5 @@
 <template>
-  <nav-bar :showAtTop="true"/>
+  <nav-bar :show-at-top="true" />
   <div class="deep-dives-page px-0 py-8">
     <main>
       <section>
@@ -8,20 +8,25 @@
             Diving In
           </p>
           <!-- styled to match the blog look; h1 for one main heading per page -->
-          <h1 id="deep-dives" class="text-h2 text-center pb-4 font-semibold font-sans">Deep Dives</h1>
+          <h1
+            id="deep-dives"
+            class="text-h2 text-center pb-4 font-semibold font-sans"
+          >
+            Deep Dives
+          </h1>
           <p class="intro text-text-large max-w-3xl mb-gutter-large mt-4">
             Longer-form explorations of the topics I find most interesting. Each deep dive
             takes a single subject and unpacks how it works, end to end.
           </p>
           <div class="dives-grid">
             <article
-                v-for="dive in deepDives"
-                :key="dive.id"
-                class="dive-card"
+              v-for="dive in deepDives"
+              :key="dive.id"
+              class="dive-card"
             >
               <router-link
-                  :to="`/deep-dives/${dive.id}`"
-                  class="dive-link"
+                :to="`/deep-dives/${dive.id}`"
+                class="dive-link"
               >
                 <header class="dive-header">
                   <h3 class="text-h3 font-semibold mb-2">
@@ -34,11 +39,10 @@
                 </p>
               </router-link>
             </article>
-
           </div>
         </div>
       </section>
-      <site-footer></site-footer>
+      <site-footer />
     </main>
   </div>
 </template>

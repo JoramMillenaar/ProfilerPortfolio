@@ -1,6 +1,10 @@
 <template>
   <div class="relative group">
-    <ImageContent :src="skillImage" :alt="name" className="skill-emblem" />
+    <ImageContent
+      :src="skillImage"
+      :alt="name"
+      class-name="skill-emblem"
+    />
     <div class="tooltip">
       {{ prettyName }}
     </div>
@@ -12,8 +16,8 @@ import ImageContent from '../media/ImageContent.vue';
 import skillsData from '/src/data/skills.json';
 
 export default {
-  props: ['name'],
   components: { ImageContent },
+  props: ['name'],
   data() {
     return {
       skillImage: '',

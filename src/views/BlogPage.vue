@@ -1,5 +1,5 @@
 <template>
-  <nav-bar :showAtTop="true"/>
+  <nav-bar :show-at-top="true" />
   <div class="blog-page px-0 py-8">
     <main>
       <section>
@@ -8,58 +8,74 @@
             Stories & Processes
           </p>
           <!-- styled to match the previous h2 look; h1 for one main heading per page -->
-          <h1 id="blog" class="text-h2 text-center pb-4 font-semibold font-sans">On the Blog</h1>
+          <h1
+            id="blog"
+            class="text-h2 text-center pb-4 font-semibold font-sans"
+          >
+            On the Blog
+          </h1>
           <p class="intro text-text-large max-w-3xl mb-gutter-large mt-4">
             I use this space to document how I build, learn, and experiment. These posts
             unpack the decisions, trade-offs, and processes behind the work.
           </p>
           <div class="posts-grid">
             <article
-                v-for="post in sortedPosts"
-                :key="post.id"
-                class="post-card"
-                itemscope
-                itemtype="https://schema.org/BlogPosting"
+              v-for="post in sortedPosts"
+              :key="post.id"
+              class="post-card"
+              itemscope
+              itemtype="https://schema.org/BlogPosting"
             >
               <router-link
-                  :to="`/blog/${post.id}`"
-                  class="post-link"
-                  itemprop="url"
+                :to="`/blog/${post.id}`"
+                class="post-link"
+                itemprop="url"
               >
                 <header class="post-header">
                   <p class="post-meta">
-                    <time :datetime="post.date" itemprop="datePublished">
+                    <time
+                      :datetime="post.date"
+                      itemprop="datePublished"
+                    >
                       {{ formattedDate(post.date) }}
                     </time>
                     · {{ post.readTime }}
                   </p>
 
-                  <h3 class="text-h3 font-semibold mb-2" itemprop="headline">
+                  <h3
+                    class="text-h3 font-semibold mb-2"
+                    itemprop="headline"
+                  >
                     {{ post.title }}
                   </h3>
                 </header>
 
-                <p class="post-summary" itemprop="description">
+                <p
+                  class="post-summary"
+                  itemprop="description"
+                >
                   {{ post.summary }}
                 </p>
               </router-link>
 
-              <ul class="tag-list" aria-label="Post tags">
+              <ul
+                class="tag-list"
+                aria-label="Post tags"
+              >
                 <li
-                    v-for="tag in post.tags"
-                    :key="tag"
-                    class="tag"
-                    itemprop="keywords"
+                  v-for="tag in post.tags"
+                  :key="tag"
+                  class="tag"
+                  itemprop="keywords"
                 >
                   {{ tag }}
                 </li>
               </ul>
             </article>
-
           </div>
         </div>
       </section>
-      <site-footer></site-footer>
+      <site-footer />
     </main>
   </div>
 </template>

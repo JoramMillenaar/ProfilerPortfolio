@@ -1,5 +1,8 @@
 <template>
-  <a :href="actionCallLink" class="btn btn-secondary">{{ actionCallText }}</a>
+  <a
+    :href="actionCallLink"
+    class="btn btn-secondary"
+  >{{ actionCallText }}</a>
 </template>
 
 <script>

@@ -1,21 +1,38 @@
 <template>
   <header class="header">
-    <div class="bg-fade"></div>
+    <div class="bg-fade" />
     <div class="header-textbox">
-      <div data-aos="fade" data-aos-duration="500">
+      <div
+        data-aos="fade"
+        data-aos-duration="500"
+      >
         <text-slider />
       </div>
       <h1 data-aos="fade-up">
-        {{ header.titleLineOne }}<br />{{ header.titleLineTwo }}
+        {{ header.titleLineOne }}<br>{{ header.titleLineTwo }}
       </h1>
-      <p class="text-text-large font-normal max-w-[745px] mb-gutter-large mt-8 xl:max-w-[685px]" data-aos="fade-up" data-aos-delay="200">
+      <p
+        class="text-text-large font-normal max-w-[745px] mb-gutter-large mt-8 xl:max-w-[685px]"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
         {{ header.subheader }}
       </p>
-      <div class="header-btns" data-aos="fade-up" data-aos-delay="400">
-        <a href="#contact" class="btn-primary">Contact Me</a>
-        <external-link class="btn-secondary" to="/blog"
-          >Latest Stories</external-link
+      <div
+        class="header-btns"
+        data-aos="fade-up"
+        data-aos-delay="400"
+      >
+        <a
+          href="#contact"
+          class="btn-primary"
+        >Contact Me</a>
+        <external-link
+          class="btn-secondary"
+          to="/blog"
         >
+          Latest Stories
+        </external-link>
       </div>
     </div>
     <img
@@ -25,7 +42,7 @@
       fetchpriority="high"
       loading="eager"
       :alt="header.imageAlt"
-    />
+    >
   </header>
 </template>
 

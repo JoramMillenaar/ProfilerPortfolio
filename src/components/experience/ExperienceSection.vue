@@ -1,10 +1,15 @@
 <template>
   <section class="work">
     <div class="container">
-      <h2 id="work">My Experience</h2>
+      <h2 id="work">
+        My Experience
+      </h2>
       <div class="work-boxes">
         <div class="work-box">
-          <div class="work-textbox" data-aos="fade-right">
+          <div
+            class="work-textbox"
+            data-aos="fade-right"
+          >
             <experience-detail
               :id="experiences[0].id"
               :title="experiences[0].title"
@@ -12,19 +17,25 @@
               :location="experiences[0].location"
               :description="experiences[0].description"
               :skills="experiences[0].skills"
-              :modalId="experiences[0].modalId"
+              :modal-id="experiences[0].modalId"
             />
           </div>
-          <div class="work-media rounded shadow" data-aos="zoom-in-up">
+          <div
+            class="work-media rounded shadow"
+            data-aos="zoom-in-up"
+          >
             <video-content
               :thumbnail="experiences[0].thumbnail"
               :video="experiences[0].video"
-              :blurredBackground="experiences[0].blurredBackground"
-            ></video-content>
+              :blurred-background="experiences[0].blurredBackground"
+            />
           </div>
         </div>
         <div class="work-box left">
-          <div class="work-textbox" data-aos="fade-right">
+          <div
+            class="work-textbox"
+            data-aos="fade-right"
+          >
             <experience-detail
               :id="experiences[1].id"
               :title="experiences[1].title"
@@ -32,19 +43,25 @@
               :location="experiences[1].location"
               :description="experiences[1].description"
               :skills="experiences[1].skills"
-              :modalId="experiences[1].modalId"
+              :modal-id="experiences[1].modalId"
             />
           </div>
-          <div class="work-media rounded shadow" data-aos="zoom-in-up">
+          <div
+            class="work-media rounded shadow"
+            data-aos="zoom-in-up"
+          >
             <video-content
               :thumbnail="experiences[1].thumbnail"
               :video="experiences[1].video"
-              :blurredBackground="experiences[1].blurredBackground"
-            ></video-content>
+              :blurred-background="experiences[1].blurredBackground"
+            />
           </div>
         </div>
         <div class="work-box">
-          <div class="work-textbox" data-aos="fade-right">
+          <div
+            class="work-textbox"
+            data-aos="fade-right"
+          >
             <experience-detail
               :id="experiences[2].id"
               :title="experiences[2].title"
@@ -52,19 +69,25 @@
               :location="experiences[2].location"
               :description="experiences[2].description"
               :skills="experiences[2].skills"
-              :modalId="experiences[2].modalId"
+              :modal-id="experiences[2].modalId"
             />
           </div>
-          <div class="work-media rounded shadow" data-aos="zoom-in-up">
+          <div
+            class="work-media rounded shadow"
+            data-aos="zoom-in-up"
+          >
             <video-content
               :thumbnail="experiences[2].thumbnail"
               :video="experiences[2].video"
-              :blurredBackground="experiences[2].blurredBackground"
-            ></video-content>
+              :blurred-background="experiences[2].blurredBackground"
+            />
           </div>
         </div>
         <div class="work-box left">
-          <div class="work-textbox" data-aos="fade-left">
+          <div
+            class="work-textbox"
+            data-aos="fade-left"
+          >
             <experience-detail
               :id="experiences[3].id"
               :title="experiences[3].title"
@@ -72,20 +95,26 @@
               :location="experiences[3].location"
               :description="experiences[3].description"
               :skills="experiences[3].skills"
-              :modalId="experiences[3].modalId"
+              :modal-id="experiences[3].modalId"
             />
           </div>
-          <div class="work-media shadow" data-aos="zoom-in-up">
+          <div
+            class="work-media shadow"
+            data-aos="zoom-in-up"
+          >
             <mac-iphone-mockup
               :video="experiences[3].video"
               :thumbnail="experiences[3].thumbnail"
-              :phoneOverlayImg="experiences[3].phoneOverlayImg"
-              :phoneScrollableImg="experiences[3].phoneScrollableImg"
-            ></mac-iphone-mockup>
+              :phone-overlay-img="experiences[3].phoneOverlayImg"
+              :phone-scrollable-img="experiences[3].phoneScrollableImg"
+            />
           </div>
         </div>
         <div class="work-box">
-          <div class="work-textbox" data-aos="fade-right">
+          <div
+            class="work-textbox"
+            data-aos="fade-right"
+          >
             <experience-detail
               :id="experiences[4].id"
               :title="experiences[4].title"
@@ -93,15 +122,18 @@
               :location="experiences[4].location"
               :description="experiences[4].description"
               :skills="experiences[4].skills"
-              :modalId="experiences[4].modalId"
+              :modal-id="experiences[4].modalId"
             />
           </div>
-          <div class="work-media shadow" data-aos="zoom-in-up">
+          <div
+            class="work-media shadow"
+            data-aos="zoom-in-up"
+          >
             <simple-mac-mockup
               :image="experiences[4].image"
               :thumbnail="experiences[4].thumbnail"
               :video="experiences[4].video"
-            ></simple-mac-mockup>
+            />
           </div>
         </div>
       </div>

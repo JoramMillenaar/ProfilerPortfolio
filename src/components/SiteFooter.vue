@@ -5,15 +5,33 @@
         <nav>
           <ol class="list-none p-0 flex justify-center gap-gutter-small">
             <li class="footer-link">
-              <a class="inline-block" title="GitHub" href="https://github.com/JoramMillenaar" target="_blank"
-                rel="noopener">
-                <ImageContent src="github.svg" alt="GitHub" className="w-6" />
+              <a
+                class="inline-block"
+                title="GitHub"
+                href="https://github.com/JoramMillenaar"
+                target="_blank"
+                rel="noopener"
+              >
+                <ImageContent
+                  src="github.svg"
+                  alt="GitHub"
+                  class-name="w-6"
+                />
               </a>
             </li>
             <li class="footer-link">
-              <a class="inline-block" title="LinkedIn" href="https://www.linkedin.com/in/joram-millenaar-099406143/"
-                target="_blank" rel="noopener">
-                <ImageContent src="linkedin.svg" alt="LinkedIn" className="w-6" />
+              <a
+                class="inline-block"
+                title="LinkedIn"
+                href="https://www.linkedin.com/in/joram-millenaar-099406143/"
+                target="_blank"
+                rel="noopener"
+              >
+                <ImageContent
+                  src="linkedin.svg"
+                  alt="LinkedIn"
+                  class-name="w-6"
+                />
               </a>
             </li>
             <!-- Additional links can be added here -->

@@ -1,13 +1,13 @@
 <template>
   <div class="home-page">
-    <nav-bar :showAtTop="false" />
-    <site-header></site-header>
+    <nav-bar :show-at-top="false" />
+    <site-header />
     <main>
-      <experience-section></experience-section>
-      <hobby-project></hobby-project>
-      <testimonials-section></testimonials-section>
-      <contact-form></contact-form>
-      <site-footer></site-footer>
+      <experience-section />
+      <hobby-project />
+      <testimonials-section />
+      <contact-form />
+      <site-footer />
     </main>
   </div>
 </template>

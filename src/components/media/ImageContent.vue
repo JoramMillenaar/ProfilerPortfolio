@@ -1,5 +1,9 @@
 <template>
-  <img :src="currentSrc" :class="className || 'w-full h-auto'" :alt="alt" />
+  <img
+    :src="currentSrc"
+    :class="className || 'w-full h-auto'"
+    :alt="alt"
+  >
 </template>
 
 <script>

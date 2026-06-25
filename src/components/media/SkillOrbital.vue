@@ -1,12 +1,18 @@
 <template>
   <div class="orbit">
     <ul class="orbit-wrap">
-      <li v-for="(orbit, index) in orbits" :key="index">
+      <li
+        v-for="(orbit, index) in orbits"
+        :key="index"
+      >
         <ul :class="`ring-${index}`">
-          <li v-for="(icon, idx) in orbit.icons" :key="idx">
+          <li
+            v-for="(icon, idx) in orbit.icons"
+            :key="idx"
+          >
             <ImageContent
-              className="orbit-icon"
               v-if="getPath(icon)"
+              class-name="orbit-icon"
               :src="getPath(icon)"
               :alt="icon"
             />

@@ -4,10 +4,13 @@
       src="simple-mac.webp"
       placeholder="simple-mac-lqip.webp"
       alt="MacBook Mockup displaying the video below"
-      className="device-image"
+      class-name="device-image"
     />
     <object class="screen-content">
-      <video-content :video="video" :thumbnail="thumbnail" />
+      <video-content
+        :video="video"
+        :thumbnail="thumbnail"
+      />
     </object>
   </div>
 </template>

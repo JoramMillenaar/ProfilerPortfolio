@@ -1,14 +1,18 @@
 <template>
   <div class="font-tech mb-3">
     <div class="overflow-hidden flex h-h1">
-      <h1 class="text-h1 inline m-0 leading-tight">Hello </h1>
+      <h1 class="text-h1 inline m-0 leading-tight">
+        Hello
+      </h1>
       <ul class="mt-0 pl-4 text-left list-none h-fit animate-list">
         <li
-          class="m-0"
           v-for="(greeting, index) in greetings"
           :key="index"
+          class="m-0"
         >
-          <h1 class="text-h1 leading-tight">{{ greeting }}</h1>
+          <h1 class="text-h1 leading-tight">
+            {{ greeting }}
+          </h1>
         </li>
       </ul>
     </div>

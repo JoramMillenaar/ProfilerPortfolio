@@ -1,14 +1,14 @@
 <template>
   <component
     :is="componentType"
+    ref="link"
     :to="to"
     :href="href"
     :target="target"
-    ref="link"
-    @click="handleClick"
     v-bind="$attrs"
+    @click="handleClick"
   >
-    <slot></slot>
+    <slot />
   </component>
 </template>
 

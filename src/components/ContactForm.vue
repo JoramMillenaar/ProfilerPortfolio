@@ -1,24 +1,55 @@
 <template>
   <section>
     <div class="container">
-      <h2 id="contact">Reach Out</h2>
+      <h2 id="contact">
+        Reach Out
+      </h2>
       <div class="contact-content">
         <div class="relative w-full h-full grid overflow-hidden items-end">
           <div class="absolute w-full h-full">
             <skill-orbital :orbits="orbitsData" />
           </div>
-          <ImageContent :src="contact.picture" :alt="contact.pictureAlt" className="h-auto w-3/4 relative mx-auto my-0 bottom-0 pointer-events-none drop-shadow-bloom"/>
+          <ImageContent
+            :src="contact.picture"
+            :alt="contact.pictureAlt"
+            class-name="h-auto w-3/4 relative mx-auto my-0 bottom-0 pointer-events-none drop-shadow-bloom"
+          />
         </div>
-        <form @submit.prevent="sendEmail" class="py-gutter-large px-gutter-small bg-secondary flex flex-col">
+        <form
+          class="py-gutter-large px-gutter-small bg-secondary flex flex-col"
+          @submit.prevent="sendEmail"
+        >
           <div>
-            <label for="name" class="w-full text-text-small my-gutter-nano text-important">Name</label>
-            <input class="mb-gutter-small p-gutter-nano w-full text-text-small text-important outline-none border-b-border border-b bg-transparent focus:border-[#888]" type="text" name="name" id="name" required="" />
+            <label
+              for="name"
+              class="w-full text-text-small my-gutter-nano text-important"
+            >Name</label>
+            <input
+              id="name"
+              class="mb-gutter-small p-gutter-nano w-full text-text-small text-important outline-none border-b-border border-b bg-transparent focus:border-[#888]"
+              type="text"
+              name="name"
+              required=""
+            >
           </div>
           <div>
-            <label for="message" class="w-full text-text-small my-gutter-nano text-important">How can I help you?</label>
-            <textarea class="pb-gutter-large mb-gutter-small p-gutter-nano w-full text-text-small text-important outline-none border-b-border border-b bg-transparent focus:border-[#888]" name="message" id="message" required=""></textarea>
+            <label
+              for="message"
+              class="w-full text-text-small my-gutter-nano text-important"
+            >How can I help you?</label>
+            <textarea
+              id="message"
+              class="pb-gutter-large mb-gutter-small p-gutter-nano w-full text-text-small text-important outline-none border-b-border border-b bg-transparent focus:border-[#888]"
+              name="message"
+              required=""
+            />
           </div>
-          <button type="submit" class="btn-primary mt-auto w-fit">Send via Email</button>
+          <button
+            type="submit"
+            class="btn-primary mt-auto w-fit"
+          >
+            Send via Email
+          </button>
         </form>
       </div>
     </div>
@@ -31,8 +62,8 @@ import SkillOrbital from './media/SkillOrbital.vue';
 import ImageContent from './media/ImageContent.vue';
 
 export default {
-  components: { SkillOrbital, ImageContent },
   name: 'ContactForm',
+  components: { SkillOrbital, ImageContent },
   data() {
     return {
       contact: contactInfo,

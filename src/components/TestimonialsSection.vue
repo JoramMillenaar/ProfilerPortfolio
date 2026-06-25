@@ -1,45 +1,55 @@
 <template>
   <section>
-    <h2 id="testimonials">Testimonials</h2>
+    <h2 id="testimonials">
+      Testimonials
+    </h2>
     <div class="container">
       <ol class="testimonials">
         <li
-            class="testimonial"
-            v-for="(testimonial, index) in testimonials"
-            :key="testimonial.id"
-            data-aos="flip-right"
-            :data-aos-offset="300 + 100 * index"
+          v-for="(testimonial, index) in testimonials"
+          :key="testimonial.id"
+          class="testimonial"
+          data-aos="flip-right"
+          :data-aos-offset="300 + 100 * index"
         >
           <blockquote class="text-text-small mb-6 flex flex-col justify-between">
             {{ testimonial.quote }}
           </blockquote>
 
-          <external-link class="link ml-auto order-2 pb-0 font-medium text-text-small" isButton
-                         @click="openModal(testimonial.id)">Read More
+          <external-link
+            class="link ml-auto order-2 pb-0 font-medium text-text-small"
+            is-button
+            @click="openModal(testimonial.id)"
+          >
+            Read More
           </external-link>
           <figure class="testimonial-author">
             <ImageContent
-                className="size-14 rounded-[50%] bg-secondary"
-                :src="'testimonials/' + testimonial.image"
-                :alt="`Picture of ${testimonial.author}'s face`"
+              class-name="size-14 rounded-[50%] bg-secondary"
+              :src="'testimonials/' + testimonial.image"
+              :alt="`Picture of ${testimonial.author}'s face`"
             />
             <figcaption>
-              <h3 class="testimonial-author-name">{{ testimonial.author }}</h3>
-              <p class="testimonial-author-job">{{ testimonial.position }}</p>
+              <h3 class="testimonial-author-name">
+                {{ testimonial.author }}
+              </h3>
+              <p class="testimonial-author-job">
+                {{ testimonial.position }}
+              </p>
             </figcaption>
           </figure>
         </li>
       </ol>
       <quote-modal
-          v-for="testimony in testimonials"
-          :key="testimony.id"
-          :modal-id="testimony.id"
-          :is-visible="testimony.isVisible"
-          :author="testimony.author"
-          :position="testimony.position"
-          :image="testimony.image"
-          :content="testimony.content.split('\n')"
-          @close="closeModal(testimony.id)"
+        v-for="testimony in testimonials"
+        :key="testimony.id"
+        :modal-id="testimony.id"
+        :is-visible="testimony.isVisible"
+        :author="testimony.author"
+        :position="testimony.position"
+        :image="testimony.image"
+        :content="testimony.content.split('\n')"
+        @close="closeModal(testimony.id)"
       />
     </div>
   </section>
@@ -57,6 +67,11 @@ export default {
     ExternalLink,
     ImageContent,
   },
+  data() {
+    return {
+      testimonials: testimonialData.testimonials,
+    };
+  },
   methods: {
     openModal(modalId) {
       this.testimonials.forEach((testimonial) => {
@@ -70,11 +85,6 @@ export default {
         testimonial.isVisible = false;
       });
     },
-  },
-  data() {
-    return {
-      testimonials: testimonialData.testimonials,
-    };
   },
 };
 </script>

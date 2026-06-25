@@ -1,33 +1,36 @@
 <template>
   <div
-      ref="root"
-      class="seal"
-      :style="{
+    ref="root"
+    class="seal"
+    :style="{
       width: `${size}px`,
       height: `${size}px`,
     }"
-      role="img"
-      :aria-label="text"
+    role="img"
+    :aria-label="text"
   >
     <svg
-        class="seal-svg"
-        :viewBox="`0 0 ${vb} ${vb}`"
-        :style="{ animationDuration: `${duration}s` }"
+      class="seal-svg"
+      :viewBox="`0 0 ${vb} ${vb}`"
+      :style="{ animationDuration: `${duration}s` }"
     >
       <defs>
         <path
-            :id="pathId"
-            :d="circlePathD"
+          :id="pathId"
+          :d="circlePathD"
         />
       </defs>
 
-      <text class="seal-text" :style="{ fontSize: `${fontSizePx}px` }">
+      <text
+        class="seal-text"
+        :style="{ fontSize: `${fontSizePx}px` }"
+      >
         <textPath
-            :href="`#${pathId}`"
-            startOffset="50%"
-            text-anchor="middle"
-            lengthAdjust="spacingAndGlyphs"
-            :textLength="textLength"
+          :href="`#${pathId}`"
+          startOffset="50%"
+          text-anchor="middle"
+          lengthAdjust="spacingAndGlyphs"
+          :textLength="textLength"
         >
           {{ normalizedText }}
         </textPath>

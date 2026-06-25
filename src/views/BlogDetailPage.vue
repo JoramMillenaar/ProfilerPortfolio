@@ -1,38 +1,68 @@
 <template>
-  <nav-bar :showAtTop="false"/>
+  <nav-bar :show-at-top="false" />
   <article class="blog-detail">
     <div class="container">
-      <div v-if="post.seal" class="seal-float" aria-hidden="true">
+      <div
+        v-if="post.seal"
+        class="seal-float"
+        aria-hidden="true"
+      >
         <CircularSeal
-            :text="post.seal"
-            :size="120"
-            :duration="22"
+          :text="post.seal"
+          :size="120"
+          :duration="22"
         />
       </div>
-      <header class="hero" v-if="post">
-        <p class="eyebrow">Stories & Processes</p>
-        <h1 class="title">{{ post.title }}</h1>
+      <header
+        v-if="post"
+        class="hero"
+      >
+        <p class="eyebrow">
+          Stories & Processes
+        </p>
+        <h1 class="title">
+          {{ post.title }}
+        </h1>
         <div class="meta">
           <time :datetime="post.date">{{ formattedDate(post.date) }}</time>
           <span aria-hidden="true">·</span>
           <span>{{ post.readTime }}</span>
         </div>
-        <ul class="tags" aria-label="Post tags">
-          <li v-for="tag in post.tags" :key="tag">{{ tag }}</li>
+        <ul
+          class="tags"
+          aria-label="Post tags"
+        >
+          <li
+            v-for="tag in post.tags"
+            :key="tag"
+          >
+            {{ tag }}
+          </li>
         </ul>
       </header>
 
-      <div v-if="post" class="pt-4">
-        <custom-text :content="post.content"/>
+      <div
+        v-if="post"
+        class="pt-4"
+      >
+        <custom-text :content="post.content" />
       </div>
 
-      <section v-else class="not-found">
+      <section
+        v-else
+        class="not-found"
+      >
         <h2>Post not found</h2>
         <p>The blog post you are looking for does not exist.</p>
-        <router-link class="back-link" to="/blog">Back to blog</router-link>
+        <router-link
+          class="back-link"
+          to="/blog"
+        >
+          Back to blog
+        </router-link>
       </section>
     </div>
-    <site-footer/>
+    <site-footer />
   </article>
 </template>
 

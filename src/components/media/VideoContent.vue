@@ -3,7 +3,7 @@
     <ImageContent
       v-if="!isVideoVisible || !videoSrc"
       :src="thumbnail"
-      className="w-full h-auto"
+      class-name="w-full h-auto"
       alt="Thumbnail"
     />
     <video
@@ -14,7 +14,7 @@
       loop
       playsinline
       class="w-full h-auto"
-    ></video>
+    />
   </div>
 </template>
 
@@ -22,8 +22,8 @@
 import ImageContent from './ImageContent.vue';
 
 export default {
-  props: ['video', 'thumbnail'],
   components: { ImageContent },
+  props: ['video', 'thumbnail'],
   data() {
     return {
       isVideoVisible: false,

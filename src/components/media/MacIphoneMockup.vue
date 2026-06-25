@@ -4,23 +4,26 @@
       src="apple-mockup.webp"
       placeholder="apple-mockup-lqip.webp"
       alt="A mockup image of a Macbook and an Iphone displaying the images and video below"
-      className="device-image"
+      class-name="device-image"
     />
     <div class="screen-content">
       <object class="screen-image">
-        <video-content :video="video" :thumbnail="thumbnail" />
+        <video-content
+          :video="video"
+          :thumbnail="thumbnail"
+        />
       </object>
       <div class="phone-image">
         <picture class="phone-video">
           <ImageContent
-            className="phone-main"
+            class-name="phone-main"
             :src="phoneOverlayImg"
             alt="An iPhone's screen contents displaying a header with the Thrust logo"
           />
           <div ref="scrollable">
             <ImageContent
               :style="transformStyle"
-              className="phone-second"
+              class-name="phone-second"
               :src="phoneScrollableImg"
               alt="A series of widgets with boats displayed on the phone's screen"
             />

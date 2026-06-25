@@ -1,25 +1,37 @@
 <template>
-  <nav-bar :showAtTop="false"/>
+  <nav-bar :show-at-top="false" />
   <article class="deep-dive-detail">
     <div class="container">
       <template v-if="dive">
         <header class="hero">
-          <p class="eyebrow">Deep Dive</p>
-          <h1 class="title">{{ dive.title }}</h1>
+          <p class="eyebrow">
+            Deep Dive
+          </p>
+          <h1 class="title">
+            {{ dive.title }}
+          </h1>
         </header>
 
         <div class="pt-4">
-          <component :is="content"/>
+          <component :is="content" />
         </div>
       </template>
 
-      <section v-else class="not-found">
+      <section
+        v-else
+        class="not-found"
+      >
         <h2>Deep dive not found</h2>
         <p>The deep dive you are looking for does not exist.</p>
-        <router-link class="back-link" to="/deep-dives">Back to deep dives</router-link>
+        <router-link
+          class="back-link"
+          to="/deep-dives"
+        >
+          Back to deep dives
+        </router-link>
       </section>
     </div>
-    <site-footer/>
+    <site-footer />
   </article>
 </template>
 

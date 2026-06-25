@@ -1,5 +1,10 @@
 <template>
-  <button type="submit" class="btn btn-cta">{{ contents }}</button>
+  <button
+    type="submit"
+    class="btn btn-cta"
+  >
+    {{ contents }}
+  </button>
 </template>
 
 <script>
