@@ -197,23 +197,9 @@ h2 {
     }
 }
 
+/* Used by BaseModal to lock body scroll while a dialog is open. */
 .lock-screen {
     overflow-y: hidden;
-}
-
-.hidden {
-    visibility: hidden;
-    transform: translateX(-100%);
-}
-
-.transform {
-    transform: translateY(6rem);
-    opacity: 0;
-}
-
-.shown {
-    transition: 0.1s;
-    color: lightgrey;
 }
 
 /* Button and link styles now live in the base components:

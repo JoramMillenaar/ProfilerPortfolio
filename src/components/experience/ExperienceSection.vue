@@ -1,9 +1,9 @@
 <script setup>
 import experienceData from '@/data/experience.json';
 import ExperienceDetail from './ExperienceDetail.vue';
-import MacIphoneMockup from '../media/MacIphoneMockup.vue';
-import VideoContent from '../media/VideoContent.vue';
-import SimpleMacMockup from '../media/SimpleMacMockup.vue';
+import MacIphoneMockup from '@/components/media/MacIphoneMockup.vue';
+import VideoContent from '@/components/media/VideoContent.vue';
+import SimpleMacMockup from '@/components/media/SimpleMacMockup.vue';
 
 // Positional layout config per experience entry (matches the source order).
 const layouts = [

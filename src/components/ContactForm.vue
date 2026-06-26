@@ -8,7 +8,7 @@ import {
   BaseSpinner,
   FormField,
 } from '@/components/base';
-import SkillOrbital from './media/SkillOrbital.vue';
+import SkillOrbital from '@/components/media/SkillOrbital.vue';
 import contactInfo from '@/data/contactInfo.json';
 
 const contact = contactInfo;

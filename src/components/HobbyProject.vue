@@ -1,6 +1,6 @@
 <script setup>
 import { BaseLink, BaseImage } from '@/components/base';
-import SkillEmblem from './experience/SkillEmblem.vue';
+import SkillEmblem from '@/components/experience/SkillEmblem.vue';
 import projectData from '@/data/projects.json';
 
 const featured = projectData.featured;

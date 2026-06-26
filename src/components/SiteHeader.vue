@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { BaseButton } from '@/components/base';
-import TextSlider from './common/TextSlider.vue';
+import TextSlider from '@/components/common/TextSlider.vue';
 import headerData from '@/data/headerFooter.json';
 import HeaderImage from '@/assets/images/profile-picture.webp'; // TODO: make this dynamic
 
