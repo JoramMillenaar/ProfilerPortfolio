@@ -130,10 +130,10 @@ onBeforeUnmount(() => {
       >
         <textPath
           :href="`#${pathId}`"
-          start-offset="50%"
+          startOffset="50%"
           text-anchor="middle"
-          length-adjust="spacingAndGlyphs"
-          :text-length="textLength"
+          lengthAdjust="spacingAndGlyphs"
+          :textLength="textLength"
         >
           {{ normalizedText }}
         </textPath>
