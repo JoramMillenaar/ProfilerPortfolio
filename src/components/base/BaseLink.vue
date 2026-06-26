@@ -1,7 +1,8 @@
 <script setup>
 /**
  * Polymorphic inline link with an animated underline. Renders a <router-link>
- * for internal `to` targets and an <a> for external `href` targets.
+ * for internal `to` targets, an <a> for external `href` targets, and a
+ * <button> when neither is given (for link-styled actions).
  */
 import { computed } from 'vue';
 
@@ -23,7 +24,11 @@ const props = defineProps({
   },
 });
 
-const tag = computed(() => (props.to ? 'router-link' : 'a'));
+const tag = computed(() => {
+  if (props.to) return 'router-link';
+  if (props.href) return 'a';
+  return 'button';
+});
 
 const rel = computed(() =>
   props.href && props.target === '_blank' ? 'noopener noreferrer' : undefined,
@@ -37,6 +42,7 @@ const rel = computed(() =>
     :href="href ?? undefined"
     :target="tag === 'a' ? target : undefined"
     :rel="rel"
+    :type="tag === 'button' ? 'button' : undefined"
     class="base-link"
   >
     <slot />
@@ -48,6 +54,8 @@ const rel = computed(() =>
   display: inline-block;
   position: relative;
   padding: var(--gutter-nano) 0;
+  background: none;
+  border: none;
   color: var(--important);
   font-size: var(--fs-text-small, 1.125rem);
   font-weight: 600;

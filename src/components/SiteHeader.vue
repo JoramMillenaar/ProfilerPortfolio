@@ -1,3 +1,25 @@
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { BaseButton } from '@/components/base';
+import TextSlider from './common/TextSlider.vue';
+import headerData from '@/data/headerFooter.json';
+import HeaderImage from '@/assets/images/profile-picture.webp'; // TODO: make this dynamic
+
+const header = headerData;
+
+// Guarded for build-time prerender where `window` is undefined.
+const viewportWidth = ref(
+  typeof window !== 'undefined' ? window.innerWidth : 1024,
+);
+
+function updateWidth() {
+  viewportWidth.value = window.innerWidth;
+}
+
+onMounted(() => window.addEventListener('resize', updateWidth));
+onBeforeUnmount(() => window.removeEventListener('resize', updateWidth));
+</script>
+
 <template>
   <header class="header">
     <div class="bg-fade" />
@@ -6,7 +28,7 @@
         data-aos="fade"
         data-aos-duration="500"
       >
-        <text-slider />
+        <TextSlider />
       </div>
       <h1 data-aos="fade-up">
         {{ header.titleLineOne }}<br>{{ header.titleLineTwo }}
@@ -23,16 +45,18 @@
         data-aos="fade-up"
         data-aos-delay="400"
       >
-        <a
+        <BaseButton
+          variant="primary"
           href="#contact"
-          class="btn-primary"
-        >Contact Me</a>
-        <external-link
-          class="btn-secondary"
+        >
+          Contact Me
+        </BaseButton>
+        <BaseButton
+          variant="secondary"
           to="/blog"
         >
           Latest Stories
-        </external-link>
+        </BaseButton>
       </div>
     </div>
     <img
@@ -45,37 +69,6 @@
     >
   </header>
 </template>
-
-<script>
-import headerData from '@/data/headerFooter.json';
-import TextSlider from './common/TextSlider.vue';
-import { ref } from 'vue';
-import ExternalLink from './common/ExternalLink.vue';
-import HeaderImage from '/src/assets/images/profile-picture.webp';  // TODO: Make this dynamic
-
-export default {
-  components: { TextSlider, ExternalLink },
-  data() {
-    return {
-      header: headerData,
-      // Guarded for build-time prerender where `window` is undefined.
-      viewportWidth: ref(typeof window !== 'undefined' ? window.innerWidth : 1024),
-      HeaderImage,
-    };
-  },
-  methods: {
-    updateWidth() {
-      this.viewportWidth.value = window.innerWidth;
-    },
-  },
-  onMounted() {
-    window.addEventListener('resize', this.updateWidth);
-  },
-  onUnmounted() {
-    window.removeEventListener('resize', this.updateWidth);
-  },
-};
-</script>
 
 <style scoped>
 .header {

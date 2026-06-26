@@ -1,3 +1,25 @@
+<script setup>
+import { BaseImage } from '@/components/base';
+import LineBackground from '@/assets/images/line.svg';
+
+defineProps({
+  /** DOM id for the modal section. */
+  modalId: { type: String, default: undefined },
+  /** Whether the modal is shown. */
+  isVisible: { type: Boolean, default: false },
+  /** Testimonial author name. */
+  author: { type: String, default: '' },
+  /** Author role/position. */
+  position: { type: String, default: '' },
+  /** Author image path relative to src/assets/images/testimonials. */
+  image: { type: String, default: '' },
+  /** Paragraphs of the testimonial. */
+  content: { type: Array, default: () => [] },
+});
+
+defineEmits(['close']);
+</script>
+
 <template>
   <teleport to="body">
     <section
@@ -5,7 +27,7 @@
       :id="modalId"
       class="background"
       data-aos="fade-in"
-      @click.self="closeModal"
+      @click.self="$emit('close')"
     >
       <div class="modal">
         <article
@@ -15,8 +37,8 @@
         >
           <header>
             <figure>
-              <ImageContent
-                class-name="img"
+              <BaseImage
+                img-class="img"
                 :src="'testimonials/' + image"
                 :alt="`Picture of ${author}`"
               />
@@ -28,10 +50,12 @@
               </figcaption>
             </figure>
             <button
+              type="button"
               class="close-btn"
-              @click="closeModal"
+              aria-label="Close"
+              @click="$emit('close')"
             >
-              X
+              &times;
             </button>
           </header>
           <div class="modal-text">
@@ -52,34 +76,6 @@
     </section>
   </teleport>
 </template>
-
-<script>
-import ImageContent from './media/ImageContent.vue';
-import LineBackground  from '@/assets/images/line.svg';
-
-export default {
-  components: { ImageContent },
-  props: {
-    modalId: String,
-    isVisible: Boolean,
-    author: String,
-    position: String,
-    image: String,
-    content: Array,
-  },
-  emits: ['close'],
-  data() {
-    return {
-      LineBackground
-    };
-  },
-  methods: {
-    closeModal() {
-      this.$emit('close');
-    },
-  },
-};
-</script>
 
 <style scoped>
 .background {

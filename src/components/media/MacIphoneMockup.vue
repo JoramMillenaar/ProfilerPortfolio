@@ -1,29 +1,89 @@
+<script setup>
+import { ref, useTemplateRef, onMounted, onBeforeUnmount } from 'vue';
+import { BaseImage } from '@/components/base';
+import VideoContent from './VideoContent.vue';
+
+defineProps({
+  /** Video filename relative to src/assets/videos. */
+  video: {
+    type: String,
+    required: true,
+  },
+  /** Thumbnail path relative to src/assets/images. */
+  thumbnail: {
+    type: String,
+    required: true,
+  },
+  /** Static phone overlay image path. */
+  phoneOverlayImg: {
+    type: String,
+    required: true,
+  },
+  /** Scrollable phone screen image path. */
+  phoneScrollableImg: {
+    type: String,
+    required: true,
+  },
+});
+
+const scrollable = useTemplateRef('scrollable');
+const transformStyle = ref(null);
+let viewportHeight = null;
+let timer = null;
+
+function handleScroll() {
+  if (timer) return;
+  timer = setTimeout(() => {
+    timer = null;
+    if (!scrollable.value) return;
+    const rect = scrollable.value.getBoundingClientRect();
+    if (rect.top < viewportHeight && rect.bottom >= 0) {
+      const totalHeight = rect.bottom - rect.top;
+      const curPosition = rect.bottom / (viewportHeight + totalHeight);
+      const scrollPercentage = (curPosition * 80 - 82).toFixed(1);
+      transformStyle.value = {
+        transform: `translateY(${scrollPercentage}%)`,
+      };
+    }
+  }, 70);
+}
+
+onMounted(() => {
+  viewportHeight = window.innerHeight;
+  window.addEventListener('scroll', handleScroll);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
+</script>
+
 <template>
   <div class="device-mockup">
-    <ImageContent
+    <BaseImage
       src="apple-mockup.webp"
       placeholder="apple-mockup-lqip.webp"
       alt="A mockup image of a Macbook and an Iphone displaying the images and video below"
-      class-name="device-image"
+      img-class="device-image"
     />
     <div class="screen-content">
       <object class="screen-image">
-        <video-content
+        <VideoContent
           :video="video"
           :thumbnail="thumbnail"
         />
       </object>
       <div class="phone-image">
         <picture class="phone-video">
-          <ImageContent
-            class-name="phone-main"
+          <BaseImage
+            img-class="phone-main"
             :src="phoneOverlayImg"
             alt="An iPhone's screen contents displaying a header with the Thrust logo"
           />
           <div ref="scrollable">
-            <ImageContent
+            <BaseImage
               :style="transformStyle"
-              class-name="phone-second"
+              img-class="phone-second"
               :src="phoneScrollableImg"
               alt="A series of widgets with boats displayed on the phone's screen"
             />
@@ -33,58 +93,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import ImageContent from './ImageContent.vue';
-import VideoContent from './VideoContent.vue';
-
-export default {
-  components: { VideoContent, ImageContent },
-  props: ['video', 'thumbnail', 'phoneOverlayImg', 'phoneScrollableImg'],
-  data() {
-    return {
-      scrollPercentage: 0,
-      transformStyle: null,
-      viewportHeight: null,
-      timer: null,
-    };
-  },
-  mounted() {
-    this.viewportHeight = window.innerHeight;
-    window.addEventListener('scroll', this.handleScroll);
-  },
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  },
-  methods: {
-    handleScroll() {
-      if (!this.timer) {
-        this.timer = setTimeout(() => {
-          this.timer = null;
-          const rec = this.$refs.scrollable.getBoundingClientRect();
-          this.elementTop = rec.top;
-          this.elementBottom = rec.bottom;
-          if (
-            this.elementTop < this.viewportHeight &&
-            this.elementBottom >= 0
-          ) {
-            const totalHeight = this.elementBottom - this.elementTop;
-            const curPosition =
-              this.elementBottom / (this.viewportHeight + totalHeight);
-            this.scrollPercentage = (curPosition * 80 - 82).toFixed(1);
-            this.applyTransform();
-          }
-        }, 70);
-      }
-    },
-    applyTransform() {
-      this.transformStyle = {
-        transform: `translateY(${this.scrollPercentage}%)`,
-      };
-    },
-  },
-};
-</script>
 
 <style>
 .device-mockup {

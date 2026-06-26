@@ -19,26 +19,19 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'TextSlider',
-  data() {
-    return {
-      greetings: [
-        'World!',
-        'Enterprise!',
-        'Innovators!',
-        'Startups!',
-        'Creators!',
-        'Local!',
-        'Solutions!',
-        'Automation!',
-        'Growth!',
-        'Tech!',
-      ],
-    };
-  },
-};
+<script setup>
+const greetings = [
+  'World!',
+  'Enterprise!',
+  'Innovators!',
+  'Startups!',
+  'Creators!',
+  'Local!',
+  'Solutions!',
+  'Automation!',
+  'Growth!',
+  'Tech!',
+];
 </script>
 
 <style scoped>

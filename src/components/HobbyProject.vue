@@ -1,3 +1,12 @@
+<script setup>
+import { BaseLink, BaseImage } from '@/components/base';
+import SkillEmblem from './experience/SkillEmblem.vue';
+import projectData from '@/data/projects.json';
+
+const featured = projectData.featured;
+const projects = projectData.projects;
+</script>
+
 <template>
   <section>
     <div>
@@ -21,18 +30,17 @@
               </p>
             </div>
             <div class="article-info">
-              <external-link
-                class="link"
+              <BaseLink
                 :href="featured.link"
                 target="_blank"
               >
                 Source Code
-              </external-link>
-              <skill-emblem :name="featured.skill" />
+              </BaseLink>
+              <SkillEmblem :name="featured.skill" />
             </div>
           </div>
           <picture class="article-illustration">
-            <ImageContent
+            <BaseImage
               v-if="!featured.featured"
               :src="featured.image"
               :alt="featured.title + ' image'"
@@ -52,9 +60,9 @@
                 <h3 class="h4">
                   {{ project.title }}
                 </h3>
-                <ImageContent
+                <BaseImage
                   v-if="!project.featured"
-                  class-name="article-icon"
+                  img-class="article-icon"
                   :src="project.image"
                   :alt="project.title + '\'s logo'"
                 />
@@ -64,14 +72,13 @@
               </p>
             </div>
             <div class="article-info">
-              <external-link
-                class="link"
+              <BaseLink
                 :href="project.link"
                 target="_blank"
               >
                 Source Code
-              </external-link>
-              <skill-emblem :name="project.skill" />
+              </BaseLink>
+              <SkillEmblem :name="project.skill" />
             </div>
           </div>
         </article>
@@ -79,28 +86,6 @@
     </div>
   </section>
 </template>
-
-<script>
-import SkillEmblem from './experience/SkillEmblem.vue';
-import projectData from '@/data/projects.json';
-import ExternalLink from './common/ExternalLink.vue';
-import ImageContent from './media/ImageContent.vue';
-
-export default {
-  name: 'HobbyProject',
-  components: {
-    SkillEmblem,
-    ExternalLink,
-    ImageContent
-  },
-  data() {
-    return {
-      featured: projectData.featured,
-      projects: projectData.projects,
-    };
-  },
-};
-</script>
 
 <style scoped>
 .article-box {

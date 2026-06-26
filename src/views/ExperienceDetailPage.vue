@@ -1,88 +1,76 @@
+<script setup>
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+import DefaultLayout from '@/components/layout/DefaultLayout.vue';
+import SiteFooter from '@/components/SiteFooter.vue';
+import SkillEmblem from '@/components/experience/SkillEmblem.vue';
+import VideoContent from '@/components/media/VideoContent.vue';
+import CustomText from '@/components/common/CustomText.vue';
+import experienceData from '@/data/experience.json';
+import { usePageHead } from '@/composables/usePageHead';
+import { stripMarkdown, truncate } from '@/utils/seo';
+
+const route = useRoute();
+const experience = computed(
+  () => experienceData.find((exp) => exp.id === route.params.id) || {},
+);
+
+usePageHead(() => {
+  const exp = experience.value;
+  if (!exp.id) {
+    return { path: `/experience/${route.params.id}` };
+  }
+  const intro = `${exp.title} at ${exp.company}${
+    exp.location ? ` — ${exp.location}` : ''
+  }.`;
+  return {
+    title: `${exp.title} at ${exp.company}`,
+    description: truncate(`${intro} ${stripMarkdown(exp.content || '')}`, 160),
+    path: `/experience/${exp.id}`,
+  };
+});
+</script>
+
 <template>
-  <nav-bar :show-at-top="false" />
-  <div class="header">
-    <div class="header-top">
-      <div class="header-text">
-        <h1 class="capitalize">
-          {{ experience.company }}
-        </h1>
-        <h3>{{ experience.title }}</h3>
-        <h4>{{ experience.location }}</h4>
+  <DefaultLayout>
+    <div class="header">
+      <div class="header-top">
+        <div class="header-text">
+          <h1 class="capitalize">
+            {{ experience.company }}
+          </h1>
+          <h3>{{ experience.title }}</h3>
+          <h4>{{ experience.location }}</h4>
+        </div>
+        <div class="header-media">
+          <VideoContent
+            :thumbnail="experience.thumbnail"
+            :video="experience.video"
+          />
+        </div>
       </div>
-      <div class="header-media">
-        <video-content
-          :thumbnail="experience.thumbnail"
-          :video="experience.video"
-          :blurred-background="experience.blurredBackground"
+
+      <div class="skills">
+        <SkillEmblem
+          v-for="skill in experience.skills"
+          :key="skill"
+          :name="skill"
         />
       </div>
     </div>
+    <div class="container">
+      <div class="text-section">
+        <CustomText :content="experience.content" />
+      </div>
+    </div>
 
-    <div class="skills">
-      <skill-emblem
-        v-for="skill in experience.skills"
-        :key="skill"
-        :name="skill"
-      />
-    </div>
-  </div>
-  <div class="container">
-    <div class="text-section">
-      <custom-text :content="experience.content" />
-    </div>
-  </div>
-  <div class="footer">
-    <site-footer />
-  </div>
+    <template #footer>
+      <div class="footer">
+        <SiteFooter />
+      </div>
+    </template>
+  </DefaultLayout>
 </template>
-
-<script>
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
-import { useHead } from '@unhead/vue';
-import experienceData from '@/data/experience.json';
-import SkillEmblem from '@/components/experience/SkillEmblem.vue';
-import VideoContent from '@/components/media/VideoContent.vue';
-import SiteFooter from '@/components/SiteFooter.vue';
-import NavBar from '@/components/NavBar.vue';
-import CustomText from "@/components/common/customText.vue";
-import { pageHead, stripMarkdown, truncate } from '@/utils/seo';
-
-export default {
-  name: 'ExperienceDetailPage',
-  components: {SkillEmblem, VideoContent, SiteFooter, NavBar, CustomText},
-  setup() {
-    const route = useRoute();
-    const experience = computed(
-      () =>
-        experienceData.find((exp) => exp.id === route.params.id) || {},
-    );
-
-    useHead(
-      computed(() => {
-        const exp = experience.value;
-        if (!exp.id) {
-          return pageHead({ path: `/experience/${route.params.id}` });
-        }
-        const intro = `${exp.title} at ${exp.company}${
-          exp.location ? ` — ${exp.location}` : ''
-        }.`;
-        const description = truncate(
-          `${intro} ${stripMarkdown(exp.content || '')}`,
-          160,
-        );
-        return pageHead({
-          title: `${exp.title} at ${exp.company}`,
-          description,
-          path: `/experience/${exp.id}`,
-        });
-      }),
-    );
-
-    return { experience };
-  },
-};
-</script>
 
 <style scoped>
 .text-section {

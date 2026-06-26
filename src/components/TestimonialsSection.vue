@@ -1,3 +1,28 @@
+<script setup>
+import { reactive } from 'vue';
+import { BaseLink, BaseImage } from '@/components/base';
+import QuoteModal from './QuoteModal.vue';
+import testimonialData from '@/data/testimonials.json';
+
+const testimonials = reactive(
+  testimonialData.testimonials.map((t) => ({ ...t, isVisible: false })),
+);
+
+function openModal(modalId) {
+  document.body.style.overflow = 'hidden';
+  testimonials.forEach((t) => {
+    t.isVisible = t.id === modalId;
+  });
+}
+
+function closeModal() {
+  document.body.style.overflow = '';
+  testimonials.forEach((t) => {
+    t.isVisible = false;
+  });
+}
+</script>
+
 <template>
   <section>
     <h2 id="testimonials">
@@ -16,16 +41,15 @@
             {{ testimonial.quote }}
           </blockquote>
 
-          <external-link
-            class="link ml-auto order-2 pb-0 font-medium text-text-small"
-            is-button
+          <BaseLink
+            class="ml-auto order-2"
             @click="openModal(testimonial.id)"
           >
             Read More
-          </external-link>
+          </BaseLink>
           <figure class="testimonial-author">
-            <ImageContent
-              class-name="size-14 rounded-[50%] bg-secondary"
+            <BaseImage
+              img-class="size-14 rounded-[50%] bg-secondary"
               :src="'testimonials/' + testimonial.image"
               :alt="`Picture of ${testimonial.author}'s face`"
             />
@@ -40,7 +64,7 @@
           </figure>
         </li>
       </ol>
-      <quote-modal
+      <QuoteModal
         v-for="testimony in testimonials"
         :key="testimony.id"
         :modal-id="testimony.id"
@@ -54,40 +78,6 @@
     </div>
   </section>
 </template>
-
-<script>
-import ExternalLink from './common/ExternalLink.vue';
-import ImageContent from './media/ImageContent.vue';
-import QuoteModal from './QuoteModal.vue';
-import testimonialData from '@/data/testimonials.json';
-
-export default {
-  components: {
-    QuoteModal,
-    ExternalLink,
-    ImageContent,
-  },
-  data() {
-    return {
-      testimonials: testimonialData.testimonials,
-    };
-  },
-  methods: {
-    openModal(modalId) {
-      this.testimonials.forEach((testimonial) => {
-        document.body.style.overflow = 'hidden';
-        testimonial.isVisible = testimonial.id === modalId ? true : false;
-      });
-    },
-    closeModal() {
-      this.testimonials.forEach((testimonial) => {
-        document.body.style.overflow = '';
-        testimonial.isVisible = false;
-      });
-    },
-  },
-};
-</script>
 
 <style>
 .testimonials {

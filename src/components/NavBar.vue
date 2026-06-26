@@ -1,3 +1,69 @@
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { BaseLink } from '@/components/base';
+
+const props = defineProps({
+  /** Pin the nav bar at the top of the page on initial load. */
+  showAtTop: {
+    type: Boolean,
+    default: true,
+  },
+});
+
+const navLinks = [
+  { label: 'Home', to: '/' },
+  { label: 'Blog', to: '/blog' },
+  { label: 'Deep Dives', to: '/deep-dives' },
+  { label: 'Contact', to: '/#contact' },
+];
+
+const isVisible = ref(false);
+let lastScroll = 0;
+
+function handleScroll() {
+  const currentScroll = window.scrollY;
+  if (currentScroll <= 100) {
+    isVisible.value = props.showAtTop;
+  } else if (currentScroll > lastScroll) {
+    isVisible.value = false;
+  } else if (currentScroll < lastScroll) {
+    isVisible.value = true;
+  }
+  lastScroll = currentScroll;
+}
+
+function showNavBar() {
+  isVisible.value = true;
+}
+
+function beforeEnter(el) {
+  el.style.transform = 'translateY(-100%)';
+}
+
+function enter(el, done) {
+  el.offsetHeight; // trigger reflow
+  el.style.transition = 'transform 0.3s ease-in-out';
+  el.style.transform = 'translateY(0)';
+  done();
+}
+
+function leave(el, done) {
+  el.style.transition = 'transform 0.3s ease-in-out';
+  el.style.transform = 'translateY(-100%)';
+  setTimeout(() => done(), 300); // match transition duration
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+  lastScroll = window.scrollY;
+  isVisible.value = window.scrollY <= 100 ? props.showAtTop : false;
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
+</script>
+
 <template>
   <transition
     name="slide"
@@ -16,30 +82,13 @@
         JM
       </router-link>
       <div class="nav-links">
-        <external-link
-          class="link"
-          to="/"
+        <BaseLink
+          v-for="link in navLinks"
+          :key="link.to"
+          :to="link.to"
         >
-          Home
-        </external-link>
-        <external-link
-          class="link"
-          to="/blog"
-        >
-          Blog
-        </external-link>
-        <external-link
-          class="link"
-          to="/deep-dives"
-        >
-          Deep Dives
-        </external-link>
-        <external-link
-          class="link"
-          to="/#contact"
-        >
-          Contact
-        </external-link>
+          {{ link.label }}
+        </BaseLink>
       </div>
     </nav>
   </transition>
@@ -52,78 +101,6 @@
     <div class="navbar-handle-bar" />
   </div>
 </template>
-
-<script>
-import ExternalLink from './common/ExternalLink.vue';
-export default {
-  name: 'NavBar',
-  components: { ExternalLink },
-  props: {
-    showAtTop: {
-      type: Boolean,
-      default: true,
-    },
-  },
-  data() {
-    return {
-      lastScroll: 0,
-      isVisible: false,
-    };
-  },
-  mounted() {
-    window.addEventListener('scroll', this.handleScroll);
-    this.lastScroll = window.scrollY;
-    if (window.scrollY <= 100) {
-      if (this.showAtTop) {
-        this.isVisible = true;
-      } else {
-        this.isVisible = false;
-      }
-    } else {
-      this.isVisible = false;
-    }
-  },
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  },
-  methods: {
-    handleScroll() {
-      const currentScroll = window.scrollY;
-      if (currentScroll <= 100) {
-        if (this.showAtTop) {
-          this.isVisible = true;
-        } else {
-          this.isVisible = false;
-        }
-      } else {
-        if (currentScroll > this.lastScroll) {
-          this.isVisible = false;
-        } else if (currentScroll < this.lastScroll) {
-          this.isVisible = true;
-        }
-      }
-      this.lastScroll = currentScroll;
-    },
-    showNavBar() {
-      this.isVisible = true;
-    },
-    beforeEnter(el) {
-      el.style.transform = 'translateY(-100%)';
-    },
-    enter(el, done) {
-      el.offsetHeight; // trigger reflow
-      el.style.transition = 'transform 0.3s ease-in-out';
-      el.style.transform = 'translateY(0)';
-      done();
-    },
-    leave(el, done) {
-      el.style.transition = 'transform 0.3s ease-in-out';
-      el.style.transform = 'translateY(-100%)';
-      setTimeout(() => done(), 300); // match transition duration
-    },
-  },
-};
-</script>
 
 <style scoped>
 .navbar {
@@ -165,18 +142,6 @@ export default {
 .nav-links {
   display: flex;
   gap: var(--gutter-large);
-}
-
-.nav-item {
-  text-decoration: none;
-  padding: var(--gutter-small);
-  font-weight: 500;
-  color: var(--important);
-  transition: color 0.3s;
-}
-
-.nav-item:hover {
-  color: #555;
 }
 
 a {

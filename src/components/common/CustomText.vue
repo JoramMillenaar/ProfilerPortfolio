@@ -1,29 +1,29 @@
+<script setup>
+/**
+ * Renders a markdown string to HTML. Content is trusted (authored in-repo).
+ */
+import { computed } from 'vue';
+import { marked } from 'marked';
+
+const props = defineProps({
+  /** Markdown source. */
+  content: {
+    type: String,
+    default: '',
+  },
+});
+
+const renderedContent = computed(() => marked.parse(props.content || ''));
+</script>
+
 <template>
+  <!-- eslint-disable vue/no-v-html -- content is trusted markdown authored in-repo -->
   <div
     class="markdown-body"
     v-html="renderedContent"
   />
+  <!-- eslint-enable vue/no-v-html -->
 </template>
-
-<script>
-import { marked } from 'marked';
-
-export default {
-  name: 'CustomText',
-  props: {
-    content: {
-      type: String,
-      required: true,
-      default: '',
-    },
-  },
-  computed: {
-    renderedContent() {
-      return marked.parse(this.content || '');
-    },
-  },
-};
-</script>
 
 <style scoped>
 .markdown-body :deep(h1),

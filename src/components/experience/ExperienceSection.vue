@@ -1,3 +1,26 @@
+<script setup>
+import experienceData from '@/data/experience.json';
+import ExperienceDetail from './ExperienceDetail.vue';
+import MacIphoneMockup from '../media/MacIphoneMockup.vue';
+import VideoContent from '../media/VideoContent.vue';
+import SimpleMacMockup from '../media/SimpleMacMockup.vue';
+
+// Positional layout config per experience entry (matches the source order).
+const layouts = [
+  { media: 'video', rounded: true, textAos: 'fade-right' },
+  { media: 'video', rounded: true, textAos: 'fade-right' },
+  { media: 'video', rounded: true, textAos: 'fade-right' },
+  { media: 'phone', rounded: false, textAos: 'fade-left' },
+  { media: 'mac', rounded: false, textAos: 'fade-right' },
+];
+
+const experiences = experienceData.map((exp, index) => ({
+  ...exp,
+  layout: layouts[index] ?? { media: 'video', rounded: true, textAos: 'fade-right' },
+  isLeft: index % 2 === 1,
+}));
+</script>
+
 <template>
   <section class="work">
     <div class="container">
@@ -5,134 +28,46 @@
         My Experience
       </h2>
       <div class="work-boxes">
-        <div class="work-box">
+        <div
+          v-for="exp in experiences"
+          :key="exp.id"
+          class="work-box"
+          :class="{ left: exp.isLeft }"
+        >
           <div
             class="work-textbox"
-            data-aos="fade-right"
+            :data-aos="exp.layout.textAos"
           >
-            <experience-detail
-              :id="experiences[0].id"
-              :title="experiences[0].title"
-              :company="experiences[0].company"
-              :location="experiences[0].location"
-              :description="experiences[0].description"
-              :skills="experiences[0].skills"
-              :modal-id="experiences[0].modalId"
-            />
-          </div>
-          <div
-            class="work-media rounded shadow"
-            data-aos="zoom-in-up"
-          >
-            <video-content
-              :thumbnail="experiences[0].thumbnail"
-              :video="experiences[0].video"
-              :blurred-background="experiences[0].blurredBackground"
-            />
-          </div>
-        </div>
-        <div class="work-box left">
-          <div
-            class="work-textbox"
-            data-aos="fade-right"
-          >
-            <experience-detail
-              :id="experiences[1].id"
-              :title="experiences[1].title"
-              :company="experiences[1].company"
-              :location="experiences[1].location"
-              :description="experiences[1].description"
-              :skills="experiences[1].skills"
-              :modal-id="experiences[1].modalId"
-            />
-          </div>
-          <div
-            class="work-media rounded shadow"
-            data-aos="zoom-in-up"
-          >
-            <video-content
-              :thumbnail="experiences[1].thumbnail"
-              :video="experiences[1].video"
-              :blurred-background="experiences[1].blurredBackground"
-            />
-          </div>
-        </div>
-        <div class="work-box">
-          <div
-            class="work-textbox"
-            data-aos="fade-right"
-          >
-            <experience-detail
-              :id="experiences[2].id"
-              :title="experiences[2].title"
-              :company="experiences[2].company"
-              :location="experiences[2].location"
-              :description="experiences[2].description"
-              :skills="experiences[2].skills"
-              :modal-id="experiences[2].modalId"
-            />
-          </div>
-          <div
-            class="work-media rounded shadow"
-            data-aos="zoom-in-up"
-          >
-            <video-content
-              :thumbnail="experiences[2].thumbnail"
-              :video="experiences[2].video"
-              :blurred-background="experiences[2].blurredBackground"
-            />
-          </div>
-        </div>
-        <div class="work-box left">
-          <div
-            class="work-textbox"
-            data-aos="fade-left"
-          >
-            <experience-detail
-              :id="experiences[3].id"
-              :title="experiences[3].title"
-              :company="experiences[3].company"
-              :location="experiences[3].location"
-              :description="experiences[3].description"
-              :skills="experiences[3].skills"
-              :modal-id="experiences[3].modalId"
+            <ExperienceDetail
+              :id="exp.id"
+              :title="exp.title"
+              :company="exp.company"
+              :location="exp.location"
+              :description="exp.description"
+              :skills="exp.skills"
             />
           </div>
           <div
             class="work-media shadow"
+            :class="{ rounded: exp.layout.rounded }"
             data-aos="zoom-in-up"
           >
-            <mac-iphone-mockup
-              :video="experiences[3].video"
-              :thumbnail="experiences[3].thumbnail"
-              :phone-overlay-img="experiences[3].phoneOverlayImg"
-              :phone-scrollable-img="experiences[3].phoneScrollableImg"
+            <MacIphoneMockup
+              v-if="exp.layout.media === 'phone'"
+              :video="exp.video"
+              :thumbnail="exp.thumbnail"
+              :phone-overlay-img="exp.phoneOverlayImg"
+              :phone-scrollable-img="exp.phoneScrollableImg"
             />
-          </div>
-        </div>
-        <div class="work-box">
-          <div
-            class="work-textbox"
-            data-aos="fade-right"
-          >
-            <experience-detail
-              :id="experiences[4].id"
-              :title="experiences[4].title"
-              :company="experiences[4].company"
-              :location="experiences[4].location"
-              :description="experiences[4].description"
-              :skills="experiences[4].skills"
-              :modal-id="experiences[4].modalId"
+            <SimpleMacMockup
+              v-else-if="exp.layout.media === 'mac'"
+              :thumbnail="exp.thumbnail"
+              :video="exp.video"
             />
-          </div>
-          <div
-            class="work-media shadow"
-            data-aos="zoom-in-up"
-          >
-            <simple-mac-mockup
-              :image="experiences[4].image"
-              :thumbnail="experiences[4].thumbnail"
-              :video="experiences[4].video"
+            <VideoContent
+              v-else
+              :thumbnail="exp.thumbnail"
+              :video="exp.video"
             />
           </div>
         </div>
@@ -140,28 +75,6 @@
     </div>
   </section>
 </template>
-
-<script>
-import experienceData from '@/data/experience.json';
-import ExperienceDetail from './ExperienceDetail.vue';
-import MacIphoneMockup from '../media/MacIphoneMockup.vue';
-import VideoContent from '../media/VideoContent.vue';
-import SimpleMacMockup from '../media/SimpleMacMockup.vue';
-
-export default {
-  components: {
-    ExperienceDetail,
-    MacIphoneMockup,
-    VideoContent,
-    SimpleMacMockup,
-  },
-  data() {
-    return {
-      experiences: experienceData,
-    }
-  },
-};
-</script>
 
 <style>
 .work-boxes {

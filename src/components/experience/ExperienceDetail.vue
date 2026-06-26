@@ -1,3 +1,29 @@
+<script setup>
+import { computed } from 'vue';
+import { BaseLink } from '@/components/base';
+import SkillEmblem from './SkillEmblem.vue';
+
+const props = defineProps({
+  /** Experience id (used to build the detail-page link). */
+  id: { type: String, required: true },
+  /** Role title. */
+  title: { type: String, default: '' },
+  /** Company name. */
+  company: { type: String, default: '' },
+  /** Location label. */
+  location: { type: String, default: '' },
+  /** Short description. */
+  description: { type: String, default: '' },
+  /** Skill ids. */
+  skills: { type: Array, default: () => [] },
+});
+
+const detailPageLink = computed(() => ({
+  name: 'ExperienceDetail',
+  params: { id: props.id },
+}));
+</script>
+
 <template>
   <div>
     <h3 class="text-h3">
@@ -13,44 +39,16 @@
       {{ description }}
     </p>
     <div class="flex flex-row flex-wrap justify-start sm:gap-gutter-small py-gutter-small gap-gutter-large">
-      <skill-emblem
+      <SkillEmblem
         v-for="skill in skills"
         :key="skill"
         :name="skill"
       />
     </div>
     <div class="flex items-center justify-between gap-6">
-      <external-link
-        class="link"
-        :to="detailPageLink"
-      >
+      <BaseLink :to="detailPageLink">
         Read More
-      </external-link>
+      </BaseLink>
     </div>
   </div>
 </template>
-
-<script>
-import ExternalLink from '../common/ExternalLink.vue';
-import SkillEmblem from './SkillEmblem.vue';
-
-export default {
-  components: { SkillEmblem, ExternalLink },
-  props: [
-    'id',
-    'title',
-    'company',
-    'location',
-    'description',
-    'skills',
-    'modalId',
-  ],
-  computed: {
-    detailPageLink() {
-      return { name: 'ExperienceDetail', params: { id: this.id } };
-    },
-  },
-};
-</script>
-
-<style scoped></style>

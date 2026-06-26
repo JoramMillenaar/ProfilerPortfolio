@@ -1,9 +1,69 @@
+<script setup>
+import { ref, useTemplateRef, onMounted } from 'vue';
+import { BaseImage } from '@/components/base';
+
+const props = defineProps({
+  /** Video filename relative to src/assets/videos. */
+  video: {
+    type: String,
+    required: true,
+  },
+  /** Thumbnail path relative to src/assets/images, shown until the video loads. */
+  thumbnail: {
+    type: String,
+    required: true,
+  },
+});
+
+const videos = import.meta.glob('/src/assets/videos/**/*', { query: '?url', import: 'default' });
+
+const root = useTemplateRef('root');
+const isVideoVisible = ref(false);
+const videoSrc = ref('');
+
+async function loadVideo(fileName) {
+  const importVideo = videos[`/src/assets/videos/${fileName}`];
+  if (!importVideo) {
+    console.error(`Video not found: ${fileName}`);
+    return;
+  }
+  try {
+    videoSrc.value = await importVideo();
+  } catch (error) {
+    console.error(`Error loading video: ${fileName}`, error);
+  }
+}
+
+onMounted(() => {
+  const img = root.value?.querySelector('img');
+  if (!img) return;
+  img.addEventListener('load', () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            isVideoVisible.value = true;
+            loadVideo(props.video);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+    observer.observe(img);
+  });
+});
+</script>
+
 <template>
-  <div class="relative">
-    <ImageContent
+  <div
+    ref="root"
+    class="relative"
+  >
+    <BaseImage
       v-if="!isVideoVisible || !videoSrc"
       :src="thumbnail"
-      class-name="w-full h-auto"
+      img-class="w-full h-auto"
       alt="Thumbnail"
     />
     <video
@@ -17,58 +77,3 @@
     />
   </div>
 </template>
-
-<script>
-import ImageContent from './ImageContent.vue';
-
-export default {
-  components: { ImageContent },
-  props: ['video', 'thumbnail'],
-  data() {
-    return {
-      isVideoVisible: false,
-      videoSrc: '',
-    };
-  },
-  mounted() {
-    const img = this.$el.querySelector('img');
-    img.addEventListener('load', () => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              this.isVideoVisible = true;
-              this.loadVideo(this.video);
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
-      observer.observe(img);
-    });
-  },
-  methods: {
-    async loadVideo(fileName) {
-      try {
-        const videos = import.meta.glob('/src/assets/videos/**/*', {
-          as: 'url',
-        });
-        const importVideo = videos[`/src/assets/videos/${fileName}`];
-
-        if (importVideo) {
-          this.videoSrc = await importVideo();
-        } else {
-          console.error(`Video not found: ${fileName}`);
-          this.videoSrc = this.placeholder;
-        }
-      } catch (error) {
-        console.error(`Error loading image: ${fileName}`, error);
-        this.videoSrc = this.placeholder;
-      }
-    },
-  },
-};
-</script>
-
-<style scoped></style>

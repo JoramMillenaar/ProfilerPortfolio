@@ -1,31 +1,37 @@
+<script setup>
+import { BaseImage } from '@/components/base';
+import VideoContent from './VideoContent.vue';
+
+defineProps({
+  /** Video filename relative to src/assets/videos. */
+  video: {
+    type: String,
+    required: true,
+  },
+  /** Thumbnail path relative to src/assets/images. */
+  thumbnail: {
+    type: String,
+    required: true,
+  },
+});
+</script>
+
 <template>
   <div class="device-mockup">
-    <ImageContent
+    <BaseImage
       src="simple-mac.webp"
       placeholder="simple-mac-lqip.webp"
       alt="MacBook Mockup displaying the video below"
-      class-name="device-image"
+      img-class="device-image"
     />
     <object class="screen-content">
-      <video-content
+      <VideoContent
         :video="video"
         :thumbnail="thumbnail"
       />
     </object>
   </div>
 </template>
-
-<script>
-import ImageContent from './ImageContent.vue';
-import VideoContent from './VideoContent.vue';
-export default {
-  components: {
-    VideoContent,
-    ImageContent,
-  },
-  props: ['video', 'thumbnail'],
-};
-</script>
 
 <style scoped>
 .device-mockup {
@@ -46,9 +52,4 @@ export default {
   width: 77%;
   height: 85.5%;
 }
-
-/* .screen-content img, */
-/* .screen-content video { */
-/* object-fit: contain; */
-/* } */
 </style>

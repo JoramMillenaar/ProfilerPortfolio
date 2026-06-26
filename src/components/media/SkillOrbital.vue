@@ -1,3 +1,21 @@
+<script setup>
+import { BaseImage } from '@/components/base';
+import skillsData from '@/data/skills.json';
+
+defineProps({
+  /** Array of rings, each with an `icons` array of skill ids / emoji. */
+  orbits: {
+    type: Array,
+    required: true,
+  },
+});
+
+function getPath(name) {
+  const skill = skillsData.find((s) => s.id === name);
+  return skill ? `skills/${skill.icon}` : null;
+}
+</script>
+
 <template>
   <div class="orbit">
     <ul class="orbit-wrap">
@@ -10,9 +28,9 @@
             v-for="(icon, idx) in orbit.icons"
             :key="idx"
           >
-            <ImageContent
+            <BaseImage
               v-if="getPath(icon)"
-              class-name="orbit-icon"
+              img-class="orbit-icon"
               :src="getPath(icon)"
               :alt="icon"
             />
@@ -23,32 +41,6 @@
     </ul>
   </div>
 </template>
-
-<script>
-import ImageContent from './ImageContent.vue';
-import skillsData from '/src/data/skills.json';
-
-export default {
-  name: 'SkillOrbital',
-  components: { ImageContent },
-  props: {
-    orbits: {
-      type: Array,
-      required: true,
-    },
-  },
-  methods: {
-    getPath(name) {
-      const skill = skillsData.find((skill) => skill.id === name);
-      if (skill) {
-        return 'skills/' + skill.icon;
-      } else {
-        return null
-      }
-    }
-  }
-};
-</script>
 
 <style>
 .orbit {

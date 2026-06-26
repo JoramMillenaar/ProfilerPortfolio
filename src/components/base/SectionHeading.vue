@@ -20,6 +20,11 @@ defineProps({
     default: 2,
     validator: (v) => [1, 2, 3, '1', '2', '3'].includes(v),
   },
+  /** Optional id applied to the heading element (for in-page anchors). */
+  headingId: {
+    type: String,
+    default: undefined,
+  },
   /** Text alignment. */
   align: {
     type: String,
@@ -42,6 +47,7 @@ defineProps({
     </p>
     <component
       :is="`h${level}`"
+      :id="headingId"
       class="title"
     >
       <slot>{{ title }}</slot>

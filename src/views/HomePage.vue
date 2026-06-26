@@ -1,66 +1,51 @@
+<script setup>
+import NavBar from '@/components/NavBar.vue';
+import SiteHeader from '@/components/SiteHeader.vue';
+import ExperienceSection from '@/components/experience/ExperienceSection.vue';
+import TestimonialsSection from '@/components/TestimonialsSection.vue';
+import HobbyProject from '@/components/HobbyProject.vue';
+import ContactForm from '@/components/ContactForm.vue';
+import SiteFooter from '@/components/SiteFooter.vue';
+import { usePageHead } from '@/composables/usePageHead';
+import { siteUrl, author, defaultImage } from '@/utils/seo';
+import { defaultDescription, siteName } from '@/config/site';
+
+usePageHead({ path: '/' }, [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: author,
+    url: siteUrl,
+    image: defaultImage,
+    jobTitle: 'Software Solutions Engineer',
+    description: defaultDescription,
+    sameAs: [
+      'https://github.com/JoramMillenaar',
+      'https://www.linkedin.com/in/joram-millenaar-099406143/',
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: siteName,
+    url: siteUrl,
+  },
+]);
+</script>
+
 <template>
   <div class="home-page">
-    <nav-bar :show-at-top="false" />
-    <site-header />
+    <NavBar :show-at-top="false" />
+    <SiteHeader />
     <main>
-      <experience-section />
-      <hobby-project />
-      <testimonials-section />
-      <contact-form />
-      <site-footer />
+      <ExperienceSection />
+      <HobbyProject />
+      <TestimonialsSection />
+      <ContactForm />
+      <SiteFooter />
     </main>
   </div>
 </template>
-
-<script>
-import { useHead } from '@unhead/vue';
-import SiteHeader from '../components/SiteHeader.vue';
-import ExperienceSection from '@/components/experience/ExperienceSection.vue';
-import TestimonialsSection from '../components/TestimonialsSection.vue';
-import HobbyProject from '../components/HobbyProject.vue';
-import ContactForm from '../components/ContactForm.vue';
-import SiteFooter from '../components/SiteFooter.vue';
-import NavBar from '@/components/NavBar.vue';
-import { pageHead, jsonLd, siteUrl, author, defaultImage } from '@/utils/seo';
-import { defaultDescription } from '@/config/site';
-
-export default {
-  components: {
-    SiteHeader,
-    ExperienceSection,
-    TestimonialsSection,
-    HobbyProject,
-    ContactForm,
-    SiteFooter,
-    NavBar,
-  },
-  setup() {
-    const head = pageHead({ path: '/' });
-    head.script = [
-      jsonLd({
-        '@context': 'https://schema.org',
-        '@type': 'Person',
-        name: author,
-        url: siteUrl,
-        image: defaultImage,
-        jobTitle: 'Software Solutions Engineer',
-        description: defaultDescription,
-        sameAs: [
-          'https://github.com/JoramMillenaar',
-          'https://www.linkedin.com/in/joram-millenaar-099406143/',
-        ],
-      }),
-      jsonLd({
-        '@context': 'https://schema.org',
-        '@type': 'WebSite',
-        name: "Joram Millenaar's Portfolio",
-        url: siteUrl,
-      }),
-    ];
-    useHead(head);
-  },
-};
-</script>
 
 <style>
 section:not(:first-child) {

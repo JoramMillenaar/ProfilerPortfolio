@@ -1,35 +1,35 @@
+<script setup>
+import { computed } from 'vue';
+import { BaseImage } from '@/components/base';
+import skillsData from '@/data/skills.json';
+
+const props = defineProps({
+  /** Skill id (matches an entry in skills.json). */
+  name: {
+    type: String,
+    required: true,
+  },
+});
+
+const skill = computed(() => skillsData.find((s) => s.id === props.name));
+const skillImage = computed(() =>
+  skill.value ? `skills/${skill.value.icon}` : '',
+);
+const prettyName = computed(() => skill.value?.name ?? props.name);
+</script>
+
 <template>
   <div class="relative group">
-    <ImageContent
+    <BaseImage
       :src="skillImage"
-      :alt="name"
-      class-name="skill-emblem"
+      :alt="prettyName"
+      img-class="skill-emblem"
     />
     <div class="tooltip">
       {{ prettyName }}
     </div>
   </div>
 </template>
-
-<script>
-import ImageContent from '../media/ImageContent.vue';
-import skillsData from '/src/data/skills.json';
-
-export default {
-  components: { ImageContent },
-  props: ['name'],
-  data() {
-    return {
-      skillImage: '',
-    };
-  },
-  async created() {
-    const skill = skillsData.find((skill) => skill.id === this.name);
-    this.skillImage = 'skills/' + skill.icon;
-    this.prettyName = skill.name;
-  },
-};
-</script>
 
 <style>
 .skill-emblem {

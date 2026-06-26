@@ -1,3 +1,106 @@
+<script setup>
+import { ref, computed, useId, nextTick, onMounted, onBeforeUnmount } from 'vue';
+
+const props = defineProps({
+  text: { type: String, required: true },
+  /** Diameter in px. */
+  size: { type: Number, default: 220 },
+  /** Rotation duration in seconds. */
+  duration: { type: Number, default: 18 },
+  /** Inner padding in px. */
+  padding: { type: Number, default: 14 },
+  /** Uppercase the text. */
+  uppercase: { type: Boolean, default: true },
+  /** Insert bullet separators between words. */
+  addDots: { type: Boolean, default: true },
+});
+
+const vb = 1000; // viewBox size for stable geometry
+const fontSizePx = ref(22);
+const textLength = ref(0);
+const pathId = `seal-path-${useId()}`;
+
+const root = ref(null);
+
+const radius = computed(() => {
+  const padVb = (props.padding / props.size) * vb;
+  return vb / 2 - padVb;
+});
+
+const circlePathD = computed(() => {
+  const cx = vb / 2;
+  const cy = vb / 2;
+  const r = radius.value;
+  return [
+    `M ${cx - r} ${cy}`,
+    `a ${r} ${r} 0 1 1 ${2 * r} 0`,
+    `a ${r} ${r} 0 1 1 ${-2 * r} 0`,
+  ].join(' ');
+});
+
+const normalizedText = computed(() => {
+  let t = (props.text ?? '').trim();
+  if (!t) return '';
+  if (props.uppercase) t = t.toUpperCase();
+  if (props.addDots) {
+    t = t.replace(/\s+/g, ' ').split(' ').join(' • ');
+  }
+  return `${t} •`;
+});
+
+function fitText() {
+  const el = root.value;
+  const textEl = el?.querySelector('.seal-text');
+  const pathEl = el?.querySelector('path');
+  if (!textEl || !pathEl) return;
+
+  const circumference = 2 * Math.PI * radius.value;
+  textLength.value = circumference * 0.94;
+
+  const min = 8;
+  const max = 80;
+  const measure = () => {
+    try {
+      return textEl.getComputedTextLength();
+    } catch {
+      return Infinity;
+    }
+  };
+
+  let lo = min;
+  let hi = max;
+  let best = min;
+
+  fontSizePx.value = Math.max(min, Math.min(max, Math.round(props.size / 10)));
+  void textEl.getBBox?.();
+
+  for (let i = 0; i < 12; i++) {
+    const mid = (lo + hi) / 2;
+    fontSizePx.value = mid;
+    void textEl.getBBox?.();
+    if (measure() <= textLength.value) {
+      best = mid;
+      lo = mid;
+    } else {
+      hi = mid;
+    }
+  }
+
+  fontSizePx.value = Math.floor(best);
+}
+
+onMounted(() => {
+  nextTick(() => {
+    fitText();
+    window.addEventListener('resize', fitText, { passive: true });
+  });
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', fitText);
+});
+</script>
+
 <template>
   <div
     ref="root"
@@ -27,10 +130,10 @@
       >
         <textPath
           :href="`#${pathId}`"
-          startOffset="50%"
+          start-offset="50%"
           text-anchor="middle"
-          lengthAdjust="spacingAndGlyphs"
-          :textLength="textLength"
+          length-adjust="spacingAndGlyphs"
+          :text-length="textLength"
         >
           {{ normalizedText }}
         </textPath>
@@ -38,134 +141,6 @@
     </svg>
   </div>
 </template>
-
-<script>
-export default {
-  name: "CircularSeal",
-  props: {
-    text: {type: String, required: true},
-    size: {type: Number, default: 220},
-    duration: {type: Number, default: 18},
-    padding: {type: Number, default: 14},
-    uppercase: {type: Boolean, default: true},
-    addDots: {type: Boolean, default: true},
-  },
-  data() {
-    return {
-      vb: 1000, // viewBox size for stable geometry
-      fontSizePx: 22,
-      pathId: `seal-path-${Math.random().toString(36).slice(2)}`,
-      textLength: 0,
-    };
-  },
-  computed: {
-    radius() {
-      // radius in viewBox units
-      // map px padding to vb scale
-      const padVb = (this.padding / this.size) * this.vb;
-      return this.vb / 2 - padVb;
-    },
-    circlePathD() {
-      const cx = this.vb / 2;
-      const cy = this.vb / 2;
-      const r = this.radius;
-
-      // full circle path (two arcs) — best compatibility
-      return [
-        `M ${cx - r} ${cy}`,
-        `a ${r} ${r} 0 1 1 ${2 * r} 0`,
-        `a ${r} ${r} 0 1 1 ${-2 * r} 0`,
-      ].join(" ");
-    },
-    normalizedText() {
-      let t = (this.text ?? "").trim();
-      if (!t) return "";
-
-      if (this.uppercase) t = t.toUpperCase();
-
-      // Seal vibe: add dots between words (optional)
-      if (this.addDots) {
-        // Collapse whitespace, then put centered dots between tokens
-        const tokens = t.replace(/\s+/g, " ").split(" ");
-        t = tokens.join(" • ");
-      }
-      // Add a trailing separator so it loops nicely visually
-      return `${t} •`;
-    },
-  },
-  mounted() {
-    // Wait for svg to render, then fit font size by measurement.
-    this.$nextTick(() => {
-      this.fitText();
-      // Refit on resize (if parent layout changes)
-      window.addEventListener("resize", this.fitText, {passive: true});
-    });
-  },
-  beforeUnmount() {
-    window.removeEventListener("resize", this.fitText);
-  },
-  methods: {
-    fitText() {
-      const svg = this.$el?.querySelector("svg");
-      const textEl = this.$el?.querySelector(".seal-text");
-      const pathEl = this.$el?.querySelector("path");
-
-      if (!svg || !textEl || !pathEl) return;
-
-      // circumference in vb units
-      const circumference = 2 * Math.PI * this.radius;
-
-      // Give the text a target length slightly under circumference
-      // so we avoid cramped glyphs.
-      this.textLength = circumference * 0.94;
-
-      // Binary search a font size that fits.
-      // We measure the text element length in vb units.
-      const min = 8;
-      const max = 80;
-
-      const measure = () => {
-        // getComputedTextLength gives the current rendered length
-        // in the SVG coordinate system.
-        try {
-          return textEl.getComputedTextLength();
-        } catch {
-          return Infinity;
-        }
-      };
-
-      let lo = min;
-      let hi = max;
-      let best = min;
-
-      // Start from something proportional to circle size (in px)
-      // and then refine.
-      this.fontSizePx = Math.max(min, Math.min(max, Math.round(this.size / 10)));
-
-      // Force reflow-ish
-      void textEl.getBBox?.();
-
-      for (let i = 0; i < 12; i++) {
-        const mid = (lo + hi) / 2;
-        this.fontSizePx = mid;
-
-        // Force the browser to update metrics
-        void textEl.getBBox?.();
-
-        const len = measure();
-        if (len <= this.textLength) {
-          best = mid;
-          lo = mid;
-        } else {
-          hi = mid;
-        }
-      }
-
-      this.fontSizePx = Math.floor(best);
-    },
-  },
-};
-</script>
 
 <style scoped>
 .seal {
@@ -182,7 +157,6 @@ export default {
   animation-iteration-count: infinite;
 }
 
-/* subtle ring to sell the seal vibe */
 .ring {
   fill: none;
   stroke: currentColor;
@@ -190,7 +164,6 @@ export default {
   opacity: 0.08;
 }
 
-/* text styling */
 .seal-text {
   fill: currentColor;
   letter-spacing: 0.08em;
@@ -198,7 +171,6 @@ export default {
   opacity: 0.9;
 }
 
-/* slow rotation */
 @keyframes seal-rotate {
   from {
     transform: rotate(0deg);
@@ -208,10 +180,53 @@ export default {
   }
 }
 
-/* respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .seal-svg {
     animation: none;
   }
 }
 </style>
+
+
+border-bottom-colorrgb(229, 231, 235)
+border-bottom-stylesolid
+border-bottom-width0px
+border-left-colorrgb(229, 231, 235)
+border-left-stylesolid
+border-left-width0px
+border-right-colorrgb(229, 231, 235)
+border-right-stylesolid
+border-right-width0px
+border-top-colorrgb(229, 231, 235)
+border-top-stylesolid
+border-top-width0px
+box-sizingborder-box
+colorrgb(203, 203, 203)
+displayblock
+fillrgb(203, 203, 203)
+font-familyMontserrat, sans-serif
+font-feature-settingsnormal
+font-size79px
+font-variation-settingsnormal
+font-weight500
+heightauto
+letter-spacing6.32px
+line-height110.6px
+margin-bottom0px
+margin-left0px
+margin-right0px
+margin-top0px
+opacity0.9
+padding-bottom0px
+padding-left0px
+padding-right0px
+padding-top0px
+pointer-eventsnone
+tab-size4
+text-renderingoptimizelegibility
+text-size-adjust100%
+text-wrap-modenowrap
+transform-origin0px 0px
+white-space-collapsecollapse
+widthauto
+-webkit-tap-highlight-colorrgba(0, 0, 0, 0)
