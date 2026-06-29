@@ -94,6 +94,7 @@ usePageHead(
 .blog-page {
   background: var(--bg-color-primary);
   min-height: 100vh;
+  padding-top: calc(60px + var(--gutter-nano) + var(--gutter-medium));
 }
 
 .intro {

@@ -66,6 +66,7 @@ usePageHead(
 .deep-dives-page {
   background: var(--bg-color-primary);
   min-height: 100vh;
+  padding-top: calc(60px + var(--gutter-micro) + var(--gutter-medium));
 }
 
 .intro {
