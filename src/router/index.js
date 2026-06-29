@@ -29,17 +29,24 @@ export const routes = [
     component: BlogDetailPage,
     props: true,
   },
-  {
-    path: '/deep-dives',
-    name: 'DeepDives',
-    component: DeepDivesPage,
-  },
-  {
-    path: '/deep-dives/:id',
-    name: 'DeepDiveDetail',
-    component: DeepDiveDetailPage,
-    props: true,
-  },
+  ...(import.meta.env.VITE_ENABLE_DEEP_DIVES === 'true'
+    ? [
+        {
+          path: '/deep-dives',
+          name: 'DeepDives',
+          component: DeepDivesPage,
+        },
+        {
+          path: '/deep-dives/:id',
+          name: 'DeepDiveDetail',
+          component: DeepDiveDetailPage,
+          props: true,
+        },
+      ]
+    : [
+        { path: '/deep-dives', redirect: '/' },
+        { path: '/deep-dives/:id', redirect: '/' },
+      ]),
 ];
 
 export function scrollBehavior(to, from, savedPosition) {

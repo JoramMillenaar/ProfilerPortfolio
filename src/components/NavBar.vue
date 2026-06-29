@@ -13,7 +13,9 @@ const props = defineProps({
 const navLinks = [
   { label: 'Home', to: '/' },
   { label: 'Blog', to: '/blog' },
-  { label: 'Deep Dives', to: '/deep-dives' },
+  ...(import.meta.env.VITE_ENABLE_DEEP_DIVES === 'true'
+    ? [{ label: 'Deep Dives', to: '/deep-dives' }]
+    : []),
   { label: 'Contact', to: '/#contact' },
 ];
 
