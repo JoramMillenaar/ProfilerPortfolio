@@ -15,23 +15,25 @@ const props = defineProps({
   },
 });
 
-const videos = import.meta.glob('/src/assets/videos/**/*', { query: '?url', import: 'default' });
+// Eager: resolves video URLs at build time, avoiding a JS-module round-trip
+// before the video request itself (same waterfall fix as BaseImage).
+const videos = import.meta.glob('/src/assets/videos/**/*', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
 
 const root = useTemplateRef('root');
 const isVideoVisible = ref(false);
 const videoSrc = ref('');
 
-async function loadVideo(fileName) {
-  const importVideo = videos[`/src/assets/videos/${fileName}`];
-  if (!importVideo) {
+function loadVideo(fileName) {
+  const url = videos[`/src/assets/videos/${fileName}`];
+  if (!url) {
     console.error(`Video not found: ${fileName}`);
     return;
   }
-  try {
-    videoSrc.value = await importVideo();
-  } catch (error) {
-    console.error(`Error loading video: ${fileName}`, error);
-  }
+  videoSrc.value = url;
 }
 
 onMounted(() => {

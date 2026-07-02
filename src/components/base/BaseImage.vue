@@ -31,30 +31,27 @@ const props = defineProps({
   },
 });
 
-const images = import.meta.glob('/src/assets/images/**/*', { query: '?url', import: 'default' });
-const cache = {};
+// Eager: every image resolves to its final URL string at build time, so
+// showing an image costs one request (the image itself) instead of a tiny
+// JS-module fetch followed by the image fetch — a two-round-trip waterfall
+// that made sections visibly late on high-latency mobile connections.
+const images = import.meta.glob('/src/assets/images/**/*', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
 
 const el = ref(null);
 const currentSrc = ref(props.placeholder);
 let observer = null;
 
-async function load(fileName) {
-  if (cache[fileName]) {
-    currentSrc.value = cache[fileName];
-    return;
-  }
-  const importImage = images[`/src/assets/images/${fileName}`];
-  if (!importImage) {
+function load(fileName) {
+  const url = images[`/src/assets/images/${fileName}`];
+  if (!url) {
     console.error(`Image not found: ${fileName}`);
     return;
   }
-  try {
-    const url = await importImage();
-    cache[fileName] = url;
-    currentSrc.value = url;
-  } catch (error) {
-    console.error(`Error loading image: ${fileName}`, error);
-  }
+  currentSrc.value = url;
 }
 
 onMounted(() => {
@@ -81,5 +78,6 @@ onBeforeUnmount(() => observer?.disconnect());
     :src="currentSrc"
     :alt="alt"
     :class="imgClass"
+    decoding="async"
   >
 </template>

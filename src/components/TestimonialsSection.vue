@@ -31,11 +31,10 @@ function closeModal() {
     <div class="container">
       <ol class="testimonials">
         <li
-          v-for="(testimonial, index) in testimonials"
+          v-for="testimonial in testimonials"
           :key="testimonial.id"
           class="testimonial"
           data-aos="flip-right"
-          :data-aos-offset="300 + 100 * index"
         >
           <blockquote class="text-text-small mb-6 flex flex-col justify-between">
             {{ testimonial.quote }}

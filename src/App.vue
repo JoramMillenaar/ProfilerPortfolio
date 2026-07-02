@@ -7,10 +7,12 @@ onMounted(async () => {
   const { default: AOS } = await import('aos');
   AOS.init({
     offset: 120,
-    delay: 100,
+    delay: 0,
     duration: 400,
     easing: 'ease',
-    once: false,
+    // Animate once and stay visible: re-hiding content on every scroll
+    // direction change made pages feel like they were re-loading on mobile.
+    once: true,
     anchorPlacement: 'top-bottom',
   });
 });
