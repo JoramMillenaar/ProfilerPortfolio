@@ -78,6 +78,7 @@ onBeforeUnmount(() => observer?.disconnect());
     :src="currentSrc"
     :alt="alt"
     :class="imgClass"
+    loading="lazy"
     decoding="async"
   >
 </template>
