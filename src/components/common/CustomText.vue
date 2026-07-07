@@ -61,6 +61,7 @@ const renderedContent = computed(() => marked.parse(props.content || ''));
   padding: var(--gutter-medium);
   margin: auto;
   height: auto;
+  max-height: 600px;
   filter: drop-shadow(0px 0px 172px rgba(255, 255, 255, 0.1));
 }
 
