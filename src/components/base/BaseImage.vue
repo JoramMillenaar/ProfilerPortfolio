@@ -1,12 +1,19 @@
 <script setup>
 /**
- * Lazy-loaded image. Shows `placeholder` until the element nears the viewport,
- * then resolves the real asset from src/assets/images via Vite's glob import.
+ * Image whose source is resolved from src/assets/images at build time, then
+ * lazy-loaded by the browser natively.
+ *
+ * The URL is known at build time (eager glob), so it's baked into the
+ * pre-rendered HTML and the image appears without waiting on JS. Native
+ * `loading="lazy"` + `decoding="async"` defer the fetch and decode of
+ * off-screen images off the main thread. This replaces an earlier
+ * IntersectionObserver that left `src=""` until hydration fired — a
+ * JS-gated reveal that delayed images on slow connections.
  *
  * `src` is a path relative to src/assets/images (e.g. "github.svg",
  * "work/therapieland.webp").
  */
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { computed } from 'vue';
 
 const props = defineProps({
   /** Path relative to src/assets/images. */
@@ -14,7 +21,7 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  /** Low-quality / placeholder source shown before load. */
+  /** Fallback source used only if `src` can't be resolved. */
   placeholder: {
     type: String,
     default: '',
@@ -31,51 +38,25 @@ const props = defineProps({
   },
 });
 
-// Eager: every image resolves to its final URL string at build time, so
-// showing an image costs one request (the image itself) instead of a tiny
-// JS-module fetch followed by the image fetch — a two-round-trip waterfall
-// that made sections visibly late on high-latency mobile connections.
 const images = import.meta.glob('/src/assets/images/**/*', {
   eager: true,
   query: '?url',
   import: 'default',
 });
 
-const el = ref(null);
-const currentSrc = ref(props.placeholder);
-let observer = null;
-
-function load(fileName) {
-  const url = images[`/src/assets/images/${fileName}`];
+const resolvedSrc = computed(() => {
+  const url = images[`/src/assets/images/${props.src}`];
   if (!url) {
-    console.error(`Image not found: ${fileName}`);
-    return;
+    console.error(`Image not found: ${props.src}`);
+    return props.placeholder;
   }
-  currentSrc.value = url;
-}
-
-onMounted(() => {
-  observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          load(props.src);
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { rootMargin: '500px' },
-  );
-  observer.observe(el.value);
+  return url;
 });
-
-onBeforeUnmount(() => observer?.disconnect());
 </script>
 
 <template>
   <img
-    ref="el"
-    :src="currentSrc"
+    :src="resolvedSrc"
     :alt="alt"
     :class="imgClass"
     loading="lazy"

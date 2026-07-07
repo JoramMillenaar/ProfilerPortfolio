@@ -37,6 +37,7 @@ function loadVideo(fileName) {
 }
 
 onMounted(() => {
+  if (!props.video) return;
   const img = root.value?.querySelector('img');
   if (!img) return;
   img.addEventListener('load', () => {

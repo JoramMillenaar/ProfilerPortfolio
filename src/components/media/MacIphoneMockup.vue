@@ -49,6 +49,9 @@ function handleScroll() {
 }
 
 onMounted(() => {
+  // Desktop-only: the parallax reads layout (getBoundingClientRect) on every
+  // scroll, which janks on mobile — where the effect is barely visible anyway.
+  if (window.innerWidth < 1045) return;
   viewportHeight = window.innerHeight;
   window.addEventListener('scroll', handleScroll);
 });
