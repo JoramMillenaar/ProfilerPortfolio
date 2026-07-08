@@ -112,6 +112,16 @@ onBeforeUnmount(() => window.removeEventListener('resize', updateWidth));
   }
 }
 
+/* The animated gradient repaints a full 100vh layer continuously, which is a
+   major scroll-jank source on mobile Safari. Freeze it into a static gradient
+   below the desktop breakpoint; the effect is barely perceptible on a phone. */
+@media (max-width: 1045px) {
+  .header {
+    animation: none;
+    background-position: 0% 50%;
+  }
+}
+
 @media (max-width: 600px) {
   .header-textbox {
     padding: var(--gutter-small);

@@ -1,5 +1,6 @@
 <script setup>
 import { BaseLink, BaseImage } from '@/components/base';
+import VideoContent from '@/components/media/VideoContent.vue';
 import SkillEmblem from '@/components/experience/SkillEmblem.vue';
 import projectData from '@/data/projects.json';
 
@@ -17,7 +18,6 @@ const projects = projectData.projects;
         <article
           class="article-box featured-article"
           data-aos="zoom-out-up"
-          data-aos-offset="300"
           data-aos-duration="200"
         >
           <div class="article-textbox">
@@ -40,19 +40,17 @@ const projects = projectData.projects;
             </div>
           </div>
           <picture class="article-illustration">
-            <BaseImage
-              v-if="!featured.featured"
-              :src="featured.image"
-              :alt="featured.title + ' image'"
+            <VideoContent
+              :video="featured.video"
+              :thumbnail="featured.thumbnail"
             />
           </picture>
         </article>
         <article
-          v-for="(project, index) in projects"
+          v-for="project in projects"
           :key="project.id"
           class="article-box"
           data-aos="zoom-out-up"
-          :data-aos-offset="400 + 100 * index"
         >
           <div class="article-textbox">
             <div>
@@ -179,7 +177,8 @@ const projects = projectData.projects;
   flex-basis: 50%;
 }
 
-.article-illustration img {
+.article-illustration img,
+.article-illustration video {
   border-radius: var(--gutter-nano);
 }
 </style>

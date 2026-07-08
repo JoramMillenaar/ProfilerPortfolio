@@ -1,10 +1,13 @@
 import HomePage from '@/views/HomePage.vue';
-import ExperienceDetailPage from '@/views/ExperienceDetailPage.vue';
-import BlogPage from '@/views/BlogPage.vue';
-import BlogDetailPage from '@/views/BlogDetailPage.vue';
-import DeepDivesPage from '@/views/DeepDivesPage.vue';
-import DeepDiveDetailPage from '@/views/DeepDiveDetailPage.vue';
 import { calculateTopPosition } from '@/utils/windowUtils';
+
+// Lazy-loaded so each page (and its data, e.g. the full blog content JSON)
+// ships as its own chunk instead of inflating the entry bundle.
+const ExperienceDetailPage = () => import('@/views/ExperienceDetailPage.vue');
+const BlogPage = () => import('@/views/BlogPage.vue');
+const BlogDetailPage = () => import('@/views/BlogDetailPage.vue');
+const DeepDivesPage = () => import('@/views/DeepDivesPage.vue');
+const DeepDiveDetailPage = () => import('@/views/DeepDiveDetailPage.vue');
 
 export const routes = [
   {

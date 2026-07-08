@@ -62,7 +62,14 @@ const renderedContent = computed(() => marked.parse(props.content || ''));
   margin: auto;
   height: auto;
   max-height: 600px;
-  filter: drop-shadow(0px 0px 172px rgba(255, 255, 255, 0.1));
+}
+
+/* The 172px-radius drop-shadow is expensive for mobile Safari to rasterize
+   per scroll tile; keep the glow on desktop only. */
+@media (min-width: 1046px) {
+  .markdown-body :deep(img) {
+    filter: drop-shadow(0px 0px 172px rgba(255, 255, 255, 0.1));
+  }
 }
 
 .markdown-body :deep(blockquote) {

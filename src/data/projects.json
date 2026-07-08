@@ -4,8 +4,9 @@
     "title": "ML Document Search Plugin",
     "description": "Obsidian.md plugin: related notes. Discover similar documents by meaning, leveraging a locally run LM to ensure privacy and data ownership.",
     "link": "https://github.com/JoramMillenaar/obsidian-related-notes",
-    "image": "related-notes-reel.gif",
-    "skill": "vuejs"
+    "skill": "vuejs",
+    "video": "related-notes-reel.mp4",
+    "thumbnail": "related-notes-reel-poster.webp"
   },
   "projects": [
     {
@@ -13,7 +14,6 @@
       "title": "Vocal Magic",
       "description": "An audio processing toolkit designed to transform and enhance vocal performances in real-time.",
       "link": "https://github.com/JoramMillenaar/VocalMagic",
-
       "image": "vocal-magic-logo.webp",
       "skill": "python"
     },

@@ -54,10 +54,17 @@
 
     @font-face {
         font-family: 'Tech';
+        font-display: swap;
         src: url('assets/fonts/tech-min.woff2') format('woff2');
         font-weight: normal;
         font-style: normal;
     }
+}
+
+html:not(.aos-ready) [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
 }
 
 :root {
@@ -92,7 +99,6 @@ body {
     color: var(--body);
     background-color: var(--bg-color-primary);
     line-height: 1.4;
-    text-rendering: optimizeLegibility;
     overflow-x: hidden;
 }
 
@@ -107,6 +113,30 @@ body {
 
     100% {
         background-position: 0% 50%;
+    }
+}
+
+/* The `drop-shadow-bloom` Tailwind utility applies a 172px-radius drop-shadow,
+   which is very expensive for mobile Safari to rasterize on every scroll tile.
+   Keep the bloom on desktop only. Component-scoped `.shadow` and markdown
+   images below 1045px are gated the same way in their own stylesheets. */
+@media (max-width: 1045px) {
+    .drop-shadow-bloom {
+        filter: none;
+    }
+}
+
+/* Honor the OS "reduce motion" setting: neutralize the site's continuous
+   animations (gradient hero, orbital rings, text slider) and smooth scrolling
+   for users who opt out of motion. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
     }
 }
 
