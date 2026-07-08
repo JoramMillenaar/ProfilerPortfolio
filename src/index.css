@@ -116,6 +116,30 @@ body {
     }
 }
 
+/* The `drop-shadow-bloom` Tailwind utility applies a 172px-radius drop-shadow,
+   which is very expensive for mobile Safari to rasterize on every scroll tile.
+   Keep the bloom on desktop only. Component-scoped `.shadow` and markdown
+   images below 1045px are gated the same way in their own stylesheets. */
+@media (max-width: 1045px) {
+    .drop-shadow-bloom {
+        filter: none;
+    }
+}
+
+/* Honor the OS "reduce motion" setting: neutralize the site's continuous
+   animations (gradient hero, orbital rings, text slider) and smooth scrolling
+   for users who opt out of motion. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 *,
 *::after,
 *::before {

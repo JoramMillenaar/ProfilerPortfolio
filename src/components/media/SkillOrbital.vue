@@ -220,8 +220,28 @@ ul[class^='ring'] li {
   margin: -0.8em;
 }
 
-/* 
-animations 
+/* Eight concurrent infinite rotations (four rings, each counter-rotating its
+   icons) keep the compositor busy the whole time the section is on screen.
+   Hold them still on mobile, where the effect is subtle and the cost is not. */
+@media (max-width: 1045px) {
+  .ring-0,
+  .ring-1,
+  .ring-2,
+  .ring-3,
+  .ring-0 img,
+  .ring-0 i,
+  .ring-1 img,
+  .ring-1 i,
+  .ring-2 img,
+  .ring-2 i,
+  .ring-3 img,
+  .ring-3 i {
+    animation: none;
+  }
+}
+
+/*
+animations
 */
 @keyframes clockwiseRotate {
   from {

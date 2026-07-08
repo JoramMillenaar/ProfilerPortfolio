@@ -21,8 +21,10 @@ const navLinks = [
 
 const isVisible = ref(false);
 let lastScroll = 0;
+let ticking = false;
 
-function handleScroll() {
+function updateVisibility() {
+  ticking = false;
   const currentScroll = window.scrollY;
   if (currentScroll <= 100) {
     isVisible.value = props.showAtTop;
@@ -32,6 +34,14 @@ function handleScroll() {
     isVisible.value = true;
   }
   lastScroll = currentScroll;
+}
+
+// Coalesce the raw scroll stream (which can fire many times per frame on
+// mobile Safari) into at most one state update per animation frame.
+function handleScroll() {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(updateVisibility);
 }
 
 function showNavBar() {
@@ -56,7 +66,7 @@ function leave(el, done) {
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', handleScroll, { passive: true });
   lastScroll = window.scrollY;
   isVisible.value = window.scrollY <= 100 ? props.showAtTop : false;
 });
@@ -139,6 +149,19 @@ onBeforeUnmount(() => {
   background-color: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
   border-radius: 2px;
+}
+
+/* backdrop-filter forces Safari to re-blur everything behind this fixed bar on
+   every scroll frame. On mobile, fall back to a more opaque solid background
+   so the bar stays legible without the per-frame blur cost. */
+@media (max-width: 1045px) {
+  .navbar {
+    background-color: rgba(27, 27, 27, 0.92);
+    backdrop-filter: none;
+  }
+  .navbar-handle-bar {
+    backdrop-filter: none;
+  }
 }
 
 .nav-links {
