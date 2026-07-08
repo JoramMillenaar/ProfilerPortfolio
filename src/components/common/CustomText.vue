@@ -61,6 +61,7 @@ const renderedContent = computed(() => marked.parse(props.content || ''));
   padding: var(--gutter-medium);
   margin: auto;
   height: auto;
+  max-height: 600px;
 }
 
 /* The 172px-radius drop-shadow is expensive for mobile Safari to rasterize
