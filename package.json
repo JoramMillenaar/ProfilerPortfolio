@@ -9,7 +9,7 @@
     "serve": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "deploy": "gh-pages -d dist -b main -r https://github.com/JoramMillenaar/jorammillenaar.github.io.git"
+    "deploy": "gh-pages -d dist --nojekyll -b main -r https://github.com/JoramMillenaar/jorammillenaar.github.io.git"
   },
   "dependencies": {
     "aos": "^2.3.4",
